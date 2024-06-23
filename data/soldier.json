@@ -1,0 +1,89 @@
+{
+    "category": "soldier",
+    "products":[
+        {
+            "id": "1",
+            "soldier name":"עמית און",
+            "role":"מפקד מחלקת חילוץ",
+            "years in the unit":"10-15 שנה",
+            "location":"../images/soldier1.JPEG"
+        },
+        {
+            "id": "2",
+            "soldier name":"אוראל בסל",
+            "role":"איש צוות",
+            "years in the unit":"למטה מ5 שנים",
+            "location":"../images/soldier2.JPEG"
+        },
+        {
+            "id": "3",
+            "soldier name":"איתמר בן חמו",
+            "role":"איש צוות",
+            "years in the unit":"למטה מ5 שנים",
+            "location":"../images/soldier3.JPEG"
+        },
+        {
+            "id": "4",
+            "soldier name":"ניר שריקי",
+            "role":"בוחן תחמושת",
+            "years in the unit":"5-10 שנים",
+            "location":"../images/soldier4.JPEG"
+        },
+        {
+            "id": "5",
+            "soldier name":"ירין ביטון",
+            "role":"נהג טנק",
+            "years in the unit":"5-10 שנים",
+            "location":"../images/soldier5.JPEG"
+        },
+        {
+            "id": "6",
+            "soldier name":"נועם אור",
+            "role":"מפקד טנק",
+            "years in the unit":"למטה מ5 שנים",
+            "location":"../images/soldier6.JPEG"
+        },
+        {
+            "id": "7",
+            "soldier name":"דוד צריוב",
+            "role":"מפקד טנק",
+            "years in the unit":"10-15 שנה",
+            "location":"../images/soldier7.JPEG"
+        },
+        {
+            "id": "8",
+            "soldier name":"ירדן ויס",
+            "role":"איש צוות",
+            "years in the unit":"למטה מ5 שנים",
+            "location":"../images/soldier8.JPEG"
+        },
+        {
+            "id": "9",
+            "soldier name":"איליה טרשצנסקי",
+            "role":"רתח",
+            "years in the unit":"10-15 שנה",
+            "location":"../images/soldier9.JPEG"
+        },
+        {
+            "id": "10",
+            "soldier name":"סאלי גבאי",
+            "role":"מפקד מחלקת חילוץ",
+            "years in the unit":"5-10 שנים",
+            "location":"../images/soldier10.JPEG"
+        },
+        {
+            "id": "11",
+            "soldier name":"עומר שפי",
+            "role":"נהג נמר",
+            "years in the unit":"למטה מ5 שנים",
+            "location":"../images/soldier11.JPEG"
+        },
+        {
+            "id": "12",
+            "soldier name":"יגאל אמסלם",
+            "role":"נהג טנק",
+            "years in the unit":"5-10 שנים",
+            "location":"../images/soldier12.JPEG"
+        }
+    ]
+}

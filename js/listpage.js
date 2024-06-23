@@ -1,8 +1,11 @@
-window.onload = () => {
-    
+window.onload = () => {    
     fetch("data/soldier.json")
         .then(Response => Response.json())
-        .then(data => initialize(data));
+        .then(data =>{
+            initialize(data)
+            document.getElementById("sourceBar").addEventListener("input",searchSoldiers);
+        });
+    
 }
 
 function initialize(data) {
@@ -31,3 +34,19 @@ function initialize(data) {
     });
     
 }
+function searchSoldiers() {
+    let inputField = document.getElementById("sourceBar");
+    let value = "שם: "+inputField.value.toLowerCase();
+    const main = document.getElementsByClassName("mainContainer")[0];
+    let article = main.getElementsByTagName("article");
+    for(i = 0; i < article.length ;i++){
+        let x = article[i].querySelectorAll("ul")[0];
+        let y = x.children[0];
+        if(!y.innerHTML.includes(value)){
+            article[i].style.display="none";
+        }
+    }
+}
+
+
+

@@ -4,8 +4,8 @@
         {
             "id": "1",
             "soldier name":"עמית און",
-            "role":"מפקד מחלקת חילוץ",
-            "years in the unit":"10-15 שנה",
+            "role":"ממ חילוץ",
+            "years in the unit":"בין 10 ל15 שנה",
             "location":"../images/soldier1.JPEG"
         },
         {
@@ -26,14 +26,14 @@
             "id": "4",
             "soldier name":"ניר שריקי",
             "role":"בוחן תחמושת",
-            "years in the unit":"5-10 שנים",
+            "years in the unit":"בין 10 ל15 שנה",
             "location":"../images/soldier4.JPEG"
         },
         {
             "id": "5",
             "soldier name":"ירין ביטון",
             "role":"נהג טנק",
-            "years in the unit":"5-10 שנים",
+            "years in the unit":"בין 10 ל15 שנה",
             "location":"../images/soldier5.JPEG"
         },
         {
@@ -47,7 +47,7 @@
             "id": "7",
             "soldier name":"דוד צריוב",
             "role":"מפקד טנק",
-            "years in the unit":"10-15 שנה",
+            "years in the unit":"בין 10 ל15 שנה",
             "location":"../images/soldier7.JPEG"
         },
         {
@@ -61,14 +61,14 @@
             "id": "9",
             "soldier name":"איליה טרשצנסקי",
             "role":"רתח",
-            "years in the unit":"10-15 שנה",
+            "years in the unit":"בין 10 ל15 שנה",
             "location":"../images/soldier9.JPEG"
         },
         {
             "id": "10",
             "soldier name":"סאלי גבאי",
-            "role":"מפקד מחלקת חילוץ",
-            "years in the unit":"5-10 שנים",
+            "role":"ממ חילוץ",
+            "years in the unit":"בין 10 ל15 שנה",
             "location":"../images/soldier10.JPEG"
         },
         {
@@ -82,7 +82,7 @@
             "id": "12",
             "soldier name":"יגאל אמסלם",
             "role":"נהג טנק",
-            "years in the unit":"5-10 שנים",
+            "years in the unit":"בין 10 ל15 שנה",
             "location":"../images/soldier12.JPEG"
         }
     ]

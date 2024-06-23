@@ -6,11 +6,39 @@
 header, main, footer, nav, aside, section, article, div {
     display: block;
 }
+header {
+    background-color: #d9d9d9;
+}
+.header_container {
+    display: flex;
+    width: 100%;
+}
+a {
+    text-decoration: none;
+}
+#logo {
+    background-image: url("../images/Tank-Transparent-PNG\ 2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 88px;
+    width: 88px;
+    display: block;
+    margin-left: 98px;
+    margin-top: 22px;
 
+}
+#logo span {
+    padding-left: 102px;
+    font-size: 40px;
+    line-height: 0.8;
+    color: black;
+    display: inline-block;
+}
 .mainContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 89px;
+    margin-top: 159px;
     margin-left: 59px;
 }
 article {
@@ -37,4 +65,70 @@ article ul {
 }
 li {
     margin-left: 96px;
+}
+nav {
+    position: fixed;
+    top: 110px;
+    right: 0;
+    height: 908px;
+    width: 180px;
+    background-color: #d9d9d9;
+    justify-items: baseline;
+}
+nav ul {
+    list-style: none;
+    direction: rtl;
+    
+}
+nav ul li {
+    display: flex;
+    margin-top: 21px;
+    height: 65px;
+    width: 100%;
+    gap: 20px;
+    justify-items: center;
+    
+}
+li a {
+    color: black;
+}
+li a span {
+    font-size: 18px;
+}
+#pepoleIcon {
+    background-image: url("../images/image\ 3.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;   
+}
+
+#records {
+    background-image: url("../images/image\ 4.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;   
+}
+#forms {
+    background-image: url("../images/image\ 5.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+}
+#recwest {
+    background-image: url("../images/image\ 6.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+}
+
+#reviue {
+    background-image: url("../images/image\ 7.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
 }

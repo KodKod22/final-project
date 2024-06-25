@@ -17,56 +17,32 @@
             </a>
         </div>
     </header>
-    <main>
-        <nav>
-            <ul>
-                <li>
-                    <div id="pepoleIcon"></div>
-                    <a href="#">
-                        <span>
-                            מאגר חיילים
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <div id="records"></div>
-                    <a href="#">
-                        <span>
-                            הקלטות
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <div id="forms"></div>
-                    <a href="#">
-                        <span>
-                            דוחות
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <div id="recwest"></div>
-                    <a href="#">
-                        <span>
-                            יצירת בקשה
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <div id="reviue"></div>
-                    <a href="#">
-                        <span>
-                            כתיבת משוב
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <div id="warpper">
-            <input id="sourceBar" type="text" name="search" placeholder="שם החייל">
+    <div id="warpper">
+        <main>
+            <div class="top_main">
+                <input id="sourceBar" type="text" name="search" placeholder="שם החייל">
+                <div id="category_bt">
+                    <span>סינון</span>
+                    <ul id="category_menu">
+                        <li id="yearsInUnit">
+                            <span>שנים ביחידה</span>
+                            <ul id="submenu">
+                                <li><span>למטה מ5 שנים</span></li>
+                                <li><span>בין 5 ל10 שנה</span></li>
+                                <li><span>בין 10 ל15 שנה</span></li>
+                                <li><span>בין 15 ל20 שנה</span></li>
+                            </ul>
+                        </li>
+                        <li id="role">
+                            <span>תפקיד</span>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
             <div class="mainContainer">
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 </body>
 </html>

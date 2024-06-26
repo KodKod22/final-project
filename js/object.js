@@ -50,6 +50,8 @@ function showSelectedSoldier(data)
     const profile_picture = document.getElementById("profile-picture");
     const profile_info = document.getElementsByClassName("profile-info")[0]; 
     const army_info = document.getElementsByClassName("army-info")[0];
+    const prsonal_info = document.getElementsByClassName("prsonal-info")[0];
+    const armyData = document.getElementsByClassName("armyData")[0];
     let soldierNameStr = document.createElement("h2");
     soldierNameStr.innerText = soldierName;
     let personal_numberStr = document.createElement("span");
@@ -67,23 +69,21 @@ function showSelectedSoldier(data)
     let locationStr=document.createElement("img");
     locationStr.src = location;
     locationStr.alt = soldierName;
-    locationStr.id = "soldierPic";
 
-    profile_picture.appendChild(locationStr);
-
-    objectContainer.appendChild(soldierNameStr);
-    profile_info.appendChild(Date_of_birthStr);
-
-    profile_info.appendChild(personal_numberStr);
-    army_info.appendChild(roleStr);
-    profile_info.appendChild(rankStr);
-    army_info.appendChild(years_in_the_unitStr);
-    army_info.appendChild(rifleryStr);
-    
+    prsonal_info.appendChild(personal_numberStr);
+    prsonal_info.appendChild(Date_of_birthStr);
+    profile_info.appendChild(soldierNameStr);
+    armyData.appendChild(roleStr);
+    armyData.appendChild(rankStr);
+    armyData.appendChild(years_in_the_unitStr);
+    prsonal_info.appendChild(rifleryStr);
+    army_info.appendChild(prsonal_info);
+    army_info.appendChild(armyData);
     profile_info.appendChild(army_info);
-
-    objectContainer.appendChild(profile_info);
+    profile_picture.appendChild(locationStr);
     objectContainer.appendChild(profile_picture);
+    objectContainer.appendChild(profile_info);
+    
     showSimulations(simulations);
 }
 window.onload = () => {

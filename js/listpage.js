@@ -24,11 +24,11 @@ window.onload = () => {
 }
 
 function quickSearch(text) {
-    const main = document.getElementsByClassName("mainContainer")[0];
+    const main = document.getElementsByClassName("main_Container")[0];
     let article = main.getElementsByTagName("article");
     const value = "שנים ביחידה:" + text.target.textContent;    
     for(i = 0; i < article.length ;i++){
-        let x = article[i].querySelectorAll("ul")[0];
+        let x = article[i].getElementsByClassName("personalInfo")[0];
         let y = x.children[2];
         let z = y.children[0].textContent.trim(); 
         if(z === value){   
@@ -40,7 +40,7 @@ function quickSearch(text) {
 }
 function showFilers() {
     const categoryMenu = document.getElementById("category_menu");
-    const main = document.getElementsByClassName("mainContainer")[0];
+    const main = document.getElementsByClassName("main_Container")[0];
     let article = main.getElementsByTagName("article");
     if (!(categoryMenu.style.display === "block")) {
         categoryMenu.style.display = "block";
@@ -53,13 +53,15 @@ function showFilers() {
 }
 
 function initialize(data) {
-    const main = document.getElementsByClassName("mainContainer")[0];
+    const main = document.getElementsByClassName("main_Container")[0];
     data.products.forEach(product => { 
         const article = document.createElement("article");
-        let ul = document.createElement("ul");
-        let li_soldierName = document.createElement("li");
-        let li_role = document.createElement("li");
-        let li_years = document.createElement("li");
+        article.classList.add("soldierPlaceholder");
+        let div = document.createElement("div");
+        div.classList.add("personalInfo");
+        let li_soldierName = document.createElement("div");
+        let li_role = document.createElement("div");
+        let li_years = document.createElement("div");
         let soldierImg = document.createElement("img");
         soldierImg.src = `${product["location"]}`;
         soldierImg.alt = product["soldier name"];
@@ -67,11 +69,11 @@ function initialize(data) {
         li_soldierName.innerHTML = `<a href="Object.html?soldierId=${product.id}">${product["soldier name"]}</a>`;
         li_role.innerHTML = `<span>תפקיד: ${product["role"]}</span>`;
         li_years.innerHTML= `<span> שנים ביחידה:${product["years in the unit"]}</span>`;
-        ul.appendChild(li_soldierName);
-        ul.appendChild(li_role);
-        ul.appendChild(li_years);
-        article.appendChild(ul);
         article.appendChild(soldierImg);
+        div.appendChild(li_soldierName);
+        div.appendChild(li_role);
+        div.appendChild(li_years);
+        article.appendChild(div);
         main.appendChild(article);
     });
     document.getElementById("category_menu").style.display = "none";
@@ -81,9 +83,8 @@ function initialize(data) {
 function searchSoldiers() {
     let inputField = document.getElementById("sourceBar");
     let value = inputField.value.toLowerCase();
-    const main = document.getElementsByClassName("mainContainer")[0];
+    const main = document.getElementsByClassName("main_Container")[0];
     let article = main.getElementsByTagName("article");
-    console.log(value);
     if(inputField.value.trim()===""){
         for(i=0;i<article.length;i++){
             article[i].style.display="flex";
@@ -91,7 +92,7 @@ function searchSoldiers() {
     }
     
     for(i = 0; i < article.length ;i++){
-        let x = article[i].querySelectorAll("ul")[0];
+        let x = article[i].getElementsByClassName("personalInfo")[0];
         let y = x.children[0];
         if(!y.innerHTML.includes(value)){
             article[i].style.display="none";

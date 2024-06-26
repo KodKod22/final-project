@@ -18,6 +18,9 @@ window.onload = () => {
             
             quickSearch(event.target)
         });
+        document.getElementById("backbutton").addEventListener("click",() => {
+            history.back();
+        });
 }
 
 function quickSearch(text) {
@@ -60,7 +63,8 @@ function initialize(data) {
         let soldierImg = document.createElement("img");
         soldierImg.src = `${product["location"]}`;
         soldierImg.alt = product["soldier name"];
-        li_soldierName.innerHTML = `<span>שם: ${product["soldier name"]}</span>`;
+        soldierImg.id = "soldierPic";
+        li_soldierName.innerHTML = `<a href="Object.html?soldierId=${product.id}">${product["soldier name"]}</a>`;
         li_role.innerHTML = `<span>תפקיד: ${product["role"]}</span>`;
         li_years.innerHTML= `<span> שנים ביחידה:${product["years in the unit"]}</span>`;
         ul.appendChild(li_soldierName);
@@ -76,9 +80,10 @@ function initialize(data) {
 
 function searchSoldiers() {
     let inputField = document.getElementById("sourceBar");
-    let value = "שם: "+inputField.value.toLowerCase();
+    let value = inputField.value.toLowerCase();
     const main = document.getElementsByClassName("mainContainer")[0];
     let article = main.getElementsByTagName("article");
+    console.log(value);
     if(inputField.value.trim()===""){
         for(i=0;i<article.length;i++){
             article[i].style.display="flex";

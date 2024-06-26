@@ -3,8 +3,9 @@
     padding: 0;
 }
 #warpper {
-    margin-left: 32px;
-    margin-right: 32px;
+    margin: 0 125px;
+    padding: 0;
+    min-width: 1200px;
 }
 body {
     background-color: #FAF9F6;
@@ -21,6 +22,7 @@ header {
 }
 a {
     text-decoration: none;
+    color: black;
 }
 #logo {
     background-image: url("../images/Tank-Transparent-PNG\ 2.png");
@@ -56,7 +58,7 @@ article {
     border-radius: 5%;
     
 }
-img {
+#soldierPic {
     height: 73px;
     width: 73px;
     border-radius: 50%;
@@ -84,6 +86,7 @@ input {
     background-repeat: no-repeat;
     direction: rtl;
     border: none;
+    border-radius: 10%;
     background-color: #d9d9d9;
 }
 input::placeholder {
@@ -97,30 +100,32 @@ input::placeholder {
     background-color: #d9d9d9;
     display: flex;
     position: relative;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    border-radius: 10%;   
+    border-radius: 10%;
+     
 }
-
+#category_bt span {
+    margin-left: 40px;
+}
 #category_menu {
     display:none;
     background-color: white;
     direction: rtl;
     margin-top: 120px;
     position: absolute;
-    
-    width: 168px;
+    width: 164px;
 }
 #category_menu li {
     height: 40px;
     width: 100%;
     display: flex;
-    justify-items: center;
     align-items: center;
+    justify-content: space-between;
 }
 #category_menu li span {
-    margin-right: 64px;
-    
+    display: block;
+
 }
 #submenu {
     display: none;
@@ -129,14 +134,14 @@ input::placeholder {
     list-style: none;
     background-color:white;
     top: 0;
-    margin-right: 165px;
+    margin-right: 164px;
+    width: 164px;
 }
 
 #submenu li {
     display: flex;
     justify-items: center;
     align-items: center;
-
 }
 #category_menu  li:hover {
     background-color: gray;
@@ -146,9 +151,145 @@ li #submenu li:hover {
 }
 .top_main {
     display: flex;
-    gap: 139px;
+    align-items: center;
+    gap: 160px;
+}
+
+#select {
+    background-image: url("../images/select.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+}
+
+.arrow {
+    background-image: url("../images/arrow.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+}
+#pagePosition {
+    display: flex;
+    flex-direction: column;
+    direction: rtl;
+    margin-top: 10px;
+    margin-right: 53px;    
+}
+
+.objectContainer {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+.objectContainer h2 {
+    position: absolute;
+    top: 0;
+    margin-left: 350px;
+}
+#profile-picture {
+    flex: 1;
+    text-align: center;
+    margin-left: 55px;
+}
+
+#profile-picture > img {
+    border-radius: 50%;
+    width: 357px;
+    height: 357px;
+    object-fit: cover;
+}
+.profile-info {
+    height: 230px;
+    flex: 2;
+    padding-right: 20px;
+    direction: rtl;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 22px;
+    margin-top: 50px;
+}
+
+.profile-info h2 {
+    font-size: 25px;
+    margin-top: 0;
+}
+.profile-info span {
+    font-weight: bold;
+    font-size: 18px;
+}
+.army-info {
+    display: flex;
+    direction: rtl;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 22px;
+    width: 450px;
+}
+.adding_area {
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    gap: 77px;
+}
+.adding_area button {
+    width: 300px;
+    height: 80px;
+    border-style: none;
+    border-radius: 25px;
+}
+.adding_area button:hover {
+    background-color: #d3d3d3;
+}
+.simulation_continer{
+    display: flex;
+    flex-direction: column;
+    direction: rtl;
+    width: 800px;
+    margin-left: 74px;
+}
+.simulation {
+    margin-top: 31px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    text-align: center;
+}
+.simulation div {
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    width: 348px;
+    background-color: #d3d3d3;
+    border-style: none;
+    border-radius: 25px;
+}
+.simulation div a {
+   
+    margin-top: 17px;
+    margin-bottom: 18px;
 }
 
 
-
-
+.buttonArea {
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
+}
+.buttonArea h2 {
+    margin-left: 95px;
+}
+#backbutton {
+    margin-top: 35px;
+    height: 40px;
+    width: 40px;
+    border: none;
+    border-radius: 15px;
+}

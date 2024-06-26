@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/object.js"></script>
+    <link rel="stylesheet" href="css/style.css">
     <title>object page</title>
 </head>
 <body>
-    
+    <header>
+        <div class="header_container">
+            <a href="index.html" id="logo">
+                <span>
+                    AFV simulation
+                </span>
+            </a>
+        </div>
+    </header>
+    <div id="warpper">
+        <main>
+            <button id="backbutton">back</button>
+            <div id="pagePosition">
+                <span>מאגר חיילים</span>
+                <span>דף בית > מאגר חיילים</span>
+            </div>
+            <div class="objectContainer">
+                <div id="profile-picture">
+                </div>
+                <div class="profile-info">
+                    <div class="army-info"></div>
+                </div>
+            </div>
+            <div class="buttonArea">
+                <div class="simulation_continer">
+                    <h2>סימולציות שבהן השתתף:</h2>
+                    <div class="simulation">
+
+                    </div>
+                </div>
+                <div class="adding_area">
+                    <button>יצירת סימולציה חדשה</button>
+                    <button>עריכת פרופיל</button>
+                    <button>כתיבת משוב</button>
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

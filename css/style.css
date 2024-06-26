@@ -5,6 +5,7 @@
 
 #warpper {
     width:100%;
+
 }
 body {
     background-color: #FAF9F6;
@@ -15,6 +16,7 @@ main, footer, nav, aside, section, article, div {
 
 html, body{
     overflow-x: hidden;
+
 }
 
 .header_container{
@@ -91,6 +93,10 @@ a {
     text-align: right;
     color: black !important;
     font-family: inter;
+}
+
+.header_text{
+
 }
 
 .profile_container{
@@ -193,6 +199,7 @@ ul li {
     display: flex;
     position: relative;
 }
+
 
 .mainContainer {
     display: flex;

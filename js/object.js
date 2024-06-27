@@ -9,8 +9,26 @@ function showSimulations(simulationsData) {
 }
 
 function setPagePosition(soldierName) {
-    const page = document.getElementById("pagePosition").children[1];
-    page.innerText = page.innerText+" > "+soldierName;
+    const pageHaed = document.getElementsByClassName("breadcrumb-item active")[0];
+    const pageHaedChild = pageHaed.children[0];
+    
+    pageHaed.removeChild(pageHaedChild);
+
+    let newPageHead = document.createElement("a");
+    newPageHead.innerText = soldierName;
+    pageHaed.appendChild(newPageHead);
+    const page = document.getElementsByClassName("breadcrumb-item active")[1];
+    const remove = page.children[0];
+    const courentPage = remove.innerText;
+    let newCurrentPage;
+    newCurrentPage = courentPage + " > "+soldierName;
+    let newA = document.createElement("a");
+    newA.href = "listpage.html";
+    newA.innerText = newCurrentPage;
+    page.removeChild(remove);
+    page.appendChild(newA);
+    
+    
 }
 function getSoldierId() 
 {
@@ -65,6 +83,7 @@ function showSelectedSoldier(data)
         }
     }
     const objectContainer = document.getElementsByClassName("objectContainer")[0];
+
     const profile_picture = document.getElementById("profile-picture");
     const profile_info = document.getElementsByClassName("profile-info")[0]; 
     const army_info = document.getElementsByClassName("army-info")[0];
@@ -113,7 +132,4 @@ window.onload = () => {
     fetch("data/soldier.json")
     .then(response => response.json())
     .then(data => showSelectedSoldier(data));
-    document.getElementById("backbutton").addEventListener("click",() => {
-        history.back();
-    });
 }

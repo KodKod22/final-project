@@ -2,8 +2,8 @@ window.onload = () => {
     fetch("data/soldier.json")
         .then(Response => Response.json())
         .then(data =>{
-            initialize(data)
-            document.getElementById("sourceBar").addEventListener("input",searchSoldiers);
+                initialize(data)
+                document.getElementById("sourceBar").addEventListener("input",searchSoldiers);
         });
         document.getElementById("category_bt").onclick = showFilers;
 
@@ -69,6 +69,7 @@ function showFilers() {
 }
 
 function initialize(data) {
+    console.log(data);
     const main = document.getElementsByClassName("main_Container")[0];
     data.products.forEach(product => { 
         const article = document.createElement("article");

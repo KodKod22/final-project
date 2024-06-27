@@ -72,6 +72,7 @@ main, footer, nav, aside, section, article {
 a {
     text-decoration: none !important;
     cursor: pointer;
+    color: black !important;
 }
 
 .hebrew_text{
@@ -196,9 +197,10 @@ ul li {
 .main_Container{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 89px;
     margin-top: 45px;
-    margin-left: 59px;
 }
 
 #sourceBar {
@@ -346,14 +348,13 @@ li #submenu li:hover {
 }
 
 #backbutton {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     border-radius: 25px;
     border-style: none;
-    
-    margin-bottom: 15px;
 
 }
+
 
 #soldierPic {
     width: 73px;
@@ -455,5 +456,5 @@ li #submenu li:hover {
     background-repeat: no-repeat;
     width: 24px;
     height: 24px;
-    margin-left: 5px;
+    margin-right: 20px;
 }

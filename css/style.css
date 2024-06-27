@@ -4,25 +4,29 @@
 }
 
 #warpper {
-    width:100%;
+    max-width: 100%;
     padding: 0;
-    margin: 0 auto;
+    padding-top: 116px;
+    padding-right: 180px;
 }
+
 body {
     background-color: #FAF9F6;
 }
-main, footer, nav, aside, section, article, div {
+main, footer, nav, aside, section, article {
     display: block;
 }
 
 .header_container{
     display: flex;
+    z-index: 5;
     width: 100%;
     height: 116px;
     background-color: #d9d9d9;
     align-items: center;
     align-items: flex-end;
     padding-bottom: 16px;
+    position: fixed;
 }
 
 .logo_container{
@@ -63,7 +67,7 @@ main, footer, nav, aside, section, article, div {
     font-style: normal;
     font-variation-settings:
       "slnt" 0;
-  }
+}
 
 a {
     text-decoration: none !important;
@@ -76,8 +80,6 @@ a {
     color: black !important;
     font-family: inter;
 }
-
-
 
 .profile_container{
     display: flex;
@@ -106,8 +108,9 @@ a {
     width: 180px;
     height: 100%;
     background-color: #d9d9d9;
-    position: absolute;
+    margin-top: 116px;
     right: 0;
+    position: fixed;
 }
 
 .nav_list{
@@ -126,7 +129,6 @@ ul li {
     border-bottom-style: solid;
     border-width: 1px;
 }
-
 
 .personIcon {
     background-image: url("../images/iconPerson.svg");
@@ -293,19 +295,54 @@ li #submenu li:hover {
     border-radius: 25px;
 }
 
+.breadcrumb{
+    display: flex;
+    list-style: none;
+    font-weight: bold;
+    margin: 0 !important;
+}
+
+.breadcrumb_container{
+    display: flex;
+    flex-direction: column;
+    padding-top: 6px !important;
+    padding-right: 44px !important;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+  
+.breadcrumb-item + .breadcrumb-item::before {
+    content: '>';
+    padding: 0 8px;
+    color: #6c757d;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+  
+.breadcrumb-item.active {
+    color: #d9d9d9;
+}
+
 .top_main {
     display: flex;
     justify-items: flex-start;
     justify-content: space-evenly;
     align-items: center;
 }
+
 #backbutton {
     width: 40px;
     height: 40px;
     border-radius: 25px;
     border-style: none;
-
 }
+
 #soldierPic {
     width: 73px;
     height: 73px;

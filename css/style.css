@@ -341,7 +341,6 @@ li #submenu li:hover {
 
 .top_main {
     display: flex;
-    justify-items: center;
     justify-content: center;
     align-items: center;
     gap: 139px;
@@ -354,7 +353,14 @@ li #submenu li:hover {
     border-style: none;
 
 }
-
+#plusBotten {
+    background-image: url("../images/plus_icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    margin-top: 70px;
+}
 
 #soldierPic {
     width: 73px;

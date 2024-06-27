@@ -16,13 +16,29 @@ window.onload = () => {
         });
         document.getElementById("submenu").addEventListener("li", function(event){
             
-            quickSearch(event.target)
+            quickSearch(event.target);
         });
         document.getElementById("backbutton").addEventListener("click",() => {
             history.back();
         });
 }
 
+function deleteItem() {
+    const deleteButton = this;
+    const parentArticle = deleteButton.parentNode;
+    
+    const soldierData = parentArticle.children[1];
+    const soldierId = parentArticle.getAttribute('data-id');
+    const soldierName = soldierData.querySelector('a').textContent;
+
+    const requestData = {
+        id: soldierId,
+        name: soldierName,
+    };
+
+    const requestJson = JSON.stringify(requestData);
+    console.log('Prepared request delete:', requestJson);
+}
 function quickSearch(text) {
     const main = document.getElementsByClassName("main_Container")[0];
     let article = main.getElementsByTagName("article");
@@ -56,6 +72,7 @@ function initialize(data) {
     const main = document.getElementsByClassName("main_Container")[0];
     data.products.forEach(product => { 
         const article = document.createElement("article");
+        article.setAttribute('data-id', product.id);
         article.classList.add("soldierPlaceholder");
         let div = document.createElement("div");
         div.classList.add("personalInfo");
@@ -69,11 +86,16 @@ function initialize(data) {
         li_soldierName.innerHTML = `<a href="Object.html?soldierId=${product.id}">${product["soldier name"]}</a>`;
         li_role.innerHTML = `<span>תפקיד: ${product["role"]}</span>`;
         li_years.innerHTML= `<span> שנים ביחידה:${product["years in the unit"]}</span>`;
+        let delete_pic = document.createElement("div");
+        delete_pic.classList.add("delete");
+        delete_pic.onclick = deleteItem;
+
         article.appendChild(soldierImg);
         div.appendChild(li_soldierName);
         div.appendChild(li_role);
         div.appendChild(li_years);
         article.appendChild(div);
+        article.appendChild(delete_pic);
         main.appendChild(article);
     });
     document.getElementById("category_menu").style.display = "none";

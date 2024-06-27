@@ -18,6 +18,24 @@ function getSoldierId()
     const soldierId = aKeyValue[0].split("=")[1];
     return soldierId;
 }
+function deleteItem() {
+    
+    const deleteButton = this;
+    const parentArticle = deleteButton.parentNode;
+    const soldierInfo = parentArticle.children[1];
+    const soldierName = soldierInfo.children[0].innerText;
+    
+    const soldierId = getSoldierId();
+
+    const requestData = {
+        id: soldierId,
+        name: soldierName,
+    };
+
+    const requestJson = JSON.stringify(requestData);
+    console.log('Prepared request delete:', requestJson);
+    window.history.back();
+}
 function showSelectedSoldier(data) 
 {
     const selectionSoldierId = getSoldierId();
@@ -70,6 +88,11 @@ function showSelectedSoldier(data)
     locationStr.src = location;
     locationStr.alt = soldierName;
 
+    let delete_pic = document.createElement("div");
+    delete_pic.classList.add("delete");
+    delete_pic.onclick = deleteItem;
+
+
     prsonal_info.appendChild(personal_numberStr);
     prsonal_info.appendChild(Date_of_birthStr);
     profile_info.appendChild(soldierNameStr);
@@ -83,7 +106,7 @@ function showSelectedSoldier(data)
     profile_picture.appendChild(locationStr);
     objectContainer.appendChild(profile_picture);
     objectContainer.appendChild(profile_info);
-    
+    objectContainer.appendChild(delete_pic);
     showSimulations(simulations);
 }
 window.onload = () => {

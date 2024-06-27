@@ -117,6 +117,9 @@ a {
     list-style-type: none;
     padding: 0;
 }
+.nav_list :hover {
+    background-color: #FAF9F6;
+}
 
 ul li {
     display: flex;
@@ -187,6 +190,8 @@ ul li {
 }
 #pagePosition {
     margin-top: 10px;
+    margin-right: 200px;
+    direction: rtl;
 }
 .main_Container{
     display: flex;
@@ -270,12 +275,14 @@ ul li {
     background-color:white;
     top: 0;
     margin-right: 165px;
+    width: 168px;
 }
 
 #submenu li {
     display: flex;
     justify-items: center;
     align-items: center;
+    width: 168px;
 
 }
 #category_menu  li:hover {
@@ -293,6 +300,7 @@ li #submenu li:hover {
     flex-direction: row;
     direction: rtl;
     border-radius: 25px;
+    align-items: center;
 }
 
 .breadcrumb{
@@ -331,9 +339,10 @@ li #submenu li:hover {
 
 .top_main {
     display: flex;
-    justify-items: flex-start;
-    justify-content: space-evenly;
+    justify-items: center;
+    justify-content: center;
     align-items: center;
+    gap: 139px;
 }
 
 #backbutton {
@@ -341,6 +350,9 @@ li #submenu li:hover {
     height: 40px;
     border-radius: 25px;
     border-style: none;
+    
+    margin-bottom: 15px;
+
 }
 
 #soldierPic {
@@ -348,7 +360,7 @@ li #submenu li:hover {
     height: 73px;
     border-radius: 50%;
     margin-top: 7px;
-    margin-right: 17px;
+    margin-right: 5px;
 }
 .personalInfo {
     display: flex;
@@ -371,7 +383,6 @@ li #submenu li:hover {
     justify-content: center;
     justify-items: center;
     direction: rtl;
-    margin-top: 25px;
     margin-right: 55px;
     gap: 55px;
 }
@@ -413,10 +424,10 @@ li #submenu li:hover {
     margin-right: 55px;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .simulation_continer {
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     direction: rtl;
@@ -437,4 +448,12 @@ li #submenu li:hover {
 }
 .simulation div a {
     color: black;
+}
+.delete {
+    background-image: url("../images/delete.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    margin-left: 5px;
 }

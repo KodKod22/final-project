@@ -455,7 +455,7 @@ li #submenu li:hover {
     display: flex;
     flex-direction: column;
     gap: 77px;
-    margin-right: 92px;
+    padding-right: 30px;
     margin-top: 100px;
     margin-left: 92px;
 }
@@ -474,12 +474,14 @@ li #submenu li:hover {
 .simulation_continer {
     margin-top: 50px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     direction: rtl;
 }
 .simulation {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 35px;
 }
 .simulation div {

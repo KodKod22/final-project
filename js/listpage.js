@@ -18,9 +18,6 @@ window.onload = () => {
             
             quickSearch(event.target);
         });
-        document.getElementById("backbutton").addEventListener("click",() => {
-            history.back();
-        });
 }
 
 function deleteItem() {
@@ -85,8 +82,8 @@ function initialize(data) {
         soldierImg.alt = product["soldier name"];
         soldierImg.id = "soldierPic";
         li_soldierName.innerHTML = `<a href="Object.html?soldierId=${product.id}">${product["soldier name"]}</a>`;
-        li_role.innerHTML = `<span>תפקיד: ${product["role"]}</span>`;
-        li_years.innerHTML= `<span> שנים ביחידה:${product["years in the unit"]}</span>`;
+        li_role.innerHTML = `<a href="Object.html?soldierId=${product.id}">תפקיד:${product["role"]}</a>`;
+        li_years.innerHTML= `<a href="Object.html?soldierId=${product.id}"> שנים ביחידה:${product["years in the unit"]}</a>`;
         let delete_pic = document.createElement("div");
         delete_pic.classList.add("delete");
         delete_pic.onclick = deleteItem;

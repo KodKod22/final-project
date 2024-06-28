@@ -66,7 +66,7 @@ function showFilers() {
 }
 
 function initialize(data) {
-    console.log(data);
+    
     const main = document.getElementsByClassName("main_Container")[0];
     data.products.forEach(product => { 
         const article = document.createElement("article");
@@ -105,7 +105,7 @@ function searchSoldiers() {
     let value = inputField.value.toLowerCase();
     const main = document.getElementsByClassName("main_Container")[0];
     let article = main.getElementsByTagName("article");
-    if(inputField.value.trim()===""){
+    if(inputField.value.trim() === "" || inputField.value.trim().length === 0){
         for(i=0;i<article.length;i++){
             article[i].style.display="flex";
         }
@@ -113,8 +113,16 @@ function searchSoldiers() {
     
     for(i = 0; i < article.length ;i++){
         let x = article[i].getElementsByClassName("personalInfo")[0];
-        let y = x.children[0];
-        if(!y.innerHTML.includes(value)){
+        let solderName = x.children[0];
+        let yearsInUnit = x.children[1];
+        let soldierRole = x.children[2];
+        if(solderName.innerHTML.includes(value)){
+            article[i].style.display="flex";
+        }else if(yearsInUnit.innerHTML.includes(value)) {
+            article[i].style.display="flex";
+        }else if(soldierRole.innerHTML.includes(value)){
+            article[i].style.display="flex";
+        }else {
             article[i].style.display="none";
         }
     }

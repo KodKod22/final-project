@@ -27,8 +27,6 @@ function setPagePosition(soldierName) {
     newA.innerText = newCurrentPage;
     page.removeChild(remove);
     page.appendChild(newA);
-    
-    
 }
 function getSoldierId() 
 {
@@ -54,79 +52,102 @@ function deleteItem() {
     console.log('Prepared request delete:', requestJson);
     window.history.back();
 }
-function showSelectedSoldier(data) 
-{
-    const selectionSoldierId = getSoldierId();
-    let soldierName;
-    let personal_number;
-    let role;
-    let rank;
-    let years_in_the_unit;
-    let riflery;
-    let Date_of_birth;
-    let location;
-    let simulations;
-    for (const productKey in data.products) {
-        let soldierObj = data.products[productKey];
-        if (soldierObj.id == selectionSoldierId) {
-            soldierName = soldierObj["soldier name"];
-            setPagePosition(soldierName);
-            personal_number = soldierObj["personal number"];
-            role = soldierObj["role"];
-            rank = soldierObj["rank"];
-            years_in_the_unit = soldierObj["years in the unit"];
-            riflery = soldierObj["riflery"];
-            Date_of_birth = soldierObj["Date of birth"];
-            location = soldierObj["location"];
-            simulations = soldierObj["simulations"];
-            break;
-        }
-    }
-    const objectContainer = document.getElementsByClassName("objectContainer")[0];
+function getArmyData(Data) {
 
-    const profile_picture = document.getElementById("profile-picture");
-    const profile_info = document.getElementsByClassName("profile-info")[0]; 
-    const army_info = document.getElementsByClassName("army-info")[0];
-    const prsonal_info = document.getElementsByClassName("prsonal-info")[0];
     const armyData = document.getElementsByClassName("armyData")[0];
-    let soldierNameStr = document.createElement("h2");
-    soldierNameStr.innerText = soldierName;
-    let personal_numberStr = document.createElement("span");
-    personal_numberStr.innerText ="מספר אישי:"+ personal_number;
-    let roleStr = document.createElement("span");
-    roleStr.innerText = "תפקיד:"+role;
-    let rankStr = document.createElement("span");
-    rankStr.innerText = "דרגה:"+ rank;
-    let years_in_the_unitStr = document.createElement("span");
-    years_in_the_unitStr.innerText ="שנים ביחידה:"+ years_in_the_unit;
-    let rifleryStr = document.createElement("span");
-    rifleryStr.innerText = "רובאי:"+riflery; 
-    let Date_of_birthStr=document.createElement("span");
-    Date_of_birthStr.innerText = "תאריך לידה:"+Date_of_birth;
-    let locationStr=document.createElement("img");
-    locationStr.src = location;
-    locationStr.alt = soldierName;
+    const role = document.createElement("span");
+    role.innerText = "תפקיד: " + Data["role"];
+    
+    const rank = document.createElement("span");
+    rank.innerText = "דרגה: " + Data["rank"];
+    const yearsInTheUnit = document.createElement("span");
+    yearsInTheUnit.innerText = "שנים ביחידה: " + Data["yearsInTheUnit"];
+    
+    armyData.appendChild(role);
+    armyData.appendChild(rank);
+    armyData.appendChild(yearsInTheUnit);
 
+    return armyData;
+}
+function getPersonalInfo(data) {
+    const PersonalInfo = document.getElementsByClassName("prsonal-info")[0];
+
+    const personalNumber = document.createElement("span");
+    personalNumber.innerText = "מספר אישי: "+ data["personalNumber"];
+
+    const DateOfBirth = document.createElement("span");
+    DateOfBirth.innerText = "תאריך לידה: " + data["DateOfBirth"];
+
+    PersonalInfo.appendChild(personalNumber);
+    PersonalInfo.appendChild(DateOfBirth);
+    return  PersonalInfo; 
+}
+function getArmyInfo(Data){
+    const armyInfo = document.getElementsByClassName("army-info")[0];
+    const armyData = {
+        role: Data["role"],
+        rank: Data["rank"],
+        yearsInTheUnit: Data["yearsInTheUnit"]
+    };
+
+    const personalInfo = {
+        personalNumber: Data["personalNumber"],
+        DateOfBirth: Data["DateOfBirth"]
+    }
+
+    const setArmyData = getArmyData(armyData);
+    const setPersonalInfo = getPersonalInfo(personalInfo);
+
+    armyInfo.appendChild(setArmyData);
+    armyInfo.appendChild(setPersonalInfo);
+
+    return armyInfo;
+}
+function CreatePage(data) {
     let delete_pic = document.createElement("div");
     delete_pic.classList.add("delete");
     delete_pic.onclick = deleteItem;
+    
+    const objectContainer = document.getElementsByClassName("objectContainer")[0];
 
-
-    prsonal_info.appendChild(personal_numberStr);
-    prsonal_info.appendChild(Date_of_birthStr);
-    profile_info.appendChild(soldierNameStr);
-    armyData.appendChild(roleStr);
-    armyData.appendChild(rankStr);
-    armyData.appendChild(years_in_the_unitStr);
-    prsonal_info.appendChild(rifleryStr);
-    army_info.appendChild(prsonal_info);
-    army_info.appendChild(armyData);
-    profile_info.appendChild(army_info);
+    const profile_picture = document.getElementById("profile-picture");
+    let locationStr = document.createElement("img");
+    locationStr.src = data["location"];
+    locationStr.alt = data["soldierName"];
     profile_picture.appendChild(locationStr);
+
+
+    const profileInfo = document.getElementsByClassName("profile-info")[0];
+    const armyData = {
+            personalNumber: data["personal number"],
+            role: data["role"],
+            rank: data["rank"],
+            yearsInTheUnit: data["years in the unit"],
+            riflery: data["riflery"],
+            DateOfBirth: data["Date of birth"]
+    };
+    const armyInfo = getArmyInfo(armyData);
+    const soldierName = document.createElement("h2");
+    soldierName.innerText = data["soldier name"];
+    setPagePosition(soldierName.innerText);
+
+    profileInfo.appendChild(soldierName);
+    profileInfo.appendChild(armyInfo);
     objectContainer.appendChild(profile_picture);
-    objectContainer.appendChild(profile_info);
+    objectContainer.appendChild(profileInfo);
     objectContainer.appendChild(delete_pic);
-    showSimulations(simulations);
+    showSimulations(data["simulations"]);
+}
+function showSelectedSoldier(data) 
+{
+    const selectionSoldierId = getSoldierId();
+    for (const productKey in data.products) {
+        let soldierObj = data.products[productKey];
+        if (soldierObj.id == selectionSoldierId) {
+            CreatePage(soldierObj);
+            break;
+        }
+    }
 }
 window.onload = () => {
     fetch("data/soldier.json")

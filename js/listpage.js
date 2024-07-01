@@ -43,8 +43,8 @@ function quickSearch(text) {
     for(i = 0; i < article.length ;i++){
         let x = article[i].getElementsByClassName("personalInfo")[0];
         let y = x.children[2];
-        let z = y.children[0].textContent.trim(); 
-        if(z === value){   
+        let yearsInTheUnit = y.children[0].textContent.trim(); 
+        if(yearsInTheUnit === value){   
             continue
         }else{
             article[i].style.display = "none";

@@ -81,9 +81,9 @@ function initialize(data) {
         soldierImg.src = `${product["location"]}`;
         soldierImg.alt = product["soldier name"];
         soldierImg.id = "soldierPic";
-        li_soldierName.innerHTML = `<a href="Object.html?soldierId=${product.id}">${product["soldier name"]}</a>`;
-        li_role.innerHTML = `<a href="Object.html?soldierId=${product.id}">תפקיד:${product["role"]}</a>`;
-        li_years.innerHTML= `<a href="Object.html?soldierId=${product.id}"> שנים ביחידה:${product["years in the unit"]}</a>`;
+        li_soldierName.innerHTML = `<a href="soldierProfilePage.html?soldierId=${product.id}">${product["soldier name"]}</a>`;
+        li_role.innerHTML = `<a href="soldierProfilePage.html?soldierId=${product.id}">תפקיד:${product["role"]}</a>`;
+        li_years.innerHTML= `<a href="soldierProfilePage.html?soldierId=${product.id}"> שנים ביחידה:${product["years in the unit"]}</a>`;
         let delete_pic = document.createElement("div");
         delete_pic.classList.add("delete");
         delete_pic.onclick = deleteItem;

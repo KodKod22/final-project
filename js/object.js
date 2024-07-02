@@ -176,12 +176,13 @@ const FormHandler ={
             yearsInUnit: yearsInUnit,
             profilePicture: profilePicture ? profilePicture.name : "No file uploaded"
         };
-        console.log(formData);
+        const requestJson = JSON.stringify(formData);
+    console.log('Form data:', requestJson);
     } 
+    
 };
 document.getElementById('addSoldierform').addEventListener('submit', function(event) {
     event.preventDefault(); 
     FormHandler.getFormData();
-
 
 });

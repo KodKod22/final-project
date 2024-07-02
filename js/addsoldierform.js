@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+
     const navLinks = document.querySelectorAll('.nav_list a');
     const currentPage = window.location.pathname.split("/").pop();
     
@@ -12,9 +13,11 @@ document.addEventListener("DOMContentLoaded", function() {
             this.classList.add('active');
         });
     });
-    const FormHandler ={
+
+
+    const FormHandler = {
         getFormData: function() {
-            const soldierName=document.getElementsById('soldier-name').value;
+            const soldierName = document.getElementById('soldier-name').value;
             const personalNumber = document.getElementById('personal-number').value;
             const role = document.getElementById('role').value;
             const rank = document.getElementById('rank').value;
@@ -33,22 +36,29 @@ document.addEventListener("DOMContentLoaded", function() {
                 yearsInUnit: yearsInUnit,
                 profilePicture: profilePicture ? profilePicture.name : "No file uploaded"
             };
+            
             const requestJson = JSON.stringify(formData);
-        console.log('Form data:', requestJson);
-        } 
-        
-    };
-    document.getElementById('addSoldierform').addEventListener('submit', function(event) {
-        event.preventDefault(); 
-        FormHandler.getFormData();
-    
-    });
-    document.getElementById('add-soldier-form').addEventListener('submit', function(event) {
-        const fileInput = document.getElementById('profile-picture');
-        const file = fileInput.files[0];
-        if (file && (file.size > 300 * 1024 || file.type !== 'image/png')) {
-            event.preventDefault();
-            alert('הקובץ חייב להיות מסוג PNG ובגודל עד 300KB.');
+            console.log('Form data:', requestJson);
         }
-    });
+    };
+
+   
+    const addSoldierForm = document.getElementById('add-soldier-form');
+    
+    if (addSoldierForm) {
+        addSoldierForm.addEventListener('submit', function(event) {
+         
+            const fileInput = document.getElementById('profile-picture');
+            const file = fileInput.files[0];
+            if (file && (file.size > 300 * 1024 || file.type !== 'image/png')) {
+                event.preventDefault();
+                alert('הקובץ חייב להיות מסוג PNG ובגודל עד 300KB.');
+                return;
+            }
+            
+       
+            event.preventDefault();
+            FormHandler.getFormData();
+        });
+    }
 });

@@ -539,3 +539,36 @@ li #submenu li:hover {
     border-color: darkgray;
     color: white;
 }
+.form_section {
+    display: flex;
+    max-width: 1200px;
+    margin: auto;
+    align-items: flex-start;
+}
+
+.text_container {
+    flex: 1;
+    margin-right: 20px;
+    direction: rtl;
+}
+
+.video_container {
+    flex: 1;
+}
+
+.action_buttons .custom-btn {
+    background-color: gray;
+    border-color: gray;
+    color: white;
+    margin: 10px;
+}
+
+.action_buttons .custom-btn:hover {
+    background-color: darkgray;
+    border-color: darkgray;
+    color: white;
+}
+section.form-section {
+    max-width: 30%;
+    padding-right: 30px;
+}

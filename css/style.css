@@ -567,3 +567,9 @@ section.form-section {
     max-width: 30%;
     padding-right: 25px;
 }
+.nav_list li a.active {
+    font-weight: bold;
+}
+button.btn.btn-primary.custom-btn {
+    background-color: #6c757d;
+}

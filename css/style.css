@@ -327,7 +327,7 @@ li #submenu li:hover {
 }
   
 .breadcrumb-item + .breadcrumb-item::before {
-    content: '>';
+    content: '>' !important;
     padding: 0 8px;
     color: #6c757d;
 }
@@ -430,6 +430,7 @@ li #submenu li:hover {
     direction: rtl;
     margin-right: 55px;
     gap: 55px;
+    margin-top: 25px;
 }
 .army-info {
     display: flex;
@@ -510,13 +511,6 @@ li #submenu li:hover {
     padding-top: 136px;
 }
 
-.form_section {
-    display: flex;
-    max-width: 1200px;
-    margin: auto;
-    align-items: flex-start;
-}
-
 .text_container {
     flex: 1;
     margin-right: 20px;
@@ -542,8 +536,9 @@ li #submenu li:hover {
 .form_section {
     display: flex;
     max-width: 1200px;
-    margin: auto;
     align-items: flex-start;
+    margin-right: 25px;
+    margin-top: 25px;
 }
 
 .text_container {
@@ -570,5 +565,5 @@ li #submenu li:hover {
 }
 section.form-section {
     max-width: 30%;
-    padding-right: 30px;
+    padding-right: 25px;
 }

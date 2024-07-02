@@ -1,9 +1,10 @@
 function showSimulations(simulationsData) {
     const simulations = document.getElementsByClassName("simulation")[0];
     let simulation;
+    console.log(simulationsData);
     for (let index = 0; index < simulationsData.length; index++) {
         simulation = document.createElement("div");
-        simulation.innerHTML = `<a href="page4.html?simulationName=${simulationsData[index]}">${simulationsData[index]}</a>`;
+        simulation.innerHTML = `<a href="simulationPage.html?simulationIndex=${index}">${simulationsData[index]}</a>`;
         simulations.appendChild(simulation);
     }
 }

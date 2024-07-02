@@ -1,7 +1,6 @@
 function showSimulations(simulationsData) {
     const simulations = document.getElementsByClassName("simulation")[0];
     let simulation;
-    console.log(simulationsData);
     for (let index = 0; index < simulationsData.length; index++) {
         simulation = document.createElement("div");
         simulation.innerHTML = `<a href="simulationPage.html?simulationIndex=${index}">${simulationsData[index]}</a>`;
@@ -24,7 +23,7 @@ function setPagePosition(soldierName) {
     let newCurrentPage;
     newCurrentPage = courentPage + " > "+soldierName;
     let newA = document.createElement("a");
-    newA.href = "listpage.html";
+    newA.href = "SoldierListPage.html";
     newA.innerText = newCurrentPage;
     page.removeChild(remove);
     page.appendChild(newA);

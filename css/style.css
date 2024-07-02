@@ -522,15 +522,15 @@ li #submenu li:hover {
 }
 
 .action_buttons .custom-btn {
-    background-color: gray;
-    border-color: gray;
-    color: white;
+    background-color: #d9d9d9;
+    border-color: #d9d9d9;  
+    width: 150px;
     margin: 10px;
 }
 
 .action_buttons .custom-btn:hover {
-    background-color: darkgray;
-    border-color: darkgray;
+    background-color: gray;
+    border-color: gray;
     color: white;
 }
 .form_section {
@@ -551,25 +551,10 @@ li #submenu li:hover {
     flex: 1;
 }
 
-.action_buttons .custom-btn {
-    background-color: gray;
-    border-color: gray;
-    color: white;
-    margin: 10px;
-}
-
-.action_buttons .custom-btn:hover {
-    background-color: darkgray;
-    border-color: darkgray;
-    color: white;
-}
 section.form-section {
     max-width: 30%;
     padding-right: 25px;
 }
 .nav_list li a.active {
     font-weight: bold;
-}
-button.btn.btn-primary.custom-btn {
-    background-color: #6c757d;
 }

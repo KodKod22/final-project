@@ -24,7 +24,7 @@ function setPagePosition(soldierName) {
     let newCurrentPage;
     newCurrentPage = courentPage + " > "+soldierName;
     let newA = document.createElement("a");
-    newA.href = "listpage.html";
+    newA.href = "soldierListPage.html";
     newA.innerText = newCurrentPage;
     page.removeChild(remove);
     page.appendChild(newA);

@@ -12,7 +12,37 @@ document.addEventListener("DOMContentLoaded", function() {
             this.classList.add('active');
         });
     });
-
+    const FormHandler ={
+        getFormData: function() {
+            const soldierName=document.getElementsById('soldier-name').value;
+            const personalNumber = document.getElementById('personal-number').value;
+            const role = document.getElementById('role').value;
+            const rank = document.getElementById('rank').value;
+            const rifleman = document.getElementById('rifleman').value;
+            const birthdate = document.getElementById('birthdate').value;
+            const yearsInUnit = document.getElementById('years-in-unit').value;
+            const profilePicture = document.getElementById('profile-picture').files[0];
+    
+            const formData = {
+                soldierName: soldierName,
+                personalNumber: personalNumber,
+                role: role,
+                rank: rank,
+                rifleman: rifleman,
+                birthdate: birthdate,
+                yearsInUnit: yearsInUnit,
+                profilePicture: profilePicture ? profilePicture.name : "No file uploaded"
+            };
+            const requestJson = JSON.stringify(formData);
+        console.log('Form data:', requestJson);
+        } 
+        
+    };
+    document.getElementById('addSoldierform').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        FormHandler.getFormData();
+    
+    });
     document.getElementById('add-soldier-form').addEventListener('submit', function(event) {
         const fileInput = document.getElementById('profile-picture');
         const file = fileInput.files[0];

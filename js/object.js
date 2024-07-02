@@ -155,33 +155,4 @@ window.onload = () => {
     .then(response => response.json())
     .then(data => showSelectedSoldier(data));
 }
-const FormHandler ={
-    getFormData: function() {
-        const soldierName=document.getElementsById('soldier-name').value;
-        const personalNumber = document.getElementById('personal-number').value;
-        const role = document.getElementById('role').value;
-        const rank = document.getElementById('rank').value;
-        const rifleman = document.getElementById('rifleman').value;
-        const birthdate = document.getElementById('birthdate').value;
-        const yearsInUnit = document.getElementById('years-in-unit').value;
-        const profilePicture = document.getElementById('profile-picture').files[0];
 
-        const formData = {
-            soldierName: soldierName,
-            personalNumber: personalNumber,
-            role: role,
-            rank: rank,
-            rifleman: rifleman,
-            birthdate: birthdate,
-            yearsInUnit: yearsInUnit,
-            profilePicture: profilePicture ? profilePicture.name : "No file uploaded"
-        };
-        console.log(formData);
-    } 
-};
-document.getElementById('addSoldierform').addEventListener('submit', function(event) {
-    event.preventDefault(); 
-    FormHandler.getFormData();
-
-
-});

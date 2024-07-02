@@ -1,0 +1,21 @@
+{
+    "category": "simulation",
+    "simulations": [
+        {
+            "id": "1",
+            "title": "חילוץ טנק סימן 2 מעמק",
+            "simulationName": "חילוץ טנק סימן 2 מעמק",
+            "damageTool": "טנק סימן 2",
+            "rescueTools": "טנק חילוץ, טנק סימן 2",
+            "location": "רמת הגולן",
+            "participants": "6 אנשים",
+            "driver": "יגאל אמסלם",
+            "teamMembers": "ארז אלבז, אורי בסל, רחם עזראיל",
+            "commander": "ארז גבאי",
+            "safetyOfficer": "קצין בטיחות: עמית לוי",
+            "difficulty": "קל",
+            "date": "25.02.2024",
+            "video": "https://www.youtube.com/embed/S6bNDqOh7q4"
+        }
+    ]
+}

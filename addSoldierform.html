@@ -58,5 +58,63 @@
             </li>
         </ul>
     </div>
+    <main id="warpper" class="hebrew_text">
+        <nav class="breadcrumb_container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page"><a>דף בית</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a>הוספת חייל</a></li>
+            </ol>
+        </nav>
+        <div class="mainPage_container">
+            <section class="form-section">
+                <h2>הוספת חייל</h2>
+                <form id="add-soldier-form" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="soldier-name" class="form-label">שם החייל:</label>
+                        <input type="text" id="soldier-name" name="soldier-name" class="form-control" pattern="[\u0590-\u05FF\s]+" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="personal-number" class="form-label">מספר אישי:</label>
+                        <input type="text" id="personal-number" name="personal-number" class="form-control" pattern="\d+" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="role" class="form-label">תפקיד:</label>
+                        <input type="text" id="role" name="role" class="form-control" pattern="[\u0590-\u05FF\s]+" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rank" class="form-label">דרגה:</label>
+                        <input type="text" id="rank" name="rank" class="form-control" value="סמל ראשון" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rifleman" class="form-label">רובאי:</label>
+                        <select id="rifleman" name="rifleman" class="form-select" required>
+                            <option value="" disabled selected>SELECT</option>
+                            <option value="03">03</option>
+                            <option value="05">05</option>
+                            <option value="07">07</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="birthdate" class="form-label">תאריך לידה:</label>
+                        <input type="date" id="birthdate" name="birthdate" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="years-in-unit" class="form-label">שנים ביחידה:</label>
+                        <input type="text" id="years-in-unit" name="years-in-unit" class="form-control" value="למטה מ-5" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="profile-picture" class="form-label">הוספת תמונה:</label>
+                        <input type="file" id="profile-picture" name="profile-picture" class="form-control" accept="image/png" required>
+                        <small class="form-text text-muted">קובץ PNG בלבד, עד 300KB.</small>
+                    </div>
+                    <div class="form-buttons d-flex justify-content-between">
+                        <button type="submit" class="btn btn-primary custom-btn">שמירה</button>
+                        <button type="reset" class="btn btn-secondary custom-btn">מחיקה</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+    <script src="js/addSoldierForm.js"></script>
 </body>
 </html>

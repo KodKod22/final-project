@@ -31,9 +31,10 @@ main, footer, nav, aside, section, article {
 
 .logoContainer{
     display: flex;
-    width: fit-content;
-    height: 78px;
     flex-direction: column;
+    align-items: center;
+    text-align: center; 
+    height: 78px;
     margin-left: 32px;
 }
 
@@ -41,18 +42,21 @@ main, footer, nav, aside, section, article {
     background-image: url("../images/logo.jpg");
     background-size: contain;
     background-repeat: no-repeat;
-    width: 192px;
+    width: 250px;
     height: 56px;
     display: block;
+    background-position: center; 
+    text-decoration: none;
 }
 
 #logo span{
-    padding-left: 102px;
     font-size: 18px;
     font-family: Aclonica;
     line-height: 0.8;
     color: black;
     display: inline-block;
+    width: 100%;
+    margin-top: 60px;
 }
 
 .aclonicaRegular{
@@ -116,14 +120,17 @@ a {
 }
 
 .navList{
-    list-style-type: none;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+   
 }
+
 .navList :hover {
     background-color: #FAF9F6;
 }
 
-ul li {
+.navList div {
     display: flex;
     align-items: center;
     justify-content: right;
@@ -139,30 +146,40 @@ ul li {
     background-image: url("../images/iconPerson.svg");
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
+    border: none;
 }
 
 #videoIcon {
     background-image: url("../images/iconVideo.svg");
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
+    border: none;
 }
 
 #reportsIcon {
     background-image: url("../images/iconReport.svg");
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
+    border: none;
 }
 
 #requestIcon {
     background-image: url("../images/iconRequest.svg");
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
+    border: none;
 }
 
 #feedbackIcon {
     background-image: url("../images/iconMessage.svg");
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
+    border: none;
 }
 
 #homeIcon{
@@ -365,9 +382,7 @@ li #submenu li:hover {
     display: flex;
     flex-direction: column;
     padding-top: 60px;
-    width:400px;
     margin-right: 44px;
-
 }
 
 .firstLineImg{
@@ -541,6 +556,9 @@ section #formSection {
     max-width: 30%;
     padding-right: 25px;
 }
-.navList li a.active {
+.navList div a.active {
     font-weight: bold;
+}
+.form-section {
+    width: 400px;
 }

@@ -5,16 +5,16 @@ window.onload = () => {
                 initialize(data)
                 document.getElementById("sourceBar").addEventListener("input",searchSoldiers);
         });
-        document.getElementById("category_bt").onclick = showFilers;
+        document.getElementById("categoryButton").onclick = showFilers;
 
-        document.getElementById("yearsInUnit").addEventListener("mouseover",function(event) {
+        document.getElementById("yearsInUnit").addEventListener("mouseover",(event) =>{
             document.getElementById("submenu").style.display = "block";
             document.getElementById("submenu").onclick = quickSearch;
         });
-        document.getElementById("yearsInUnit").addEventListener("mouseout", function(event) {
+        document.getElementById("yearsInUnit").addEventListener("mouseout",(event) =>{
             document.getElementById("submenu").style.display = "none";
         });
-        document.getElementById("submenu").addEventListener("li", function(event){
+        document.getElementById("submenu").addEventListener("li", (event) =>{
             
             quickSearch(event.target);
         });
@@ -37,7 +37,7 @@ function deleteItem() {
     console.log('Prepared request delete:', requestJson);
 }
 function quickSearch(text) {
-    const main = document.getElementsByClassName("main_Container")[0];
+    const main = document.getElementsByClassName("mainContainer")[0];
     let article = main.getElementsByTagName("article");
     const value = "שנים ביחידה:" + text.target.textContent;    
     for(i = 0; i < article.length ;i++){
@@ -52,8 +52,8 @@ function quickSearch(text) {
     }       
 }
 function showFilers() {
-    const categoryMenu = document.getElementById("category_menu");
-    const main = document.getElementsByClassName("main_Container")[0];
+    const categoryMenu = document.getElementById("categoryMenu");
+    const main = document.getElementsByClassName("mainContainer")[0];
     let article = main.getElementsByTagName("article");
     if (!(categoryMenu.style.display === "block")) {
         categoryMenu.style.display = "block";
@@ -67,7 +67,7 @@ function showFilers() {
 
 function initialize(data) {
     
-    const main = document.getElementsByClassName("main_Container")[0];
+    const main = document.getElementsByClassName("mainContainer")[0];
     data.products.forEach(product => { 
         const article = document.createElement("article");
         article.setAttribute('data-id', product.id);
@@ -96,14 +96,14 @@ function initialize(data) {
         article.appendChild(delete_pic);
         main.appendChild(article);
     });
-    document.getElementById("category_menu").style.display = "none";
+    document.getElementById("categoryMenu").style.display = "none";
     document.getElementById("submenu").style.display = "none";
 }
 
 function searchSoldiers() {
     let inputField = document.getElementById("sourceBar");
     let value = inputField.value.toLowerCase();
-    const main = document.getElementsByClassName("main_Container")[0];
+    const main = document.getElementsByClassName("mainContainer")[0];
     let article = main.getElementsByTagName("article");
     if(inputField.value.trim() === "" || inputField.value.trim().length === 0){
         for(i=0;i<article.length;i++){

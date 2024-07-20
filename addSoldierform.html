@@ -13,20 +13,20 @@
 </head>
 <body>
     <header>
-        <div class="header_container" >
-            <div class="logo_container">
+        <div class="headerContainer" >
+            <div class="logoContainer">
                 <a href="index.html" id="logo"></a>
-                <a><span class="aclonica-regular">Extrication Simulation</span></a>
+                <a><span class="aclonicaRegular">Extrication Simulation</span></a>
             </div>
-            <div class="header_links">
-                <a href="index.html" class="homeIcon icon"></a>
-                <a class="LngIcon icon"></a>
+            <div id="headerLinks">
+                <a href="index.html" id="homeIcon" class="icon"></a>
+                <a id="LngIcon" class="icon"></a>
             </div>
-            <div class="profile_container hebrew_text" >
-                <img src="images/commander.jpg" alt="הפרופיל שלי" class="round_profile_img">
-                <div class="hebrew_text header_text">
-                    <h1 class=" welcome">ברוך הבא שמעון</h1>
-                    <div class="profile_links">
+            <div class="profileContainer hebrewText" >
+                <img src="images/commander.jpg" alt="הפרופיל שלי" class="roundProfileImg">
+                <div class="hebrewText">
+                    <h1 id="welcome">ברוך הבא שמעון</h1>
+                    <div id="profileLinks">
                         <a><span>התנתקות  ,</span></a>
                         <a><span>הגדרות חשבון  </span></a>
                     </div>
@@ -34,32 +34,32 @@
             </div>
         </div>
     </header>
-    <div class="vertical_nev">
-        <ul class="nav_list">
+    <div class="verticalNev">
+        <ul class="navList">
             <li>
-                <a href="soldierListPage.html" class="hebrew_text">מאגר חיילים</a>
-                <div class="personIcon icon"></div>
+                <a href="soldierListPage.html" class="hebrewText">מאגר חיילים</a>
+                <div id="personIcon"  class="icon"></div>
             </li>
             <li>
-                <a class="hebrew_text">הקלטות</a>
-                <div class="videoIcon icon"></div>
+                <a class="hebrewText">הקלטות</a>
+                <div id="videoIcon" class="icon"></div>
             </li>
             <li>
-                <a class="hebrew_text">דוחות</a>
-                <div class="reportsIcon icon"></div>
+                <a class="hebrewText">דוחות</a>
+                <div id="reportsIcon" class="icon"></div>
             </li>
             <li>
-                <a class="hebrew_text">יצירת בקשה</a>
-                <div class="requestIcon icon"></div>
+                <a class="hebrewText">יצירת בקשה</a>
+                <div id="requestIcon" class="icon"></div>
             </li>
             <li>
-                <a class="hebrew_text">הוספת חייל</a>
-                <div class="feedbackIcon icon"></div>
+                <a href="addSoldierform.html" class="hebrewText">הוספת חייל</a>
+                <div id="feedbackIcon" class="icon"></div>
             </li>
         </ul>
     </div>
-    <main id="warpper" class="hebrew_text">
-        <nav class="breadcrumb_container">
+    <main id="warpper" class="hebrewText">
+        <nav class="breadcrumbContainer">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page"><a>הוספת חייל</a></li>
             </ol>
@@ -69,17 +69,17 @@
                 <li class="breadcrumb-item active" aria-current="page"><a> הוספת חייל</a></li>
             </ol>
         </nav>
-        <div class="mainPage_container">
+        <div class="mainPageContainer">
             <section class="form-section">
                 <h2>הוספת חייל</h2>
                 <form id="add-soldier-form" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label for="soldier-name" class="form-label">שם החייל:</label>
-                        <input type="text" id="soldier-name" name="soldier-name" class="form-control" pattern="[\u0590-\u05FF\s]+" required>
+                        <label for="soldierName" class="form-label">שם החייל:</label>
+                        <input type="text" id="soldierName" name="soldierName" class="form-control" pattern="[\u0590-\u05FF\s]+" required>
                     </div>
                     <div class="mb-3">
-                        <label for="personal-number" class="form-label">מספר אישי:</label>
-                        <input type="text" id="personal-number" name="personal-number" class="form-control" pattern="\d+" required>
+                        <label for="personalNumber" class="form-label">מספר אישי:</label>
+                        <input type="text" id="personalNumber" name="personalNumber" class="form-control" pattern="\d+" required>
                     </div>
                     <div class="mb-3">
                         <label for="role" class="form-label">תפקיד:</label>
@@ -100,15 +100,15 @@
                     </div>
                     <div class="mb-3">
                         <label for="birthdate" class="form-label">תאריך לידה:</label>
-                        <input type="date" id="birthdate" name="birthdate" class="form-control" required>
+                        <input type="date" id="birthdate" name="birthday" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label for="years-in-unit" class="form-label">שנים ביחידה:</label>
-                        <input type="text" id="years-in-unit" name="years-in-unit" class="form-control" value="למטה מ-5" readonly>
+                        <label for="yearsInUnit" class="form-label">שנים ביחידה:</label>
+                        <input type="text" id="yearsInUnit" name="yearsInUnit" class="form-control" value="למטה מ-5" readonly>
                     </div>
                     <div class="mb-3">
-                        <label for="profile-picture" class="form-label">הוספת תמונה:</label>
-                        <input type="file" id="profile-picture" name="profile-picture" class="form-control" accept="image/png" required>
+                        <label for="profilePicture" class="form-label">הוספת תמונה:</label>
+                        <input type="file" id="profilePicture" name="profilePicture" class="form-control" accept="image/png" required>
                         <small class="form-text text-muted">קובץ PNG בלבד, עד 300KB.</small>
                     </div>
                     <div class="form-buttons d-flex justify-content-between">

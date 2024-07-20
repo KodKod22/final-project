@@ -1,5 +1,5 @@
 function showSimulations(simulationsData) {
-    const simulations = document.getElementsByClassName("simulation")[0];
+    const simulations = document.getElementById("simulation");
     let simulation;
     for (let index = 0; index < simulationsData.length; index++) {
         simulation = document.createElement("div");
@@ -54,7 +54,7 @@ function deleteItem() {
 }
 function getArmyData(Data) {
 
-    const armyData = document.getElementsByClassName("armyData")[0];
+    const armyData = document.getElementById("armyData");
     const role = document.createElement("span");
     role.innerText = "תפקיד: " + Data["role"];
     
@@ -70,7 +70,7 @@ function getArmyData(Data) {
     return armyData;
 }
 function getPersonalInfo(data) {
-    const PersonalInfo = document.getElementsByClassName("prsonal-info")[0];
+    const PersonalInfo = document.getElementById("prsonalInfo");
 
     const personalNumber = document.createElement("span");
     personalNumber.innerText = "מספר אישי: "+ data["personalNumber"];
@@ -83,7 +83,7 @@ function getPersonalInfo(data) {
     return  PersonalInfo; 
 }
 function getArmyInfo(Data){
-    const armyInfo = document.getElementsByClassName("army-info")[0];
+    const armyInfo = document.getElementById("armyInfo");
     const armyData = {
         role: Data["role"],
         rank: Data["rank"],
@@ -110,14 +110,14 @@ function CreatePage(data) {
     
     const objectContainer = document.getElementsByClassName("objectContainer")[0];
 
-    const profile_picture = document.getElementById("profile-picture");
+    const profile_picture = document.getElementById("profilePicture");
     let locationStr = document.createElement("img");
     locationStr.src = data["location"];
     locationStr.alt = data["soldierName"];
     profile_picture.appendChild(locationStr);
 
 
-    const profileInfo = document.getElementsByClassName("profile-info")[0];
+    const profileInfo = document.getElementById("profileInfo");
     const armyData = {
             personalNumber: data["personal number"],
             role: data["role"],

@@ -49,14 +49,14 @@ main, footer, nav, aside, section, article {
 #logo span{
     padding-left: 102px;
     font-size: 18px;
-    font-family: Aclonica;
+    font-family: "Inter", sans-serif;
     line-height: 0.8;
     color: black;
     display: inline-block;
 }
 
 .aclonica-regular{
-    font-family: "Aclonica", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 400;
     font-style: normal;
 }  
@@ -79,7 +79,7 @@ a {
     direction: rtl;
     text-align: right;
     color: black !important;
-    font-family: inter;
+    font-family: "Inter", sans-serif;
 }
 
 .profile_container{
@@ -417,8 +417,8 @@ li #submenu li:hover {
     color: black;
 }
 #profile-picture img{
-    width: 357px;
-    height: 357px;
+    max-width: 100%;
+    height:  100%;
     border-radius: 50%;
     
 }
@@ -572,4 +572,7 @@ section.form-section {
 }
 button.btn.btn-primary.custom-btn {
     background-color: #6c757d;
+}
+.footer-margin {
+    height: 150px; 
 }

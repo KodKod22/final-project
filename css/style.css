@@ -59,13 +59,8 @@ main, footer, nav, aside, section, article {
     margin-top: 60px;
 }
 
-<<<<<<< HEAD
-.aclonica-regular{
-    font-family: "Inter", sans-serif;
-=======
 .aclonicaRegular{
-    font-family: "Aclonica", sans-serif;
->>>>>>> 97d6d15eab2644579387d1275490ab7548d21427
+    font-family: "Inter", sans-serif;
     font-weight: 400;
     font-style: normal;
 }  
@@ -436,17 +431,11 @@ li #submenu li:hover {
 .personalInfo div  a {
     color: black;
 }
-<<<<<<< HEAD
-#profile-picture img{
+
+#profile-picture img
+{
     max-width: 100%;
     height:  100%;
-=======
-#profilePicture img{
-    width: 357px;
-    height: 357px;
->>>>>>> 97d6d15eab2644579387d1275490ab7548d21427
-    border-radius: 50%;
-    
 }
 .objectContainer {
     display: flex;
@@ -570,15 +559,14 @@ section #formSection {
 .navList div a.active {
     font-weight: bold;
 }
-<<<<<<< HEAD
+
 button.btn.btn-primary.custom-btn {
     background-color: #6c757d;
 }
 .footer-margin {
     height: 150px; 
 }
-=======
 .form-section {
     width: 400px;
 }
->>>>>>> 97d6d15eab2644579387d1275490ab7548d21427
+

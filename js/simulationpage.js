@@ -34,19 +34,19 @@ function showPage(data){
         let simulationObj = data.simulations[productKey];
         if (simulationObj.id === simulationId){
             setPagePosition(simulationObj["title"]);          
-            document.getElementById('simulation-title').textContent = simulationObj["title"];
-            document.getElementById('simulation-name').textContent = simulationObj["simulationName"];
-            document.getElementById('damage-tool').textContent = simulationObj["damageTool"];
-            document.getElementById('rescue-tools').textContent = simulationObj["rescueTools"];
+            document.getElementById('simulationTitle').textContent = simulationObj["title"];
+            document.getElementById('simulationName').textContent = simulationObj["simulationName"];
+            document.getElementById('damageTool').textContent = simulationObj["damageTool"];
+            document.getElementById('rescueTools').textContent = simulationObj["rescueTools"];
             document.getElementById('location').textContent = simulationObj["location"];
             document.getElementById('participants').textContent = simulationObj["participants"];
             document.getElementById('driver').textContent = simulationObj["driver"];
-            document.getElementById('team-members').textContent = simulationObj["teamMembers"];
+            document.getElementById('teamMembers').textContent = simulationObj["teamMembers"];
             document.getElementById('commander').textContent = simulationObj["commander"];
-            document.getElementById('safety-officer').textContent = simulationObj["safetyOfficer"];
+            document.getElementById('safetyOfficer').textContent = simulationObj["safetyOfficer"];
             document.getElementById('difficulty').textContent = simulationObj["difficulty"];
             document.getElementById('date').textContent = simulationObj["date"];
-            document.getElementById('simulation-video').src = simulationObj["video"];
+            document.getElementById('simulationVideo').src = simulationObj["video"];
             break; 
         }
       

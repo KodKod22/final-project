@@ -1,6 +1,6 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", ()=> {
 
-    const navLinks = document.querySelectorAll('.nav_list a');
+    const navLinks = document.querySelectorAll('.navList a');
     const currentPage = window.location.pathname.split("/").pop();
     
     navLinks.forEach(link => {
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
             link.classList.add('active');
         }
         
-        link.addEventListener('click', function() {
+        link.addEventListener('click', () =>{
             navLinks.forEach(nav => nav.classList.remove('active'));
             this.classList.add('active');
         });
@@ -16,15 +16,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     const FormHandler = {
-        getFormData: function() {
-            const soldierName = document.getElementById('soldier-name').value;
-            const personalNumber = document.getElementById('personal-number').value;
+        getFormData: ()=> {
+            const soldierName = document.getElementById('soldierName').value;
+            const personalNumber = document.getElementById('personalNumber').value;
             const role = document.getElementById('role').value;
             const rank = document.getElementById('rank').value;
             const rifleman = document.getElementById('rifleman').value;
-            const birthdate = document.getElementById('birthdate').value;
-            const yearsInUnit = document.getElementById('years-in-unit').value;
-            const profilePicture = document.getElementById('profile-picture').files[0];
+            const birthdate = document.getElementById('birthday').value;
+            const yearsInUnit = document.getElementById('yearsInUnit').value;
+            const profilePicture = document.getElementById('profilePicture').files[0];
     
             const formData = {
                 soldierName: soldierName,
@@ -43,16 +43,16 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
    
-    const addSoldierForm = document.getElementById('add-soldier-form');
+    const addSoldierForm = document.getElementById('addSoldierForm');
     
     if (addSoldierForm) {
-        addSoldierForm.addEventListener('submit', function(event) {
+        addSoldierForm.addEventListener('submit', (event) =>{
          
-            const fileInput = document.getElementById('profile-picture');
+            const fileInput = document.getElementById('profilePicture');
             const file = fileInput.files[0];
             if (file && (file.size > 300 * 1024 || file.type !== 'image/png')) {
                 event.preventDefault();
-                alert('הקובץ חייב להיות מסוג PNG ובגודל עד 300KB.');
+                console.error('הקובץ חייב להיות מסוג PNG ובגודל עד 300KB.');
                 return;
             }
             

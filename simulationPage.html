@@ -13,83 +13,84 @@
 </head>
 <body>
     <header>
-        <div class="header_container" >
-            <div class="logo_container">
-                <a href="index.html" id="logo"></a>
-                <a><span class="aclonica-regular">Extrication Simulation</span></a>
+        <div class="headerContainer" >
+            <div class="logoContainer">
+                <a href="index.html" id="logo">
+                    <span class="aclonicaRegular">Extrication Simulation</span>
+                </a>
             </div>
-            <div class="header_links">
-                <a href="index.html" class="homeIcon icon"></a>
-                <a class="LngIcon icon"></a>
+            <div id="headerLinks">
+                <a href="index.html" id="homeIcon" class="icon"></a>
+                <a href="#" id="LngIcon" class="icon"></a>
             </div>
-            <div class="profile_container hebrew_text" >
-                <img src="images/commander.jpg" alt="הפרופיל שלי" class="round_profile_img">
-                <div class="hebrew_text header_text">
-                    <h1 class=" welcome">ברוך הבא שמעון</h1>
-                    <div class="profile_links">
-                        <a><span>התנתקות  ,</span></a>
-                        <a><span>הגדרות חשבון  </span></a>
+            <div class="profileContainer hebrewText">
+                <img src="images/commander.jpg" alt="הפרופיל שלי" class="roundProfileImg">
+                <div class="hebrewText">
+                    <h1 id="welcome">ברוך הבא שמעון</h1>
+                    <div id="profileLinks">
+                        <a href="#"><span>התנתקות  ,</span></a>
+                        <a href="#"><span>הגדרות חשבון  </span></a>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    <div class="vertical_nev">
-        <ul class="nav_list">
-            <li>
-                <a href="soldierListPage.html" class="hebrew_text">מאגר חיילים</a>
-                <div class="personIcon icon"></div>
-            </li>
-            <li>
-                <a class="hebrew_text">הקלטות</a>
-                <div class="videoIcon icon"></div>
-            </li>
-            <li>
-                <a class="hebrew_text">דוחות</a>
-                <div class="reportsIcon icon"></div>
-            </li>
-            <li>
-                <a class="hebrew_text">יצירת בקשה</a>
-                <div class="requestIcon icon"></div>
-            </li>
-            <li>
-                <a class="hebrew_text">הוספת חייל</a>
-                <div class="feedbackIcon icon"></div>
-            </li>
-        </ul>
+    <div class="verticalNev">
+        <nav class="navList">
+            <div>
+                <a href="soldierListPage.html" class="hebrewText">מאגר חיילים</a>
+                <div id="personIcon"  class="icon"></div>
+            </div>
+            <div>
+                <a href="#" class="hebrewText">הקלטות</a>
+                <div id="videoIcon" class="icon"></div>
+            </div>
+            <div>
+                <a href="#" class="hebrewText">דוחות</a>
+                <div id="reportsIcon" class="icon"></div>
+            </div>
+            <div>
+                <a href="#" class="hebrewText">יצירת בקשה</a>
+                <div id="requestIcon" class="icon"></div>
+            </div>
+            <div>
+                <a href="addSoldierform.html" class="hebrewText">הוספת חייל</a>
+                <div id="feedbackIcon" class="icon"></div>
+            </div>
+        </nav>
     </div>
-    <main class="main_page_container hebrew_text">
-        <nav class="breadcrumb_container">
+    <main id="warpper" class="hebrewText">
+        <nav class="breadcrumbContainer">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page"><a>הוספת חייל</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="addSoldierform.html">הוספת חייל</a></li>
             </ol>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page"><a href="index.html">דף בית </a></li>
                 <li class="breadcrumb-item active" aria-current="page"><a href="soldierListPage.html"> מאגר חיילים</a></li> 
             </ol>
         </nav>
-        <section class="form_section d-flex">
-            <div class="text_container">
-                <h2 id="simulation-title"></h2>
-                <p><strong>הסימולציה:</strong> <span id="simulation-name"></span></p>
-                <p><strong>כלי התקוע:</strong> <span id="damage-tool"></span></p>
-                <p><strong>כלים מחלצים:</strong> <span id="rescue-tools"></span></p>
+        <section class="formSection d-flex">
+            <div class="textContainer">
+                <h2 id="simulationTitle"></h2>
+                <p><strong>הסימולציה:</strong> <span id="simulationName"></span></p>
+                <p><strong>כלי התקוע:</strong> <span id="damageTool"></span></p>
+                <p><strong>כלים מחלצים:</strong> <span id="rescueTools"></span></p>
                 <p><strong>מיקום:</strong> <span id="location"></span></p>
                 <p><strong>משתתפים:</strong> <span id="participants"></span></p>
                 <p><strong>נהג:</strong> <span id="driver"></span></p>
-                <p><strong>אנשי צוות:</strong> <span id="team-members"></span></p>
+                <p><strong>אנשי צוות:</strong> <span id="teamMembers"></span></p>
                 <p><strong>מפקד:</strong> <span id="commander"></span></p>
-                <p><strong>קצין אירוע:</strong> <span id="safety-officer"></span></p>
+                <p><strong>קצין אירוע:</strong> <span id="safetyOfficer"></span></p>
                 <p><strong>רמת קושי הסימולציה:</strong> <span id="difficulty"></span></p>
                 <p><strong>תאריך:</strong> <span id="date"></span></p>
             </div>
-            <div class="video_container">
-                <iframe id="simulation-video" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+            <div class="videoContainer">
+                <iframe id="simulationVideo" width="560" height="315" frameborder="0" allowfullscreen></iframe>
             </div>
         </section>
-        <div class="action_buttons text-center mt-3">
-            <button class="btn btn-secondary custom-btn">מחיקת הקלטה</button>
-            <button class="btn btn-primary custom-btn">כתיבת משוב</button>
+        <div class="actionButtons text-center mt-3">
+            <button class="btn btn-primary custom-btn hebrewText">מחיקת הקלטה</button>
+            <button class="btn btn-primary custom-btn hebrewText">כתיבת משוב</button>
         </div>
     </main>
     <script src="js/simulationpage.js"></script>

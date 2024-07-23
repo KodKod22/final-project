@@ -51,7 +51,7 @@ main, footer, nav, aside, section, article {
 
 #logo span{
     font-size: 18px;
-    font-family: "Inter", sans-serif;
+    font-family: "Aclonica", sans-serif;
     line-height: 0.8;
     color: black;
     display: inline-block;
@@ -60,7 +60,7 @@ main, footer, nav, aside, section, article {
 }
 
 .aclonicaRegular{
-    font-family: "Inter", sans-serif;
+    font-family: "Aclonica", sans-serif;
     font-weight: 400;
     font-style: normal;
 }  

@@ -1,0 +1,13 @@
+{
+    "category": "users",
+    "users": [
+        {
+            "id":"1",
+            "userName":"שמעון"
+        },
+        {
+            "id":"2",
+            "userName":"רותם"
+        }
+    ]
+}

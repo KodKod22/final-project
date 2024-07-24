@@ -3,11 +3,13 @@
     "users": [
         {
             "id":"1",
-            "userName":"שמעון"
+            "userName":"שמעון",
+            "profile":"../images/commander.jpg"
         },
         {
             "id":"2",
-            "userName":"רותם"
+            "userName":"רותם",
+            "profile":"../images/opertor.jpg"
         }
     ]
 }

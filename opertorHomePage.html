@@ -9,22 +9,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/opertorHomePage.js"></script>
 </head>
 <body>
     <header>
         <div class="headerContainer" >
             <div id="logo">
-                <a href="index.html"></a>
-                <a href="index.html"><span>Extrication Simulation</span></a>
+                <a href="index.html">
+                    <span>Extrication Simulation</span>
+                </a>
             </div>
             <div id="headerLinks">
                 <a href="index.html" id="homeIcon" class="icon"></a>
                 <a href="#" id="LngIcon" class="icon"></a>
             </div>
             <div class="profileContainer hebrewText" >
-                <img src="images/commander.jpg" alt="הפרופיל שלי" class="roundProfileImg">
+                <div id="profilePlaceHolder"></div>
                 <div class="hebrewText">
-                    <h1 id="welcome">ברוך הבא רותם</h1>
+                    <h1 id="welcome"></h1>
                     <div id="profileLinks">
                         <a href="#"><span>התנתקות  ,</span></a>
                         <a href="#"><span>הגדרות חשבון  </span></a>
@@ -33,5 +35,41 @@
             </div>
         </div>
     </header>
+    <div class="verticalNev">
+        <nav class="navList">
+            <div>
+                <a href="soldierListPage.html" class="hebrewText">סימולציות </a>
+                <div id="simulationIcon"  class="icon"></div>
+            </div>
+            <div>
+                <a href="#" class="hebrewText">דוחות</a>
+                <div id="reportsIcon" class="icon"></div>
+            </div>
+            <div>
+                <a href="#" class="hebrewText">בקשות</a>
+                <div id="requestIcon" class="icon"></div>
+            </div>
+            <div>
+                <a href="#" class="hebrewText">מערכת הודעות</a>
+                <div  id="systemIcon" class="icon"></div>
+            </div>
+            <div>
+                <a href="#" class="hebrewText">יצירת אירוע חדש</a>
+                <div id="addEvent" class="icon"></div>
+            </div>
+        </nav>
+    </div>
+    <main id="warpper" class="hebrewText">
+        <nav class="breadcrumbContainer">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page"><a href="#">סימולציות אחרונות </a></li>
+            </ol>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page"><a href="opertorHomePage.html">דף בית </a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="#"> סימולציות אחרונות </a></li>
+            </ol>
+        </nav>
+        <div class="mainPageContainer"></div>
+    </main>
 </body>
 </html>

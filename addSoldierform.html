@@ -73,18 +73,18 @@
         <div class="mainPageContainer">
             <section class="form-section">
                 <h2>הוספת חייל</h2>
-                <form id="add-soldier-form" enctype="multipart/form-data">
+                <form id="add-soldier-form" enctype="multipart/form-data" action="/api/soldiers" method="post">
                     <div class="mb-3">
                         <label for="soldierName" class="form-label">שם החייל:</label>
-                        <input type="text" id="soldierName" name="soldierName" class="form-control" pattern="[\u0590-\u05FF\s]+" required>
+                        <input type="text" id="soldierName" name="soldierName" class="form-control" value="ולרי בלן" pattern="[\u0590-\u05FF\s]+" required>
                     </div>
                     <div class="mb-3">
                         <label for="personalNumber" class="form-label">מספר אישי:</label>
-                        <input type="text" id="personalNumber" name="personalNumber" class="form-control" pattern="\d+" required>
+                        <input type="text" id="personalNumber" name="personalNumber" class="form-control" value="2345678 " pattern="\d+" required>
                     </div>
                     <div class="mb-3">
                         <label for="role" class="form-label">תפקיד:</label>
-                        <input type="text" id="role" name="role" class="form-control" pattern="[\u0590-\u05FF\s]+" required>
+                        <input type="text" id="role" name="role" class="form-control" value="טכנאי" pattern="[\u0590-\u05FF\s]+" required>
                     </div>
                     <div class="mb-3">
                         <label for="rank" class="form-label">דרגה:</label>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="rifleman" class="form-label">רובאי:</label>
-                        <select id="rifleman" name="rifleman" class="form-select" required>
+                        <select id="rifleman" name="rifleman" class="form-select" value="03" required>
                             <option value="" disabled selected>SELECT</option>
                             <option value="03">03</option>
                             <option value="05">05</option>

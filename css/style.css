@@ -591,4 +591,34 @@ button.btn.btn-primary.custom-btn {
 .form-section {
     width: 400px;
 }
+.mainContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.mainContainer article {
+    width: 527px;
+    height: 225px;
+    background-color: #d9d9d9;
+    display: flex;
+    flex-direction: column;
+}
+.mainContainer article span {
+    font-weight: bold; 
+    font-family: "Inter", sans-serif;
+    margin-right: 10px;
+}
+.mainContainer article iframe {
+    width: 222px;
+    height: 160px;
+    margin-right: 10px;
+}
 
+.ArticleContent {
+    display: flex;
+    flex-direction: row;
+}
+.articleInfo {
+    display: flex;
+    flex-direction: column;
+}

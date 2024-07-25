@@ -82,8 +82,13 @@ function initialization(data) {
 
     initializeMain();
 }
+function navigateToPage() {
+    const userId = getUserId();
+    window.location.href = `requests.html?userId=${userId}`;
+}
 window.onload = () => {
     fetch("data/user.json")
     .then(response => response.json())
     .then(data => initialization(data));
+    document.getElementById("requestLink").onclick =  navigateToPage;
 }

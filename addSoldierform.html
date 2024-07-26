@@ -75,11 +75,11 @@
                 <form id="add-soldier-form" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="name" class="form-label">שם החייל:</label>
-                        <input type="text" id="soldierName" name="soldierName" class="form-control" pattern="[\u0590-\u05FF\s]+" required>
+                        <input type="text" id="name" name="name" class="form-control" pattern="[\u0590-\u05FF\s]+" required>
                     </div>
                     <div class="mb-3">
                         <label for="soldierID" class="form-label">מספר אישי:</label>
-                        <input type="text" id="personalNumber" name="personalNumber" class="form-control"  pattern="\d+" required>
+                        <input type="text" id="soldierID" name="soldierID" class="form-control"  pattern="\d+" required>
                     </div>
                     <div class="mb-3">
                         <label for="role" class="form-label">תפקיד:</label>
@@ -91,7 +91,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="riflery" class="form-label">רובאי:</label>
-                        <select id="rifleman" name="rifleman" class="form-select" required>
+                        <select id="riflery" name="riflery" class="form-select" required>
                             <option value="" disabled selected>SELECT</option>
                             <option value="03">03</option>
                             <option value="05">05</option>
@@ -100,15 +100,15 @@
                     </div>
                     <div class="mb-3">
                         <label for="dateOfBirth" class="form-label">תאריך לידה:</label>
-                        <input type="date" id="birthdate" name="birthday" class="form-control" required>
+                        <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="yearsInTheUnits" class="form-label">שנים ביחידה:</label>
-                        <input type="text" id="yearsInUnit" name="yearsInUnit" class="form-control" value="למטה מ5 שנים" readonly>
+                        <input type="text" id="yearsInTheUnits" name="yearsInTheUnits" class="form-control" value="למטה מ5 שנים" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="s_img" class="form-label">הוספת תמונה:</label>
-                        <input type="file" id="profilePicture" name="profilePicture" class="form-control" accept="image/png" required>
+                        <input type="file" id="s_img" name="s_img" class="form-control" accept="image/png" required>
                         <small class="form-text text-muted">קובץ PNG בלבד, עד 300KB.</small>
                     </div>
                     <div class="form-buttons d-flex justify-content-between">

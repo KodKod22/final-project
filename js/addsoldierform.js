@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const formData = FormHandler.getFormData();
 
-            try {3000
+            try {
                 const response = await fetch('https://final-project-serverside.onrender.com/api/soldiers/addSoldier', {
                     method: 'POST',
                     body: formData

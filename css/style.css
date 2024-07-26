@@ -236,6 +236,13 @@ a {
     gap: 89px;
     margin-top: 45px;
 }
+.magnified {
+    background-image: url("../images/image\ 9.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+}
 
 #sourceBar {
     width: 258px;
@@ -591,4 +598,94 @@ button.btn.btn-primary.custom-btn {
 .form-section {
     width: 400px;
 }
+.mainContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.mainContainer article {
+    width: 527px;
+    height: 225px;
+    background-color: #d9d9d9;
+    display: flex;
+    flex-direction: column;
+}
+.mainContainer article span {
+    font-weight: bold; 
+    font-family: "Inter", sans-serif;
+    margin-right: 10px;
+}
+.mainContainer article iframe {
+    width: 222px;
+    height: 160px;
+    margin-right: 10px;
+}
 
+.ArticleContent {
+    display: flex;
+    flex-direction: row;
+}
+.articleInfo {
+    display: flex;
+    flex-direction: column;
+}
+#requestsContainer {
+    background-color: #d9d9d9;
+    width: 880px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#requestsContainer h2 {
+    text-align: center;
+}
+#requestsContainer article {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 81px;
+    width: 100%;
+    border-bottom-color: #ffffff;
+    border-bottom-style: solid;
+    border-width: 1px;
+    justify-content: space-between;
+    
+}
+#requestsContainer article img {
+    margin-right: 32px;
+    border-radius: 50%;
+    width: 55px; 
+    height: 55px;   
+}
+#requestsContainer article div {
+    display: flex;
+    flex-direction: column;
+    align-items: end;   
+}
+#commenderName {
+    font-size: small;
+}
+.lockIcon {
+    background-image: url("../images/lock_icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+}
+#requestsContainer article .rightsideholder {
+    display: flex;
+    flex-direction: row;  
+}
+#requestsContainer article .middleRightSideHolder{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.MessageContinuer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 255px;
+    width: 751px;
+}

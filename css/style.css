@@ -689,3 +689,74 @@ button.btn.btn-primary.custom-btn {
     height: 255px;
     width: 751px;
 }
+#simulationCategoryMenu{
+    display:none;
+    background-color: white;
+    direction: rtl;
+    margin-top: 190px;
+    position: absolute;
+    width: 168px;
+}
+#simulationCategoryMenu  li:hover {
+    background-color: gray;
+}
+#simulationCategoryMenu li 
+{
+    width: 168px;
+    height: 44px;
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    border-style: none;
+}
+#simulationCategoryMenu li span {
+    text-align: center;
+    margin-right: 35px;
+   
+}
+.simulationPlaceHolder {
+    width: 320px;
+    height: 257px;
+    background-color: #d9d9d9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    border-radius: 5px;
+}
+.simulationPlaceHolder img {
+    height: 162px;
+    width: 288px;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 59px;
+    margin-right: 10px;
+}
+.submenu1 {
+    display: none;
+    position: absolute;
+    direction: rtl;
+    list-style: none;
+    background-color:white;
+    top: 90px;
+    right: 3px;
+    margin-right: 165px;
+    width: 168px;   
+}
+li .submenu1 li:hover {
+    background-color: gray;
+}
+.submenu1 li {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    width: 168px;
+
+}

@@ -1,0 +1,62 @@
+{
+    "category": "simulations",
+    "simulations": [
+        {
+            "id":"0",
+            "simulationName":"חילוץ טנק שנתקע",
+            "location":"רמת הגולן",
+            "afvToRescue":"טנק סימן 4",
+            "difficulty":"קל",
+            "picture":"../images/event0.jpg"
+        },
+        {
+            "id":"1",
+            "simulationName":"חילוץ טנק מעמק",
+            "location":"רמת הגולן",
+            "afvToRescue":"טנק סימן 2",
+            "difficulty":"קל",
+            "picture":"../images/event1.jpg"
+        },
+        {
+            "id":"2",
+            "simulationName":"חילוץ טנק שטבע",
+            "location":"עוטף עזה",
+            "afvToRescue":"טנק סימן 4",
+            "difficulty":"קל",
+            "picture":"../images/event2.jpg"
+        },
+        {
+            "id":"3",
+            "simulationName":"היפוך פגר",
+            "location":"רמת הגולן",
+            "afvToRescue":"טנק",
+            "difficulty":"קשה",
+            "picture":"../images/event3.jpg"
+        },
+        {
+            "id":"4",
+            "simulationName":"חילוץ מורכב של טנק",
+            "location":"עזה",
+            "afvToRescue":"טנק סימן 4",
+            "difficulty":"קשה",
+            "picture":"../images/event4.jpg"
+        },
+        {
+            "id":"5",
+            "simulationName":"חילוץ טנק מבור",
+            "location":"עזה",
+            "afvToRescue":"טנק סימן 4",
+            "difficulty":"קל",
+            "picture":"../images/event5.jpg"
+        },
+        {
+            "id":"6",
+            "simulationName":"D9",
+            "location":"בקעת הירדן",
+            "afvToRescue":"D9",
+            "difficulty":"קל",
+            "picture":"../images/event6.jpg"
+        }
+        
+    ]
+}

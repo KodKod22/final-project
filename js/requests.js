@@ -27,7 +27,7 @@ function putMessageText(data,Attribute){
             const location = document.createElement("span");
             location.textContent ="מיקום: " + `${product.location}`;
 
-            const sourceBar = document.createElement("div");
+            const magnified = document.createElement("div");
             sourceBar.classList.add("magnified");
 
             MessageContinuer1.appendChild(soldierName);
@@ -35,7 +35,7 @@ function putMessageText(data,Attribute){
             MessageContinuer1.appendChild(backStory);
             MessageContinuer1.appendChild(difficulty);
             MessageContinuer1.appendChild(location);
-            MessageContinuer1.appendChild(sourceBar);
+            MessageContinuer1.appendChild(magnified);
         }
     });
 }
@@ -129,8 +129,13 @@ function initialization(data) {
     }
     InitializeRequestContainers();
 }
+function navigateToPage() {
+    const userId = getUserId();
+    window.location.href = `simulationsList.html?userId=${userId}`;
+}
 window.onload = () => {
     fetch("data/user.json")
     .then(response => response.json())
     .then(data => initialization(data));
+    document.getElementById("simulationLink").onclick =  navigateToPage;
 }

@@ -673,6 +673,13 @@ button.btn.btn-primary.custom-btn {
     width: 24px;
     height: 24px;
 }
+.editingIcon {
+    background-image: url("../images/editIcon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+}
 #requestsContainer article .rightsideholder {
     display: flex;
     flex-direction: row;  
@@ -759,4 +766,95 @@ li .submenu1 li:hover {
     align-items: center;
     width: 168px;
 
+}
+#simulationImg {
+    height: 308px;
+    width: 409px;
+    border-radius: 5%;
+}
+.simulationContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+#simulationName {
+    margin-top: 18px;
+}
+#simulationInfo {
+    
+    display: flex;
+    flex-direction: column;
+    margin-right: 40px;
+    justify-content: space-around;
+    width: 519px;
+    height: 329px;
+}
+.simulationSection {
+    display: flex;
+    flex-direction: row;
+    gap: 223px;
+}
+.bold {
+    font-size: large;
+    font-weight: bold;
+}
+.FieldContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+#buttonsArea {
+    display: flex;
+    flex-direction: row;
+    margin-top: 116px;
+    justify-content: center;
+    gap: 240px;
+}
+#buttonsArea button {
+    width: 208px;
+    height: 32px;
+    border-style: none;
+    border-radius: 25px;
+    background-color: #d9d9d9;
+}
+
+#Simulationform {
+    width: 322px;
+    display: none;
+    margin-right: 40px;   
+}
+.playIcon {
+    background-image: url("../images/play_icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;   
+}
+.imgPlacholder {
+    position: relative;
+    display: inline-block; 
+}
+#matchingSoldirSection{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 800px;
+    margin-right: 40px;
+    gap: 10px; 
+}
+#textContiner {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
 }

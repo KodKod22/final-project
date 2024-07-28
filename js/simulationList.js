@@ -46,13 +46,12 @@ function setCategory(menuItems) {
 function quickSearch(text) {
     const main = document.getElementsByClassName("mainContainer")[0];
     let article = main.getElementsByTagName("a");
-    const value = text;    
+    const value = text;
+    console.log(value);
     for(i = 0; i < article.length ;i++){
         let x = article[i].getElementsByClassName("infoContainer")[0];
-        
         let y = x.children[3]; 
-        console.log(y);
-        if(y.textContent === value){
+        if(y.innerText.includes(value)){
             continue
         }else{
             article[i].style.display = "none";
@@ -104,9 +103,11 @@ function initializationCategory() {
     });
 }
 function initializationSimulations(data){
+    const soldierData = JSON.parse(sessionStorage.getItem('soldierData'));
     const mainContainer = document.getElementsByClassName("mainContainer")[0];
     data.simulations.forEach(element => {
         const simulationPlaceHolder = document.createElement("a");
+        simulationPlaceHolder.href = `simulationInfo.html?SimulationId=${element.id}`;
         simulationPlaceHolder.classList.add("simulationPlaceHolder");
         const img = document.createElement("img");
         img.src = `${element.picture}`;
@@ -114,11 +115,11 @@ function initializationSimulations(data){
         infoContainer.classList.add("infoContainer");
 
         const simulationName = document.createElement("span");
-        simulationName.innerText = "שם:"+`${element.simulationName}`+"."
+        simulationName.innerText = "שם:"+`${element.simulationName}`;
         const location = document.createElement("span");
         location.innerText = "מיקום:"+`${element.location}`
         const afvToRescue = document.createElement("span");
-        afvToRescue.innerText ="כלי תקוע:" + `${element.afvToRescue}`+"."
+        afvToRescue.innerText ="כלי תקוע:" + `${element.afvToRescue}`;
         const difficulty = document.createElement("span");
         difficulty.innerText ="רמה:" + `${element.difficulty}`
 
@@ -130,9 +131,7 @@ function initializationSimulations(data){
         simulationPlaceHolder.appendChild(infoContainer);
         mainContainer.appendChild(simulationPlaceHolder);
     });
-    const soldierData = JSON.parse(sessionStorage.getItem('soldierData'));
     if (soldierData) {
-        console.log(soldierData.difficulty);
         quickSearch(soldierData.difficulty);
     }
 }

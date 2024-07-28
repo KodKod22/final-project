@@ -73,8 +73,9 @@ function initializeProfile(user){
     profilePlaceHolder.appendChild(profileImg);
 }
 function initialization(data) {
+    const storedData = JSON.parse(sessionStorage.getItem('userData'));
     for (const user of data.users){
-        if (user.id === getUserId()) {
+        if (user.id === storedData.id) {
             initializeProfile(user);
             break;
         }
@@ -82,13 +83,8 @@ function initialization(data) {
 
     initializeMain();
 }
-function navigateToPage() {
-    const userId = getUserId();
-    window.location.href = `requests.html?userId=${userId}`;
-}
 window.onload = () => {
     fetch("data/user.json")
     .then(response => response.json())
     .then(data => initialization(data));
-    document.getElementById("requestLink").onclick =  navigateToPage;
 }

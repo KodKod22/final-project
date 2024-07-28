@@ -5,6 +5,21 @@ function getUserId()
     const userId = aKeyValue[0].split("=")[1];
     return userId;
 }
+function setStorage(event) {
+    
+    const Container = event.parentNode;
+    const name = Container.children[0].innerText;
+    
+    const level = Container.children[3].innerText;
+    const place = Container.children[4].innerText;
+    console.log(level);
+   const data = {
+        soldierName:name,
+        difficulty:level,
+        location:place
+    }
+    sessionStorage.setItem('soldierData', JSON.stringify(data));
+}
 function putMessageText(data,Attribute){
     const MessageContinuer1 = document.getElementsByClassName("MessageContinuer")[0];
     data.requests.forEach(product =>{
@@ -22,20 +37,24 @@ function putMessageText(data,Attribute){
             backStory.textContent = "סיפור רקע: " + `${product.backStory}`;
 
             const difficulty = document.createElement("span");
-            difficulty.textContent = "רמת קושי: " + `${product.difficulty}`;
+            difficulty.textContent = "רמה:" + `${product.difficulty}`;
 
             const location = document.createElement("span");
-            location.textContent ="מיקום: " + `${product.location}`;
+            location.textContent ="מיקום:" + `${product.location}`;
 
-            const magnified = document.createElement("div");
+            const sourceBar = document.createElement("a");
+           sourceBar.href = "simulationsList.html";
             sourceBar.classList.add("magnified");
+            sourceBar.addEventListener("click", (event) => {
+                setStorage(event.target);
+            });
 
             MessageContinuer1.appendChild(soldierName);
             MessageContinuer1.appendChild(mission);
             MessageContinuer1.appendChild(backStory);
             MessageContinuer1.appendChild(difficulty);
             MessageContinuer1.appendChild(location);
-            MessageContinuer1.appendChild(magnified);
+            MessageContinuer1.appendChild(sourceBar);
         }
     });
 }
@@ -47,6 +66,8 @@ function getMessageText(Attribute) {
 function openMessed(){
     if (isOpen == false) {
         const openButton = this;
+        console.log("hey");
+    
         const parentDiv = openButton.parentNode;
         const parentArticle = parentDiv.parentNode;
         const Attribute =  parentArticle.getAttribute('data-id');
@@ -60,7 +81,7 @@ function openMessed(){
         const MessageContinuer1 = document.getElementsByClassName("MessageContinuer")[0];
         MessageContinuer1.remove();
         isOpen = false;
-    }   
+    } 
 }
 function createRequest(data) {
     const textContainer = document.getElementById("requestsContainer");
@@ -121,8 +142,9 @@ function initializeProfile(user){
     profilePlaceHolder.appendChild(profileImg);
 }
 function initialization(data) {
+    const storedData = JSON.parse(sessionStorage.getItem('userData'));
     for (const user of data.users){
-        if (user.id === getUserId()) {
+        if (user.id === storedData.id) {
             initializeProfile(user);
             break;
         }

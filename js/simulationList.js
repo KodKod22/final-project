@@ -46,12 +46,13 @@ function setCategory(menuItems) {
 function quickSearch(text) {
     const main = document.getElementsByClassName("mainContainer")[0];
     let article = main.getElementsByTagName("a");
-    const value = "רמה:" + text.target.textContent;    
+    const value = text;    
     for(i = 0; i < article.length ;i++){
         let x = article[i].getElementsByClassName("infoContainer")[0];
         
         let y = x.children[3]; 
-        if(y.innerText === value){ 
+        console.log(y);
+        if(y.textContent === value){
             continue
         }else{
             article[i].style.display = "none";
@@ -129,6 +130,11 @@ function initializationSimulations(data){
         simulationPlaceHolder.appendChild(infoContainer);
         mainContainer.appendChild(simulationPlaceHolder);
     });
+    const soldierData = JSON.parse(sessionStorage.getItem('soldierData'));
+    if (soldierData) {
+        console.log(soldierData.difficulty);
+        quickSearch(soldierData.difficulty);
+    }
 }
 
 function getSimulations(){
@@ -149,14 +155,19 @@ function initializeProfile(user){
     profilePlaceHolder.appendChild(profileImg);
 }
 function initialization(data) {
+    const storedData = JSON.parse(sessionStorage.getItem('userData'));
+    
     for (const user of data.users){
-        if (user.id === getUserId()) {
+        if (user.id === storedData.id) {
             initializeProfile(user);
             initializationCategory();
             getSimulations();
             break;
         }
     }
+    
+    
+
     document.getElementById("simulationCategoryMenu").style.display = "none";
 }
 function showFilers() {
@@ -198,12 +209,16 @@ function searchSimulations() {
         }
     }
 }
+
+
 window.onload = () => {
     fetch("data/user.json")
     .then(response => response.json())
     .then(data =>{
+        const storedData = JSON.parse(sessionStorage.getItem('soldierData'));
         initialization(data)
-        document.getElementById("sourceBar").addEventListener("input",searchSimulations);});
-    document.getElementById("categoryButton").onclick = showFilers;
+        document.getElementById("sourceBar").addEventListener("input",searchSimulations);
+    });
+        document.getElementById("categoryButton").onclick = showFilers;
+    }
     
-}

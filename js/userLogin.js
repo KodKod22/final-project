@@ -6,10 +6,24 @@ function mangeLogin(e, userData) {
     for (const user of userData) {
         if (user.userName === username) {
             if ( user.userName === "שמעון") {
-                window.location.href = `index.html?userIndex=${user.id}`;
+                const data = {
+                    id:user.id,
+                    userName:user.userName,
+                    profile:user.profile
+
+                }
+                sessionStorage.setItem('userData', JSON.stringify(data));
+                window.location.href = "index.html";
                 break;   
             }else if ( user.userName === "רותם") {
-                window.location.href = `opertorHomePage.html?userIndex=${user.id}`;
+                const data = {
+                    id:user.id,
+                    userName:user.userName,
+                    profile:user.profile
+
+                }
+                sessionStorage.setItem('userData', JSON.stringify(data));
+                window.location.href = "opertorHomePage.html";
                 break;
             }
         }

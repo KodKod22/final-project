@@ -2,9 +2,10 @@ function mangeLogin(e, userData) {
     e.preventDefault();
     const loginForm = document.getElementById("login-form");
     const username = loginForm.username.value;
+    const password = loginForm.password.value;
 
     for (const user of userData) {
-        if (user.userName === username) {
+        if (user.userName === username && (user.password === password)) {
             if ( user.userName === "שמעון") {
                 const data = {
                     id:user.id,

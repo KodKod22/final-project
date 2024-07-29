@@ -7,6 +7,7 @@
             "sender": "שמעון בוחבוט",
             "date": "תאריך: 21/02/2024",
             "soldierName": "ארז אלבז",
+            "soldierRole":"איש צוות",
             "mission":"חילוץ טנק מפקד מחלקה מבור היקוש.",
             "extractorVehicles":"טנק חילוץ, טנק סימן 4",
             "difficulty":"קל",

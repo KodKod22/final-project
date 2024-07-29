@@ -9,12 +9,13 @@ function setStorage(event) {
     
     const Container = event.parentNode;
     const name = Container.children[0].innerText;
+    const role = Container.children[1].innerText;
+    const level = Container.children[4].innerText;
+    const place = Container.children[5].innerText;
     
-    const level = Container.children[3].innerText;
-    const place = Container.children[4].innerText;
-    console.log(level);
    const data = {
         soldierName:name,
+        soldierRole:role,
         difficulty:level,
         location:place
     }
@@ -29,6 +30,9 @@ function putMessageText(data,Attribute){
             }
             const soldierName = document.createElement("span");
             soldierName.textContent = "שם החייל: "+`${product.soldierName}`;
+
+            const soldierRole = document.createElement("span");
+            soldierRole.textContent = "תפקיד:"+`${product.soldierRole}`;
 
             const mission = document.createElement("span");
             mission.textContent = "משימה: " + `${product.mission}`;
@@ -50,6 +54,7 @@ function putMessageText(data,Attribute){
             });
 
             MessageContinuer1.appendChild(soldierName);
+            MessageContinuer1.appendChild(soldierRole);
             MessageContinuer1.appendChild(mission);
             MessageContinuer1.appendChild(backStory);
             MessageContinuer1.appendChild(difficulty);

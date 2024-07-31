@@ -129,7 +129,7 @@ function searchSoldiers() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('https://final-project-serverside.onrender.com/api/soldiers/roles')
+    fetch('https://final-project-serverside.onrender.com/api/soldiers/getRoles')
         .then(response => response.json())
         .then(roles => {
             const submenuRoles = document.getElementById('submenuRoles');

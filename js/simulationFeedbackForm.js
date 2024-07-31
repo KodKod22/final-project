@@ -13,6 +13,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
     
+    const updateSliderValue = (slider, display) => {
+        display.textContent = slider.value;
+    };
+
+    document.querySelectorAll('.slider').forEach(slider => {
+        const display = document.getElementById(`${slider.id}Value`);
+        updateSliderValue(slider, display); 
+        slider.addEventListener('input', () => updateSliderValue(slider, display));
+    });
+
     const addSoldierForm = document.getElementById('feedback-form');
     
     if (addSoldierForm) {
@@ -20,10 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
             event.preventDefault();
             const simulationName = document.getElementById('simulationName').value;
             const soldierName = document.getElementById('soldierName').value;
-            const finalGrade = document.getElementById('finalGrade').value;
-            const usingTools = document.getElementById('usingTools').value;
-            const safety = document.getElementById('safety').value;
-            const damageToTheAFV = document.getElementById('damageToTheAFV').value;
+            const finalGrade = document.getElementById('finalGradeValue').value;
+            const usingTools = document.getElementById('usingToolsValue').value;
+            const safety = document.getElementById('safetyValue').value;
+            const damageToTheAFV = document.getElementById('damageToTheAFVValue').value;
             const commanderFeedback = document.getElementById('commanderFeedback').value;
 
             let formData = {

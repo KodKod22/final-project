@@ -803,6 +803,11 @@ li .submenu1 li:hover {
     background: #6c757d;
     cursor: pointer;
   }
+
+.form-label {
+    display: block;
+}
+
 #simulationImg {
     height: 308px;
     width: 409px;

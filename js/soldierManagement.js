@@ -128,4 +128,16 @@ function searchSoldiers() {
     }
 }
 
-
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('https://final-project-serverside.onrender.com/api/soldiers/roles')
+        .then(response => response.json())
+        .then(roles => {
+            const submenuRoles = document.getElementById('submenuRoles');
+            roles.forEach(role => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span>${role.s_role}</span>`;
+                submenuRoles.appendChild(li);
+            });
+        })
+        .catch(error => console.error('Error fetching roles:', error));
+});

@@ -1,20 +1,22 @@
 window.onload = () => {    
-    fetch("data/soldier.json")
+    fetch("/api/soldiers")
         .then(Response => Response.json())
         .then(data =>{
                 initialize(data)
                 document.getElementById("sourceBar").addEventListener("input",searchSoldiers);
-        });
-        document.getElementById("categoryButton").onclick = showFilers;
+        })
+        .catch(error => console.error('Error fetching data:', error));
 
+        document.getElementById("categoryButton").onclick = showFilers;
         document.getElementById("yearsInUnit").addEventListener("mouseover",(event) =>{
             document.getElementById("submenu").style.display = "block";
             document.getElementById("submenu").onclick = quickSearch;
         });
+
         document.getElementById("yearsInUnit").addEventListener("mouseout",(event) =>{
             document.getElementById("submenu").style.display = "none";
         });
-        document.getElementById("submenu").addEventListener("li", (event) =>{
+        document.getElementById("submenu").addEventListener("click", (event) =>{
             
             quickSearch(event.target);
         });
@@ -36,6 +38,7 @@ function deleteItem() {
     const requestJson = JSON.stringify(requestData);
     console.log('Prepared request delete:', requestJson);
 }
+
 function quickSearch(text) {
     const main = document.getElementsByClassName("mainContainer")[0];
     let article = main.getElementsByTagName("article");
@@ -45,12 +48,13 @@ function quickSearch(text) {
         let y = x.children[2];
         let yearsInTheUnit = y.children[0].textContent.trim(); 
         if(yearsInTheUnit === value){   
-            continue
+            continue;
         }else{
             article[i].style.display = "none";
         }
     }       
 }
+
 function showFilers() {
     const categoryMenu = document.getElementById("categoryMenu");
     const main = document.getElementsByClassName("mainContainer")[0];
@@ -66,7 +70,6 @@ function showFilers() {
 }
 
 function initialize(data) {
-    
     const main = document.getElementsByClassName("mainContainer")[0];
     data.products.forEach(product => { 
         const article = document.createElement("article");
@@ -128,25 +131,3 @@ function searchSoldiers() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const submenuRoles = document.getElementById('submenuRoles');
-
-    fetch('https://final-project-serverside.onrender.com/api/soldiers/getRoles')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Network response was not ok: ${response.statusText}`);
-            }
-            return response.json();
-        })
-        .then(roles => {
-            roles.forEach(role => {
-                const li = document.createElement('li');
-                li.innerHTML = `<span>${role.s_role}</span>`;
-                submenuRoles.appendChild(li);
-            });
-        })
-        .catch(error => {
-            console.error('Error fetching roles:', error);
-            submenuRoles.innerHTML = '<li>Error loading roles</li>';
-        });
-});

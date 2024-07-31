@@ -129,15 +129,24 @@ function searchSoldiers() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    const submenuRoles = document.getElementById('submenuRoles');
+
     fetch('https://final-project-serverside.onrender.com/api/soldiers/getRoles')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.statusText}`);
+            }
+            return response.json();
+        })
         .then(roles => {
-            const submenuRoles = document.getElementById('submenuRoles');
             roles.forEach(role => {
                 const li = document.createElement('li');
                 li.innerHTML = `<span>${role.s_role}</span>`;
                 submenuRoles.appendChild(li);
             });
         })
-        .catch(error => console.error('Error fetching roles:', error));
+        .catch(error => {
+            console.error('Error fetching roles:', error);
+            submenuRoles.innerHTML = '<li>Error loading roles</li>';
+        });
 });

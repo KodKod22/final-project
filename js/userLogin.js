@@ -30,12 +30,30 @@ function mangeLogin(e, userData) {
         }
     }
 }
-
 window.onload = () => {
-    fetch("../data/user.json")
-    .then(response => response.json())
-    .then(data => {
+    const login = async () => {
+        const response = await fetch("https://final-project-serverside-0dnj.onrender.com/api/post/user", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: 'username', password: 'password' })
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Error:', errorData);
+            return;
+        }
+        
+        const data = await response.json();
+        console.log(data);
+    };
+
+    login();
+};
+        /*{
         userData = data.users;
         document.getElementById("login-form-submit").addEventListener("click",(e)=> mangeLogin(e,userData));
-    });
-};
+    });*/
+

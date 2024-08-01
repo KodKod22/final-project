@@ -32,8 +32,7 @@ function setCategory(menuItems,subMenu) {
         });
 
         li2.querySelector('.submenu1').addEventListener("li", (event) =>{
-            
-            quickSearch(event.target);
+            quickSearch(this);
         });
 
         li2.addEventListener("mouseout", (event) => {
@@ -46,8 +45,8 @@ function setCategory(menuItems,subMenu) {
 function quickSearch(text) {
     const main = document.getElementsByClassName("mainContainer")[0];
     let article = main.getElementsByTagName("a");
-    const value = text;
-    console.log(value);
+    const value = text.target.textContent;
+    
     for(i = 0; i < article.length ;i++){
         let x = article[i].getElementsByClassName("infoContainer")[0];
         let y = x.children[3]; 
@@ -72,7 +71,7 @@ function showFilers() {
     }
 }
 function setSubCategory(subMenu) {
-    console.log(subMenu);
+    
     const nestedUl = document.getElementById("li2");
     
     let subUl = nestedUl.querySelector('ul');
@@ -117,12 +116,12 @@ function initializationCategory() {
 function initializationSimulations(data){
     const soldierData = JSON.parse(sessionStorage.getItem('soldierData'));
     const mainContainer = document.getElementsByClassName("mainContainer")[0];
-    data.simulations.forEach(element => {
+    data.forEach(element => {
         const simulationPlaceHolder = document.createElement("a");
         simulationPlaceHolder.href = `simulationInfo.html?SimulationId=${element.id}`;
         simulationPlaceHolder.classList.add("simulationPlaceHolder");
         const img = document.createElement("img");
-        img.src = `${element.picture}`;
+        img.src = `${element.simulationPic}`;
         const infoContainer = document.createElement("div");
         infoContainer.classList.add("infoContainer");
 
@@ -149,10 +148,20 @@ function initializationSimulations(data){
 }
 
 function getSimulations(){
-    fetch("data/simulations.json")
-    .then(response => response.json())
-    .then(data =>initializationSimulations(data))
 
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+    };
+
+    fetch("https://final-project-serverside-0dnj.onrender.com/api/post/Simulations", requestOptions)
+    .then(response => response.json())
+    .then(date =>initializationSimulations(date) );
+    
 }
 function initializeProfile(user){
     const userName = document.getElementById("welcome");
@@ -169,7 +178,7 @@ function initialization() {
     const storedData = JSON.parse(sessionStorage.getItem('userData'));
     initializeProfile(storedData);
     initializationCategory();
-    //getSimulations();
+    getSimulations();
     document.getElementById("simulationCategoryMenu").style.display = "none";
 }
 function showFilers() {

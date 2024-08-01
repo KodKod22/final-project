@@ -10,7 +10,7 @@ window.onload = () => {
         document.getElementById("categoryButton").onclick = showFilers;
         document.getElementById("yearsInUnit").addEventListener("mouseover",(event) =>{
             document.getElementById("submenu").style.display = "block";
-            document.getElementById("submenu").onclick = quickSearch;
+            document.getElementById("submenu").onclick = unitSearch;
         });
 
         document.getElementById("yearsInUnit").addEventListener("mouseout",(event) =>{
@@ -24,10 +24,10 @@ window.onload = () => {
             document.getElementById("submenuRoles").style.display = "none";
         });
         document.getElementById("submenu").addEventListener("click", (event) =>{ 
-            quickSearch(event.target);
+            unitSearch(event.target);
         });
         document.getElementById("submenuRoles").addEventListener("click", (event) =>{
-            unitSearch(event.target.innerText);
+            roleSearch(event.target.innerText);
         });
 }
 
@@ -60,7 +60,7 @@ function deleteItem() {
     .catch((error) => console.error(error));
 }
 
-function quickSearch(text) {
+function unitSearch(text) {
     const main = document.getElementsByClassName("mainContainer")[0];
     let article = main.getElementsByTagName("article");
     const value = "שנים ביחידה:" + text.target.textContent;    
@@ -76,7 +76,7 @@ function quickSearch(text) {
     }       
 }
 
-function unitSearch(role) {
+function roleSearch(role) {
     const main = document.getElementsByClassName("mainContainer")[0];
     let articles = main.getElementsByTagName("article");    
     for(var i = 0; i < articles.length; i++){

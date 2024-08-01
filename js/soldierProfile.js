@@ -150,7 +150,7 @@ function showSelectedSoldier(data)
     }
 }
 window.onload = () => {
-    fetch("data/soldier.json")
+    fetch("https://final-project-serverside.onrender.com/api/soldiers/getSoldiersProfile")
     .then(response => response.json())
     .then(data => showSelectedSoldier(data));
 }

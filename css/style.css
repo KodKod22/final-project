@@ -311,6 +311,7 @@ a {
     width: 24px;
     height: 24px;
 }
+
 #submenu {
     display: none;
     position: absolute;
@@ -329,13 +330,42 @@ a {
     width: 168px;
 
 }
+
+#submenuRoles {
+    display: none;
+    position: absolute;
+    direction: rtl;
+    list-style: none;
+    background-color:white;
+    top: 0;
+    margin-right: 165px;
+    width: 168px;
+}
+
+#submenuRoles li {
+    display: flex;
+    justify-content: center;
+    width: 168px;
+
+}
+
+#role{
+    position: absolute;
+    direction: rtl;
+    list-style: none;
+    background-color:white;
+    width: 168px;
+}
+
 #categoryMenu  li:hover {
     background-color: gray;
 }
 li #submenu li:hover {
     background-color: gray;
 }
-
+li #role li:hover {
+    background-color: gray;
+}
 .soldierPlaceholder {
     width: 322px;
     height: 87px;

@@ -1,5 +1,5 @@
 window.onload = () => {    
-    fetch("/api/soldiers")
+    fetch("https://final-project-serverside.onrender.com/api/soldiers/getSoldiers")
         .then(Response => Response.json())
         .then(data =>{
                 initialize(data)
@@ -16,9 +16,18 @@ window.onload = () => {
         document.getElementById("yearsInUnit").addEventListener("mouseout",(event) =>{
             document.getElementById("submenu").style.display = "none";
         });
-        document.getElementById("submenu").addEventListener("click", (event) =>{
-            
+        document.getElementById("role").addEventListener("mouseover",(event) =>{
+            document.getElementById("submenuRoles").style.display = "block";
+        });
+
+        document.getElementById("role").addEventListener("mouseout",(event) =>{
+            document.getElementById("submenuRoles").style.display = "none";
+        });
+        document.getElementById("submenu").addEventListener("click", (event) =>{ 
             quickSearch(event.target);
+        });
+        document.getElementById("submenuRoles").addEventListener("click", (event) =>{
+            unitSearch(event.target.innerText);
         });
 }
 
@@ -55,6 +64,48 @@ function quickSearch(text) {
     }       
 }
 
+function unitSearch(role) {
+    const main = document.getElementsByClassName("mainContainer")[0];
+    let articles = main.getElementsByTagName("article");    
+    for(var i = 0; i < articles.length; i++){
+        let x = articles[i].getElementsByClassName("personalInfo")[0];
+        let y = x.children[1];
+        let targetRole = y.children[0].textContent.trim().split(':')[1];
+        if(targetRole != role) {   
+            articles[i]['style']['display'] = "none";
+        }
+    }       
+}
+
+function getRoles() {
+
+    let roles = {};
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+    };
+
+    fetch("https://final-project-serverside.onrender.com/api/soldiers/getRoles", requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+        const ul = document.getElementById("submenuRoles");
+        result = JSON.parse(result);
+        for(var role in result) {
+            var li = document.createElement("li");
+            var span = document.createElement("span");
+            li.appendChild(span.appendChild(document.createTextNode(result[role]['role'])));
+            ul.appendChild(li);
+        }
+    })
+    .catch((error) => console.error(error));
+
+}
+
 function showFilers() {
     const categoryMenu = document.getElementById("categoryMenu");
     const main = document.getElementsByClassName("mainContainer")[0];
@@ -71,9 +122,9 @@ function showFilers() {
 
 function initialize(data) {
     const main = document.getElementsByClassName("mainContainer")[0];
-    data.products.forEach(product => { 
+    data.forEach(product => { 
         const article = document.createElement("article");
-        article.setAttribute('data-id', product.id);
+        article.setAttribute('data-id', product['soldierID']);
         article.classList.add("soldierPlaceholder");
         let div = document.createElement("div");
         div.classList.add("personalInfo");
@@ -81,12 +132,12 @@ function initialize(data) {
         let li_role = document.createElement("div");
         let li_years = document.createElement("div");
         let soldierImg = document.createElement("img");
-        soldierImg.src = `${product["location"]}`;
+        soldierImg.src = `${product["s_img"]}`;
         soldierImg.alt = product["soldier name"];
         soldierImg.id = "soldierPic";
-        li_soldierName.innerHTML = `<a href="soldierProfilePage.html?soldierId=${product.id}">${product["soldier name"]}</a>`;
-        li_role.innerHTML = `<a href="soldierProfilePage.html?soldierId=${product.id}">תפקיד:${product["role"]}</a>`;
-        li_years.innerHTML= `<a href="soldierProfilePage.html?soldierId=${product.id}"> שנים ביחידה:${product["years in the unit"]}</a>`;
+        li_soldierName.innerHTML = `<a href="soldierProfilePage.html?soldierId=${product['soldierID']}">${product["name"]}</a>`;
+        li_role.innerHTML = `<a href="soldierProfilePage.html?soldierId=${product['soldierID']}">תפקיד:${product["role"]}</a>`;
+        li_years.innerHTML= `<a href="soldierProfilePage.html?soldierId=${product['soldierID']}"> שנים ביחידה:${product["yearsInTheUnits"]}</a>`;
         let delete_pic = document.createElement("div");
         delete_pic.classList.add("delete");
         delete_pic.onclick = deleteItem;
@@ -101,6 +152,7 @@ function initialize(data) {
     });
     document.getElementById("categoryMenu").style.display = "none";
     document.getElementById("submenu").style.display = "none";
+    getRoles();
 }
 
 function searchSoldiers() {

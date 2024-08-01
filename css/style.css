@@ -262,6 +262,25 @@ a {
     text-align: left;
     padding-left: 50px;
 }
+
+#simulationSourceBar {
+    width: 258px;
+    height: 44px;
+    background-image: url("../images/image\ 9.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    direction: rtl;
+    border: none;
+    background-color: #d9d9d9;
+    margin-top: 70px;
+    border-radius: 25px;
+}
+
+#simulationSourceBar::placeholder{
+    text-align: left;
+    padding-left: 50px;
+}
+
 #categoryButton{
     margin-top: 70px;
     height: 44px;
@@ -273,6 +292,19 @@ a {
     align-items: center;
     border-radius: 10%;   
 }
+
+#simulationCategoryButton{
+    margin-top: 70px;
+    height: 44px;
+    width: 168px;
+    background-color: #d9d9d9;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10%;   
+}
+
 #select {
     background-image: url("../images/select.png");
     background-size: contain;
@@ -304,6 +336,31 @@ a {
     margin-right: 35px;
    
 }
+
+#simulationCategoryMenu {
+    display:none;
+    background-color: white;
+    direction: rtl;
+    margin-top: 140px;
+    position: absolute;
+    width: 168px;
+}
+#simulationCategoryMenu li 
+{
+    width: 168px;
+    height: 44px;
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    border-style: none;
+}
+#simulationCategoryMenu li span {
+    text-align: center;
+    margin-right: 35px;
+   
+}
+
 .arrow {
     background-image: url("../images/arrow.png");
     background-size: contain;
@@ -349,7 +406,53 @@ a {
 
 }
 
+
+#difficultySubmenu {
+    display: none;
+    position: absolute;
+    direction: rtl;
+    list-style: none;
+    background-color:white;
+    top: 0;
+    margin-right: 165px;
+    width: 168px;
+}
+
+#difficultySubmenu li {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    width: 168px;
+
+}
+
+#afvSubmenu {
+    display: none;
+    position: absolute;
+    direction: rtl;
+    list-style: none;
+    background-color:white;
+    top: 0;
+    margin-right: 165px;
+    width: 168px;
+}
+
+#afvSubmenu li {
+    display: flex;
+    justify-content: center;
+    width: 168px;
+
+}
+
 #role{
+    position: absolute;
+    direction: rtl;
+    list-style: none;
+    background-color:white;
+    width: 168px;
+}
+
+#afv{
     position: absolute;
     direction: rtl;
     list-style: none;
@@ -364,6 +467,16 @@ li #submenu li:hover {
     background-color: gray;
 }
 li #role li:hover {
+    background-color: gray;
+}
+
+#simulationCategoryMenu  li:hover {
+    background-color: gray;
+}
+li #difficultySubmenu li:hover {
+    background-color: gray;
+}
+li #afv li:hover {
     background-color: gray;
 }
 
@@ -500,6 +613,8 @@ li #role li:hover {
 .personalInfo div  a {
     color: black;
 }
+
+
 
 #profile-picture img
 {

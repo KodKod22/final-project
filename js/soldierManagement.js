@@ -34,18 +34,30 @@ window.onload = () => {
 function deleteItem() {
     const deleteButton = this;
     const parentArticle = deleteButton.parentNode;
-    
-    const soldierData = parentArticle.children[1];
     const soldierId = parentArticle.getAttribute('data-id');
-    const soldierName = soldierData.querySelector('a').textContent;
 
     const requestData = {
-        id: soldierId,
-        name: soldierName,
+        'soldier_id': soldierId,
     };
 
-    const requestJson = JSON.stringify(requestData);
-    console.log('Prepared request delete:', requestJson);
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify(requestData);
+
+    const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow"
+    };
+
+    fetch("https://final-project-serverside.onrender.com/api/soldiers/deleteSoldier", requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+        parentArticle.remove();
+    })
+    .catch((error) => console.error(error));
 }
 
 function quickSearch(text) {

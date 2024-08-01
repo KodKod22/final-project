@@ -6,7 +6,7 @@ window.onload = () => {
                 document.getElementById("simulationSourceBar").addEventListener("input",searchSoldiers);
         })
         .catch(error => console.error('Error fetching data:', error));
-        
+        console.log('im in simulation record js');
         document.getElementById("simulationCategoryButton").onclick = showFilers;
         document.getElementById("difficulty").addEventListener("mouseover",(event) =>{
             document.getElementById("difficultySubmenu").style.display = "block";

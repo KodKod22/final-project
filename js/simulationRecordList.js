@@ -79,7 +79,7 @@ function initialize(data) {
     const main = document.getElementsByClassName("mainContainer")[0];
     data.forEach(product => { 
         const article = document.createElement("article");
-        article.setAttribute('data-id', product['soldierID']);
+        article.setAttribute('data-id', product['id']);
         article.classList.add("simulationRecordPlaceholder");
         let div = document.createElement("div");
         div.classList.add("recordInfo");

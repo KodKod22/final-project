@@ -36,35 +36,52 @@ function createArticleContent(product) {
     const ArticleContent = document.createElement("div");
     ArticleContent.classList.add("ArticleContent");
     const simulationVideo = document.createElement("iframe");
+    simulationVideo.src = embedUrl;
+    simulationVideo.frameBorder = "0";
+    simulationVideo.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
+    simulationVideo.allowFullscreen = true;
     simulationVideo.src = `${product.video}`;
     ArticleContent.appendChild(simulationVideo);
     ArticleContent.appendChild(createArticleInfo(product));
     return ArticleContent;
 }
 function createSimulationHolder(recordsData){
+    console.log(recordsData);
     const mainContainer = document.getElementsByClassName("mainContainer")[0];
-    recordsData.simulations.forEach(product =>{
-        const article = document.createElement("article");
-        const title = document.createElement("span");
-        title.classList.add("hebrewText");
-        title.innerText = `${product.title}`;
-        article.appendChild(title);
 
-        article.appendChild(createArticleContent(product));
-        mainContainer.appendChild(article);
-    });
+        for (let i = 0; i < recordsData.length; i++) {
+            const article = document.createElement("article");
+            const title = document.createElement("span");
+            title.classList.add("hebrewText");
+            title.innerText = recordsData[i].simulationName
+            ;
+            article.appendChild(title);
+
+            article.appendChild(createArticleContent(recordsData[i]));
+            mainContainer.appendChild(article);
+        }
+        
+    
 }
 function initializeMain() {
-    let recordsData;
-    fetch("data/simulationRecords.json")
+    //createSimulationHolder
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+    };
+
+    fetch("https://final-project-serverside-0dnj.onrender.com/api/post/SimulationsRecords", requestOptions)
     .then(response => response.json())
-    .then(data =>createSimulationHolder(data) );
+    .then(date =>createSimulationHolder(date) );
         
 }
 function initializeProfile(user){
     const userName = document.getElementById("welcome");
     userName.innerText = "ברוכה הבא "+ user.userName;
-
     const profilePlaceHolder = document.getElementById("profilePlaceHolder");
     const profileImg = document.createElement("img");
     profileImg.src = user.profile;
@@ -72,19 +89,11 @@ function initializeProfile(user){
     profileImg.classList.add("roundProfileImg");
     profilePlaceHolder.appendChild(profileImg);
 }
-function initialization(data) {
+function initialization() {
     const storedData = JSON.parse(sessionStorage.getItem('userData'));
-    for (const user of data.users){
-        if (user.id === storedData.id) {
-            initializeProfile(user);
-            break;
-        }
-    }
-
+    initializeProfile(storedData);
     initializeMain();
 }
 window.onload = () => {
-    fetch("data/user.json")
-    .then(response => response.json())
-    .then(data => initialization(data));
+    initialization();
 }

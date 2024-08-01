@@ -1,59 +1,58 @@
-function mangeLogin(e, userData) {
+function mangeLogin(userData) {
+    if ( userData.user_name === "שמעון") {
+        const data = {
+            id:userData.users_id,
+            userName:userData.user_name,
+            profile:userData.profilePic
+        }
+        sessionStorage.setItem('userData', JSON.stringify(data));
+        window.location.href = "index.html";   
+    }else if ( userData.user_name === "רותם") {
+        const data = {
+            id:userData.users_id,
+            userName:userData.user_name,
+            profile:userData.profilePic
+
+        }
+        sessionStorage.setItem('userData', JSON.stringify(data));
+        window.location.href = "opertorHomePage.html";
+    }
+}
+function getUserFromServer(e) {
     e.preventDefault();
+    
     const loginForm = document.getElementById("login-form");
     const username = loginForm.username.value;
     const password = loginForm.password.value;
-
-    for (const user of userData) {
-        if (user.userName === username && (user.password === password)) {
-            if ( user.userName === "שמעון") {
-                const data = {
-                    id:user.id,
-                    userName:user.userName,
-                    profile:user.profile
-
-                }
-                sessionStorage.setItem('userData', JSON.stringify(data));
-                window.location.href = "index.html";
-                break;   
-            }else if ( user.userName === "רותם") {
-                const data = {
-                    id:user.id,
-                    userName:user.userName,
-                    profile:user.profile
-
-                }
-                sessionStorage.setItem('userData', JSON.stringify(data));
-                window.location.href = "opertorHomePage.html";
-                break;
-            }
-        }
-    }
+    console.log(password);
+    console.log(username);
+    fetchUser(username, password);
 }
-window.onload = () => {
-    const login = async () => {
+
+async function fetchUser(username, password) {
+    try {
         const response = await fetch("https://final-project-serverside-0dnj.onrender.com/api/post/user", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name: 'username', password: 'password' })
+            body: JSON.stringify({ name: username, password: password })
         });
         
         if (!response.ok) {
-            const errorData = await response.json();
-            console.error('Error:', errorData);
+            const errorText = await response.text();
+            console.error('Error:', errorText);
             return;
         }
         
         const data = await response.json();
-        console.log(data);
-    };
+        mangeLogin(data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
 
-    login();
+window.onload = () => {
+    document.getElementById('login-form-submit').addEventListener("click", getUserFromServer);
 };
-        /*{
-        userData = data.users;
-        document.getElementById("login-form-submit").addEventListener("click",(e)=> mangeLogin(e,userData));
-    });*/
 

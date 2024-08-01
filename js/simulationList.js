@@ -5,7 +5,7 @@ function getUserId()
     const userId = aKeyValue[0].split("=")[1];
     return userId;
 }
-function setCategory(menuItems) {
+function setCategory(menuItems,subMenu) {
     const categoryMenuUl = document.getElementById("simulationCategoryMenu");
 
     menuItems.forEach(item => {
@@ -27,7 +27,7 @@ function setCategory(menuItems) {
         li2.addEventListener("mouseover", (event) => {
             const submenu = li2.querySelector('.submenu1');
             submenu.style.display = "block";
-            setSubCategory(submenu);
+            setSubCategory(subMenu);
             li2.querySelector('.submenu1').onclick = quickSearch;
         });
 
@@ -71,21 +71,23 @@ function showFilers() {
         categoryMenu.style.display = "none"
     }
 }
-function setSubCategory() {
+function setSubCategory(subMenu) {
+    console.log(subMenu);
     const nestedUl = document.getElementById("li2");
     
     let subUl = nestedUl.querySelector('ul');
     let subli = subUl.querySelector('li');
     if (!subli) {
-        subMenu.forEach(item => {
+
+        for (let i = 0; i < subMenu.length; i++) {
             const li = document.createElement("li");
-            li.textContent = `${item.name}`;
+            li.textContent = `${subMenu[i].name}`;
             const additionalElement = document.createElement("div");
             additionalElement.classList.add("arrow");
             li.appendChild(additionalElement);
 
-            subUl.appendChild(li);
-    });
+            subUl.appendChild(li);    
+        }
     nestedUl.appendChild(subUl);    
     }else {
         return;
@@ -93,14 +95,24 @@ function setSubCategory() {
     
 }
 function initializationCategory() {
-    fetch("data/categories.json")
-    .then(response => response.json())
-    .then(data =>{
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    
+    const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+    };
+    
+    fetch("https://final-project-serverside-0dnj.onrender.com/categories",requestOptions)
+    .then(response =>  response.json())
+    .then(data => { 
         const topMenu = data.categories.find(menu => menu.category === "categoryMenu").categoryMenu;
-        subMenu = data.categories.find(menu => menu.category === "categorySubMenu").categorySubMenu;
-        setCategory(topMenu);
+        const subMenu = data.categories.find(menu => menu.category === "categorySubMenu").categorySubMenu;
+        setCategory(topMenu,subMenu);
+    })
         
-    });
+    
 }
 function initializationSimulations(data){
     const soldierData = JSON.parse(sessionStorage.getItem('soldierData'));
@@ -153,20 +165,11 @@ function initializeProfile(user){
     profileImg.classList.add("roundProfileImg");
     profilePlaceHolder.appendChild(profileImg);
 }
-function initialization(data) {
+function initialization() {
     const storedData = JSON.parse(sessionStorage.getItem('userData'));
-    
-    for (const user of data.users){
-        if (user.id === storedData.id) {
-            initializeProfile(user);
-            initializationCategory();
-            getSimulations();
-            break;
-        }
-    }
-    
-    
-
+    initializeProfile(storedData);
+    initializationCategory();
+    //getSimulations();
     document.getElementById("simulationCategoryMenu").style.display = "none";
 }
 function showFilers() {
@@ -211,13 +214,8 @@ function searchSimulations() {
 
 
 window.onload = () => {
-    fetch("data/user.json")
-    .then(response => response.json())
-    .then(data =>{
-        const storedData = JSON.parse(sessionStorage.getItem('soldierData'));
-        initialization(data)
+        initialization()
         document.getElementById("sourceBar").addEventListener("input",searchSimulations);
-    });
         document.getElementById("categoryButton").onclick = showFilers;
     }
     

@@ -639,8 +639,7 @@ button.btn.btn-primary.custom-btn {
     max-width: max-content;
     max-height: max-content;
     background-color: #d9d9d9;
-    display: flex;
-    flex-direction: row;
+    
 }
 .mainContainer article span {
     font-weight: bold; 

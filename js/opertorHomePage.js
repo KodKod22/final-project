@@ -4,6 +4,13 @@ function getUserId()
     const userId = aKeyValue[0].split("=")[1];
     return userId;
 }
+function addTeamMembers(params) {
+    const teamMembers = [params.TeamMember1Name,params .TeamMember2Name, params.TeamMember3Name]
+        .filter(name => name !== null)
+        .join(", ");
+    return teamMembers;
+}
+
 function createArticleInfo(product){
     const articleInfo = document.createElement("div");
     articleInfo.classList.add("articleInfo");
@@ -15,18 +22,19 @@ function createArticleInfo(product){
     const date = document.createElement("span");
     date.innerText = "תאריך:"+`${product.date}`;
     const participants = document.createElement("span");
-    participants.innerText = "משתתפים:"+`${product.participants}`;
+    
     const teamMembers = document.createElement("span");
-    teamMembers.innerText = "אנשי צוות:"+`${product.teamMembers}`
+    
+    teamMembers.innerText = "אנשי צוות:"+ addTeamMembers(product);
     const commander = document.createElement("span");
-    commander.innerText ="מפקד:"+ `${product.commander}`;
+    commander.innerText ="מפקד:"+ `${product.CommanderName}`;
     const safetyOfficer = document.createElement("span");
-    safetyOfficer.innerText =  `${product.safetyOfficer}`;
+    safetyOfficer.innerText = "קצין בטיחות:" + `${product.SafetyOfficerName}`;
 
     articleInfo.appendChild(location);
     articleInfo.appendChild(difficulty);
     articleInfo.appendChild(date);
-    articleInfo.appendChild(participants);
+    
     articleInfo.appendChild(teamMembers);
     articleInfo.appendChild(commander);
     articleInfo.appendChild(safetyOfficer);
@@ -35,16 +43,19 @@ function createArticleInfo(product){
 function createArticleContent(product) {
     const ArticleContent = document.createElement("div");
     ArticleContent.classList.add("ArticleContent");
+
+    
     const simulationVideo = document.createElement("iframe");
-    simulationVideo.src = embedUrl;
-    simulationVideo.frameBorder = "0";
+    
+    simulationVideo.src = product.video;
     simulationVideo.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
     simulationVideo.allowFullscreen = true;
-    simulationVideo.src = `${product.video}`;
     ArticleContent.appendChild(simulationVideo);
     ArticleContent.appendChild(createArticleInfo(product));
+
     return ArticleContent;
 }
+
 function createSimulationHolder(recordsData){
     console.log(recordsData);
     const mainContainer = document.getElementsByClassName("mainContainer")[0];
@@ -52,9 +63,8 @@ function createSimulationHolder(recordsData){
         for (let i = 0; i < recordsData.length; i++) {
             const article = document.createElement("article");
             const title = document.createElement("span");
-            title.classList.add("hebrewText");
-            title.innerText = recordsData[i].simulationName
-            ;
+            
+            title.innerText = recordsData[i].simulationName;
             article.appendChild(title);
 
             article.appendChild(createArticleContent(recordsData[i]));
@@ -64,7 +74,7 @@ function createSimulationHolder(recordsData){
     
 }
 function initializeMain() {
-    //createSimulationHolder
+    
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 

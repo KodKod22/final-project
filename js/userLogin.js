@@ -1,21 +1,31 @@
 function mangeLogin(userData) {
-    if ( userData.user_name === "שמעון") {
+    if (userData.user_name === "שמעון") {
         const data = {
-            id:userData.users_id,
-            userName:userData.user_name,
-            profile:userData.profilePic
-        }
+            id: userData.users_id,
+            userName: userData.user_name,
+            profile: userData.profilePic
+        };
         sessionStorage.setItem('userData', JSON.stringify(data));
         window.location.href = "index.html";   
-    }else if ( userData.user_name === "רותם") {
+    } else if (userData.user_name === "רותם") {
         const data = {
-            id:userData.users_id,
-            userName:userData.user_name,
-            profile:userData.profilePic
-
-        }
+            id: userData.users_id,
+            userName: userData.user_name,
+            profile: userData.profilePic
+        };
         sessionStorage.setItem('userData', JSON.stringify(data));
         window.location.href = "opertorHomePage.html";
+    } else if (userData.user_name === "ארז") {
+        const data = {
+            id: userData.users_id,
+            userName: userData.user_name,
+            profile: userData.profilePic
+        };
+        sessionStorage.setItem('userData', JSON.stringify(data));
+        window.location.href = "Home_Page.html";
+    } else {
+        console.error("User not recognized");
+        
     }
 }
 function getUserFromServer(e) {

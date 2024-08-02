@@ -47,7 +47,7 @@ function putMessageText(data,Attribute){
             location.textContent ="מיקום:" + `${product.location}`;
 
             const sourceBar = document.createElement("a");
-           sourceBar.href = "simulationsList.html";
+            sourceBar.href = "simulationsList.html";
             sourceBar.classList.add("magnified");
             sourceBar.addEventListener("click", (event) => {
                 setStorage(event.target);
@@ -64,15 +64,24 @@ function putMessageText(data,Attribute){
     });
 }
 function getMessageText(Attribute) {
-    fetch("data/requests.json")
-    .then(response => response.json())
-    .then(data => putMessageText(data,Attribute));    
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    
+    const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+    };
+    
+    fetch("https://final-project-serverside-0dnj.onrender.com/requests",requestOptions)
+    .then(response =>  response.json())
+    .then(data =>  putMessageText(data,Attribute));
+    
 }
 function openMessed(){
     if (isOpen == false) {
         const openButton = this;
-        console.log("hey");
-    
         const parentDiv = openButton.parentNode;
         const parentArticle = parentDiv.parentNode;
         const Attribute =  parentArticle.getAttribute('data-id');
@@ -125,15 +134,27 @@ function createRequest(data) {
         textContainer.appendChild(placeHolder);
     });
 }
+function getRequestFromServer(){
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    
+    const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+    };
+    
+    fetch("https://final-project-serverside-0dnj.onrender.com/requests",requestOptions)
+    .then(response =>  response.json())
+    .then(data => createRequest(data));
+}
 function InitializeRequestContainers(){
     const textContainer = document.getElementById("requestsContainer");
     const headerTopic = document.createElement("h2");
     headerTopic.textContent = "בקשות אירועים";
     textContainer.appendChild(headerTopic);
-    fetch("data/requests.json")
-    .then(response => response.json())
-    .then(data => createRequest(data));
-
+    
+    getRequestFromServer();
 }
 function initializeProfile(user){
     const userName = document.getElementById("welcome");
@@ -146,23 +167,18 @@ function initializeProfile(user){
     profileImg.classList.add("roundProfileImg");
     profilePlaceHolder.appendChild(profileImg);
 }
-function initialization(data) {
+function initialization() {
     const storedData = JSON.parse(sessionStorage.getItem('userData'));
-    for (const user of data.users){
-        if (user.id === storedData.id) {
-            initializeProfile(user);
-            break;
-        }
-    }
+    
+    initializeProfile(storedData);
     InitializeRequestContainers();
 }
 function navigateToPage() {
     const userId = getUserId();
-    window.location.href = `simulationsList.html?userId=${userId}`;
+    window.location.href = `simulationsList.html`;
 }
 window.onload = () => {
-    fetch("data/user.json")
-    .then(response => response.json())
-    .then(data => initialization(data));
+    
+    initialization();
     document.getElementById("simulationLink").onclick =  navigateToPage;
 }

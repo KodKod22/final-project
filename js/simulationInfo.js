@@ -1,18 +1,19 @@
 function setPagePosition(simulationName) {
     const pageHaed = document.getElementsByClassName("breadcrumb-item active")[0];
-    const pageHaedChild = pageHaed.children[0];
-    
-    pageHaed.removeChild(pageHaedChild);
+    while (pageHaed.firstChild) {
+        pageHaed.removeChild(pageHaed.firstChild);
+    };
 
     let newPageHead = document.createElement("a");
     newPageHead.innerText = simulationName.innerText;
     pageHaed.appendChild(newPageHead);
     const page = document.getElementsByClassName("breadcrumb-item active")[1];
     const remove = page.children[0];
-    const courentPage = remove.innerText;
+    const courentPage = "דף בית > סימולציות אחרונות ";
     
     let newCurrentPage;
     newCurrentPage = courentPage + " > " + simulationName.innerText;
+    console.log(newCurrentPage);
     let newA = document.createElement("a");
     newA.href = "simulationsList.html";
     newA.innerText = newCurrentPage;
@@ -94,7 +95,12 @@ function loadSimulation(elements){
     const element = elements[0];
     
     const mainContainer = document.getElementsByClassName("simulationContainer")[0];
-    
+    while (mainContainer.firstChild) {
+        if(mainContainer.firstChild === document.getElementById("buttonsArea")){
+            break;
+        }
+        mainContainer.removeChild(mainContainer.firstChild);
+    }
     const nameSimulation = document.createElement("h1");
     nameSimulation.id = "nameSimulation";
     nameSimulation.classList.add("hebrewText");
@@ -174,6 +180,30 @@ function editSimulation(){
         document.getElementById("Simulationform").style.display = "block"
     }
 }
+async function sendUpdateRequest(updateRequest){
+    
+    try {
+        const response = await fetch("https://final-project-serverside-0dnj.onrender.com/api/post/updateSimulation", {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id:updateRequest.id,simulation:updateRequest.simulation, AfvToRescue:updateRequest.AfvToRescue,
+                RescueVehicle:updateRequest.RescueVehicle,
+                Participants: updateRequest.Participants,
+                Location: updateRequest.Location})
+        });
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Error:', errorText);
+            return;
+        }
+        await getSimulation();
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
 
 function getFormData(event){
     
@@ -194,7 +224,7 @@ function getFormData(event){
         Participants: participants,
         Location: location
     }
-    
+    sendUpdateRequest(updateRequest);
     editSimulation();
 }
 

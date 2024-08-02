@@ -852,7 +852,8 @@ button.btn.btn-primary.custom-btn {
 }
 #requestsContainer article .rightsideholder {
     display: flex;
-    flex-direction: row;  
+    flex-direction: row;
+    width: 880px;  
 }
 #requestsContainer article .middleRightSideHolder{
     display: flex;

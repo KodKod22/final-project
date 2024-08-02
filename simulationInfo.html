@@ -76,24 +76,23 @@
             <form id="addSimulationform" action="/your-server-endpoint" method="POST" enctype="application/x-www-form-urlencoded">
                 <div class="mb-3">
                     <label for="simulation" class="form-label">סימולציה:</label>
-                    <input type="text" id="simulation" name="simulation" class="form-control" pattern="[\u0590-\u05FF\s]+" required>
+                    <input type="text" id="simulation" name="simulation" class="form-control" pattern="[\u0590-\u05FF\s]+">
                 </div>
                 <div class="mb-3">
                     <label for="afvToRescue" class="form-label">כלי התקוע:</label>
-                    <input type="text" id="afvToRescue" name="afvToRescue" class="form-control" pattern="[\u0590-\u05FF\s]+" required>
+                    <input type="text" id="afvToRescue" name="afvToRescue" class="form-control" pattern="[\u0590-\u05FF\s]+">
                 </div>
                 <div class="mb-3">
                     <label for="RescueVehicle" class="form-label">כלים מחלצים:</label>
-                    <input type="text" id="RescueVehicle" name="RescueVehicle" class="form-control" pattern="[\u0590-\u05FF\s]+" required>
+                    <input type="text" id="RescueVehicle" name="RescueVehicle" class="form-control" pattern="[\u0590-\u05FF\s]+">
                 </div>
                 <div class="mb-3">
                     <label for="participants" class="form-label">משתתפים:</label>
-                    <input type="text" id="participants" name="participants" class="form-control" pattern="[\u0590-\u05FF\s]+"
-                     required>
+                    <input type="text" id="participants" name="participants" class="form-control" pattern="[\u0590-\u05FF\s]+">
                 </div>
                 <div class="mb-3">
                     <label for="location" class="form-label">מיקום:</label>
-                    <input type="text" id="location" name="location" class="form-control" pattern="[\u0590-\u05FF\s]+" required>
+                    <input type="text" id="location" name="location" class="form-control" pattern="[\u0590-\u05FF\s]+">
                 </div>
                 <div class="form-buttons d-flex justify-content-between">
                     <button type="submit" class="btn btn-secondary custom-btn">שמירה</button>

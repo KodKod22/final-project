@@ -39,12 +39,12 @@ function difficultySearch(text) {
     console.log(value);    
     for(i = 0; i < article.length ;i++){
         let x = article[i].getElementsByClassName("recordInfo")[0];
-        let y = x.children[2];
-        let difficulty = y.children[0].textContent.trim(); 
+        let y = x.children[1];
+        let difficulty = y.children[0].textContent.trim().split(':')[1];; 
         if(difficulty === value){   
             continue;
         }else{
-            article[i].style.display = "none";
+            article[i]['style']['display'] = "none";
         }
     }       
 }

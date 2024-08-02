@@ -563,7 +563,7 @@ li #afv li:hover {
     flex-direction: column;
     padding-top: 60px;
     margin-right: 44px;
-    width: 100%;
+    width: 400px;
 }
 
 .firstLineImg{
@@ -766,7 +766,7 @@ button.btn.btn-primary.custom-btn {
     height: 150px; 
 }
 .form-section {
-    width: 400px !important;
+    max-width: 400px !important;
 }
 .mainContainer {
     display: flex;

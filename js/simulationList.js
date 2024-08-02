@@ -42,20 +42,28 @@ function setCategory(menuItems,subMenu) {
     }
 
 }
-function quickSearch(text) {
-    const main = document.getElementsByClassName("mainContainer")[0];
-    let article = main.getElementsByTagName("a");
-    const value = text.target.textContent;
-    
+function filtering(article,text){
     for(i = 0; i < article.length ;i++){
         let x = article[i].getElementsByClassName("infoContainer")[0];
         let y = x.children[3]; 
-        if(y.innerText.includes(value)){
+        if(y.innerText.includes(text)){
             continue
         }else{
             article[i].style.display = "none";
         }
     }       
+}
+function quickSearchByRequest(text){
+    const main = document.getElementsByClassName("mainContainer")[0];
+    let article = main.getElementsByTagName("a");
+    filtering(article,text);
+}
+function quickSearch(text) {
+    const main = document.getElementsByClassName("mainContainer")[0];
+    let article = main.getElementsByTagName("a");
+    const value = text.target.textContent;
+    
+    filtering(article,value);
 }
 function showFilers() {
     const categoryMenu = document.getElementById("categoryMenu");
@@ -143,7 +151,8 @@ function initializationSimulations(data){
         mainContainer.appendChild(simulationPlaceHolder);
     });
     if (soldierData) {
-        quickSearch(soldierData.difficulty);
+        
+        quickSearchByRequest(soldierData.difficulty);
     }
 }
 
@@ -226,5 +235,5 @@ window.onload = () => {
         initialization()
         document.getElementById("sourceBar").addEventListener("input",searchSimulations);
         document.getElementById("categoryButton").onclick = showFilers;
-    }
+}
     

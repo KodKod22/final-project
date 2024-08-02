@@ -3,7 +3,7 @@ window.onload = () => {
         .then(Response => Response.json())
         .then(data =>{
                 initialize(data);
-                document.getElementById("simulationSourceBar").addEventListener("input",searchSoldiers);
+                document.getElementById("simulationSourceBar").addEventListener("input",searchRecord);
                 createSimulationHolder(data);
         })
         .catch(error => console.error('Error fetching data:', error));
@@ -210,5 +210,34 @@ function createSimulationHolder(recordsData) {
 
         article.appendChild(createArticleContent(recordsData[i]));
         mainContainer.appendChild(article);
+    }
+}
+
+function searchRecord() {
+    let inputField = document.getElementById("simulationSourceBar");
+    let value = inputField.value.toLowerCase();
+    const main = document.getElementsByClassName("mainContainer")[0];
+    let article = main.getElementsByTagName("article");
+    if(inputField.value.trim() === "" || inputField.value.trim().length === 0){
+        for(i=0;i<article.length;i++){
+            article[i].style.display="flex";
+        }
+    }
+    
+    for (let i = 0; i < article.length; i++) {
+        let x = article[i].getElementsByClassName("recordInfo")[0];
+        let commanderName = x.children[9].textContent.toLowerCase();
+        let driverName = x.children[10].textContent.toLowerCase();
+        let safetyOfficerName = x.children[11].textContent.toLowerCase();
+        let teamMember1Name = x.children[12].textContent.toLowerCase();
+        let teamMember2Name = x.children[13].textContent.toLowerCase();
+        let teamMember3Name = x.children[14].textContent.toLowerCase();
+
+        if (commanderName.includes(value) || driverName.includes(value) || safetyOfficerName.includes(value) ||
+            teamMember1Name.includes(value) || teamMember2Name.includes(value) || teamMember3Name.includes(value)) {
+            article[i].style.display = "flex";
+        } else {
+            article[i].style.display = "none";
+        }
     }
 }

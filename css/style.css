@@ -767,7 +767,7 @@ button.btn.btn-primary.custom-btn {
     height: 150px; 
 }
 .form-section {
-    width: 400px;
+    width: 400px !important;
 }
 .mainContainer {
     display: flex;
@@ -935,7 +935,6 @@ li .submenu1 li:hover {
     justify-items: center;
     align-items: center;
     width: 168px;
-
 }
 
 .slidecontainer {

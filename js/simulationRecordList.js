@@ -61,6 +61,33 @@ function afvSearch(afvToRescue) {
     }       
 }
 
+function getAFVs() {
+    let afvs = {};
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+    };
+
+    fetch("https://final-project-serverside.onrender.com/api/soldiers/getAFVs", requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+        const ul = document.getElementById("afvSubmenu");
+        result = JSON.parse(result);
+        for(var afv in result) {
+            var li = document.createElement("li");
+            var span = document.createElement("span");
+            li.appendChild(span.appendChild(document.createTextNode(result[afv]['afvToRescue'])));
+            ul.appendChild(li);
+        }
+    })
+    .catch((error) => console.error(error));
+}  
+
 function showFilers() {
     const simulationCategoryMenu = document.getElementById("simulationCategoryMenu");
     const main = document.getElementsByClassName("mainContainer")[0];
@@ -136,6 +163,7 @@ function initialize(data) {
     });
     document.getElementById("simulationCategoryMenu").style.display = "none";
     document.getElementById("difficultySubmenu").style.display = "none";
+    getAFVs();
 }
 
 function searchSoldiers() {

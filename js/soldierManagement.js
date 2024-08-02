@@ -90,7 +90,6 @@ function roleSearch(role) {
 }
 
 function getRoles() {
-
     let roles = {};
 
     const myHeaders = new Headers();

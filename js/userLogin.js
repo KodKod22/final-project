@@ -24,8 +24,6 @@ function getUserFromServer(e) {
     const loginForm = document.getElementById("login-form");
     const username = loginForm.username.value;
     const password = loginForm.password.value;
-    console.log(password);
-    console.log(username);
     fetchUser(username, password);
 }
 

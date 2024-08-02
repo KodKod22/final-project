@@ -50,10 +50,10 @@ function putSimulationInfo(element){
     let container5 = document.createElement("div");
     let container6 = document.createElement("div");
     let container7 = document.createElement("div");
-
+    
     const simulationFild = document.createElement("span");
     simulationFild.textContent = "הסימולציה:"
-    container1 = toJoinWords(simulationFild,element.simulation);
+    container1 = toJoinWords(simulationFild,element.simulationName);
 
     const locationFild = document.createElement("span");
     locationFild.textContent = "מיקום:"
@@ -90,14 +90,16 @@ function putSimulationInfo(element){
     simulationInfo.appendChild(container7);
     return simulationInfo;
 }
-function loadSimulation(element){
+function loadSimulation(elements){
+    const element = elements[0];
+    
     const mainContainer = document.getElementsByClassName("simulationContainer")[0];
     
-    const simulationName = document.createElement("h1");
-    simulationName.id = "simulationName";
-    simulationName.classList.add("hebrewText");
-    simulationName.innerText = element.simulationName;
-    setPagePosition(simulationName);
+    const nameSimulation = document.createElement("h1");
+    nameSimulation.id = "nameSimulation";
+    nameSimulation.classList.add("hebrewText");
+    nameSimulation.textContent = element.simulationName;
+    setPagePosition(nameSimulation);
     const simulationInfo = putSimulationInfo(element);
     simulationInfo.id = "simulationInfo";
     const simulationSection = document.createElement("div");
@@ -107,7 +109,7 @@ function loadSimulation(element){
     const playIcon = document.createElement("div");
     playIcon.classList.add("playIcon");
     const simulationImg = document.createElement("img");
-    simulationImg.src = element.picture;
+    simulationImg.src = element.simulationPic;
     simulationImg.title = element.simulationName;
     simulationImg.id = "simulationImg";
     imgPlacholder.appendChild(simulationImg);
@@ -117,20 +119,23 @@ function loadSimulation(element){
     
     const buttonsArea = document.getElementById("buttonsArea");
     
-    mainContainer.insertBefore(simulationName, buttonsArea);
+    mainContainer.insertBefore(nameSimulation, buttonsArea);
     mainContainer.insertBefore(simulationSection, buttonsArea);
 }
-function findSimulation(data){
-    data.simulations.forEach(element =>{
-        if (element.id === getSimulationId()) {
-            loadSimulation(element);
-        }
-    });
-}
-function getSimulation(){
-    fetch("data/simulations.json")
-    .then(response => response.json())
-    .then(data => findSimulation(data));
+
+async function getSimulation(){
+ 
+    const simulation_Id = getSimulationId();
+    
+    const response = await fetch("https://final-project-serverside-0dnj.onrender.com/api/post/Simulation",{
+        method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ simulationId: simulation_Id })
+    })
+    const data = await response.json();
+    loadSimulation(data);
 }
 function initializeProfile(user){
     const userName = document.getElementById("welcome");
@@ -142,15 +147,10 @@ function initializeProfile(user){
     profileImg.classList.add("roundProfileImg");
     profilePlaceHolder.appendChild(profileImg);
 }
-function initialization(data) {
+function initialization() {
     const storedData = JSON.parse(sessionStorage.getItem('userData'));
-    for (const user of data.users){
-        if (user.id === storedData.id) {
-            initializeProfile(user);
-            getSimulation();
-            break;
-        }
-    }
+    initializeProfile(storedData);
+    getSimulation();
 }
 function deleteSimulation() {
 
@@ -242,9 +242,8 @@ function getCheckBoxValue(){
     changePage();
 }
 window.onload = () => {
-    fetch("data/user.json")
-    .then(response => response.json())
-    .then(data => initialization(data));
+    
+    initialization();
     document.getElementById("deleteSimulation").onclick = deleteSimulation;
     document.getElementById('addSimulationform').addEventListener('submit', getFormData);
     document.getElementById("matchToSoldier").onclick = changePage;

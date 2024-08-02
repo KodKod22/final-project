@@ -354,11 +354,11 @@ a {
     justify-items: center;
     align-items: center;
     border-style: none;
+    position: relative;
 }
 #simulationCategoryMenu li span {
     text-align: center;
     margin-right: 35px;
-   
 }
 
 .arrow {
@@ -406,7 +406,6 @@ a {
 
 }
 
-
 #difficultySubmenu {
     display: none;
     position: absolute;
@@ -420,7 +419,7 @@ a {
 
 #difficultySubmenu li {
     display: flex;
-    justify-items: center;
+    justify-content: center;
     align-items: center;
     width: 168px;
 
@@ -439,8 +438,8 @@ a {
 
 #afvSubmenu li {
     display: flex;
-    justify-content: center;
     width: 168px;
+    justify-content: center !important;
 
 }
 
@@ -871,7 +870,6 @@ button.btn.btn-primary.custom-btn {
     display:none;
     background-color: white;
     direction: rtl;
-    margin-top: 190px;
     position: absolute;
     width: 168px;
 }

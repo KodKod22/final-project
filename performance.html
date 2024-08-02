@@ -68,13 +68,13 @@
                         <div class="metric">
                             בטיחות:
                             <div class="circle-container">
-                                <div class="circle red">15%</</div>
+                                <div class="circle red">15%</div>
                             </div>
                         </div>
                         <div class="metric">
                             נזק לרק"מים:
                             <div class="circle-container">
-                                <div class="circle red">5%</</div>
+                                <div class="circle red">5%</div>
                             </div>
                         </div>
                         <div class="feedback">
@@ -103,5 +103,20 @@
         <a href="Home_Page.html"><i class="fas fa-home"></i></a>
         <a href="#"><i class="fas fa-cog"></i></a>
     </div>
+    <script>
+        fetch('/getSimulationFeedback', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ simulationID: 1 }) 
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.querySelector('.circle.green').textContent = `${data[0].usingTools}%`;
+            document.querySelector('.circle.red').textContent = `${data[0].safety}%`;
+            document.querySelector('.circle.red').textContent = `${data[0].damageToTheAFV}%`;
+            document.querySelector('.feedback').textContent = `הערכת מפקד: ${data[0].commanderFeedback}`;
+        })
+        .catch(error => console.error('Error fetching simulation feedback:', error));
+    </script>
 </body>
 </html>

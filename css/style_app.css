@@ -205,7 +205,6 @@ main {
     margin-top: 10px;
 }
 
-/* Task Page */
 .breadcrumb {
     font-size: 18px;
     margin-bottom: 20px;
@@ -250,7 +249,7 @@ main {
     margin-top: 10px;
 }
 
-/* Tasks Page */
+
 .tasks-container {
     display: flex;
     flex-wrap: wrap;
@@ -289,7 +288,7 @@ main {
     color: #000;
 }
 
-/* Performance Page */
+
 .breadcrumb {
     font-size: 18px;
     margin-bottom: 10px;
@@ -399,11 +398,11 @@ main {
 
 .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     width: 100%;
-    max-width: 560px; /* Limit the max width */
+    max-width: 560px; 
     background: #f5f5f5;
     margin-bottom: 20px;
 }
@@ -474,11 +473,11 @@ main {
 
 .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     width: 100%;
-    max-width: 560px; /* Limit the max width */
+    max-width: 560px; 
     background: #f5f5f5;
     margin-bottom: 20px;
 }

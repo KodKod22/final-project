@@ -13,7 +13,6 @@ function setPagePosition(simulationName) {
     
     let newCurrentPage;
     newCurrentPage = courentPage + " > " + simulationName.innerText;
-    console.log(newCurrentPage);
     let newA = document.createElement("a");
     newA.href = "simulationsList.html";
     newA.innerText = newCurrentPage;
@@ -157,7 +156,24 @@ function initialization() {
     const storedData = JSON.parse(sessionStorage.getItem('userData'));
     initializeProfile(storedData);
     getSimulation();
+    matchSimulationToSoldier();
 }
+async function sendDeleteRequest(requestData){
+    const requestOptions = {
+        method: "DELETE",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({ SimulationId:requestData.id,simulationName:requestData.name}),
+        redirect: "follow"
+    };
+        const response = await fetch("https://final-project-serverside-0dnj.onrender.com/api/post/deleteSimulations", requestOptions);
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Error:', errorText);
+            return;
+        }
+        window.history.back();
+    }
 function deleteSimulation() {
 
     const simulationId = getSimulationId();
@@ -168,7 +184,7 @@ function deleteSimulation() {
         id: simulationId,
         name: simulationName.innerText,
     };
-    
+    sendDeleteRequest(requestData);   
 }
 function editSimulation(){
     if ((document.getElementsByClassName("simulationContainer")[0].style.display == "none")&&((document.getElementById("Simulationform").style.display == "block"))) {
@@ -229,6 +245,7 @@ function getFormData(event){
 }
 
 function matchSimulationToSoldier(){
+    
     const matchingSoldirSection = document.getElementById("textContiner");
     const soldierData = JSON.parse(sessionStorage.getItem('soldierData'));
 
@@ -252,22 +269,43 @@ function changePage(){
         document.getElementById("matchingSoldirSection").style.display = "flex";
     }
     
-    
-    matchSimulationToSoldier();
 }
-
+async function sendMatchSimulationRequest(requestData) {
+    
+    try {
+        const response = await fetch("https://final-project-serverside-0dnj.onrender.com/api/post/addMission", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ soldierName:requestData.soldierName,simulationID:requestData.simulationId})
+        });
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Error:', errorText);
+            return;
+        }
+        await getSimulation();
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
 function getCheckBoxValue(){
     const checkBox = document.getElementById("checkboxSoldier");
     if (checkBox.checked) {
         const perntNode = checkBox.parentNode;
-        const soldierName = perntNode.children[1];
+        let soldierNameHolder = perntNode.children[1];
+        const textSoldierName = soldierNameHolder.textContent.split(":")
+        const soldierName = textSoldierName[1].trimStart()
+        
         const simulationId = getSimulationId();
 
         const requestData = {
-            soldierName: soldierName.innerText,
+            soldierName: soldierName,
             simulationId: simulationId
         }
-        
+        sendMatchSimulationRequest(requestData);
     }
     changePage();
 }

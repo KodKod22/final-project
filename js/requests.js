@@ -64,17 +64,8 @@ function putMessageText(data,Attribute){
     });
 }
 function getMessageText(Attribute) {
-
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
     
-    const requestOptions = {
-        method: "GET",
-        headers: myHeaders,
-        redirect: "follow"
-    };
-    
-    fetch("https://final-project-serverside-0dnj.onrender.com/requests",requestOptions)
+    fetch("https://final-project-serverside-0dnj.onrender.com/requests")
     .then(response =>  response.json())
     .then(data =>  putMessageText(data,Attribute));
     
@@ -135,16 +126,8 @@ function createRequest(data) {
     });
 }
 function getRequestFromServer(){
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
     
-    const requestOptions = {
-        method: "GET",
-        headers: myHeaders,
-        redirect: "follow"
-    };
-    
-    fetch("https://final-project-serverside-0dnj.onrender.com/requests",requestOptions)
+    fetch("https://final-project-serverside-0dnj.onrender.com/requests")
     .then(response =>  response.json())
     .then(data => createRequest(data));
 }

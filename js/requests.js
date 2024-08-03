@@ -64,17 +64,8 @@ function putMessageText(data,Attribute){
     });
 }
 function getMessageText(Attribute) {
-
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
     
-    const requestOptions = {
-        method: "GET",
-        headers: myHeaders,
-        redirect: "follow"
-    };
-    
-    fetch("https://final-project-serverside-0dnj.onrender.com/requests",requestOptions)
+    fetch("https://final-project-serverside-0dnj.onrender.com/requests")
     .then(response =>  response.json())
     .then(data =>  putMessageText(data,Attribute));
     
@@ -121,30 +112,22 @@ function createRequest(data) {
         const date = document.createElement("span");
         date.textContent = `${product.date}`;
 
-        const rightsideholder = document.createElement("div");
-        rightsideholder.classList.add("rightsideholder");
+        const rightSideHolder = document.createElement("div");
+        rightSideHolder.classList.add("rightSideHolder");
         div2.appendChild(lockIcon);
         div2.appendChild(date);
         div.appendChild(topic);
         div.appendChild(send);
-        rightsideholder.appendChild(profilePic);
-        rightsideholder.appendChild(div);
-        placeHolder.appendChild(rightsideholder);
+        rightSideHolder.appendChild(profilePic);
+        rightSideHolder.appendChild(div);
+        placeHolder.appendChild(rightSideHolder);
         placeHolder.appendChild(div2);
         textContainer.appendChild(placeHolder);
     });
 }
 function getRequestFromServer(){
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
     
-    const requestOptions = {
-        method: "GET",
-        headers: myHeaders,
-        redirect: "follow"
-    };
-    
-    fetch("https://final-project-serverside-0dnj.onrender.com/requests",requestOptions)
+    fetch("https://final-project-serverside-0dnj.onrender.com/requests")
     .then(response =>  response.json())
     .then(data => createRequest(data));
 }
@@ -158,7 +141,7 @@ function InitializeRequestContainers(){
 }
 function initializeProfile(user){
     const userName = document.getElementById("welcome");
-    userName.innerText = "ברוכה הבא "+ user.userName;
+    userName.innerText = "ברוך הבא "+ user.userName;
 
     const profilePlaceHolder = document.getElementById("profilePlaceHolder");
     const profileImg = document.createElement("img");

@@ -39,7 +39,7 @@ function getUserFromServer(e) {
 
 async function fetchUser(username, password) {
     try {
-        const response = await fetch("https://final-project-serverside-0dnj.onrender.com/api/post/user", {
+        const response = await fetch("https://final-project-serverside-0dnj.onrender.com/api/users/user", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

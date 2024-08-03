@@ -72,8 +72,8 @@
                 <button id="deleteSimulation" type="button">מחיקת אירוע</button>
             </div>
         </div>
-        <div id="Simulationform">
-            <form id="addSimulationform" action="/your-server-endpoint" method="POST" enctype="application/x-www-form-urlencoded">
+        <div id="SimulationForm">
+            <form id="addSimulationForm" action="/your-server-endpoint" method="POST" enctype="application/x-www-form-urlencoded">
                 <div class="mb-3">
                     <label for="simulation" class="form-label">סימולציה:</label>
                     <input type="text" id="simulation" name="simulation" class="form-control" pattern="[\u0590-\u05FF\s]+">
@@ -100,9 +100,9 @@
                 </div>
             </form>
         </div>
-        <div id="matchingSoldirSection">
+        <div id="matchingSoldierSection">
             <h2>בחירת חיילים:</h2>
-            <div id="textContiner">
+            <div id="textContainer">
                 <input type="checkbox" id="checkboxSoldier" name="soldier" value="soldier">
             </div>
             <button type="submit" id="saveButton" class="btn btn-secondary custom-btn">שמירה</button>

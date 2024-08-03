@@ -232,6 +232,10 @@ function searchSimulations() {
 
 
 window.onload = () => {
+    if (sessionStorage.getItem('refreshBack') === 'true') {
+        sessionStorage.removeItem('refreshBack'); 
+        location.reload();
+    }
         initialization()
         document.getElementById("sourceBar").addEventListener("input",searchSimulations);
         document.getElementById("categoryButton").onclick = showFilers;

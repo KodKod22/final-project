@@ -172,7 +172,10 @@ async function sendDeleteRequest(requestData){
             console.error('Error:', errorText);
             return;
         }
-        window.history.back();
+        
+        sessionStorage.setItem('refreshBack', 'true');
+        history.back();
+
     }
 function deleteSimulation() {
 
@@ -245,9 +248,13 @@ function getFormData(event){
 }
 
 function matchSimulationToSoldier(){
-    
-    const matchingSoldierSection = document.getElementById("textContainer");
     const soldierData = JSON.parse(sessionStorage.getItem('soldierData'));
+    
+    if (!soldierData) {
+        return;
+    }
+    const matchingSoldierSection = document.getElementById("textContainer");
+
 
     const soldierName = document.createElement("span");
     soldierName.innerText = soldierData.soldierName;

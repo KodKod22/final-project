@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/soldierProfile.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <title>Soldier Profile Page</title>
+    <title>home page</title>
 </head>
 <body>
     <header>
         <div class="headerContainer" >
-            <a href="platoonHomePage.html" id="logo">
+            <a href="index.html" id="logo">
                 <span>Extrication Simulation</span>
             </a>
             <div id="headerLinks">
-                <a href="platoonHomePage.html" id="homeIcon" class="icon"></a>
+                <a href="index.html" id="homeIcon" class="icon"></a>
                 <a href="#" id="LngIcon" class="icon"></a>
             </div>
             <div class="profileContainer hebrewText" >
@@ -37,7 +36,7 @@
     <div class="verticalNev">
         <nav class="navList">
             <div>
-                <a href="soldierListPage.html" class="hebrewText  active">מאגר חיילים</a>
+                <a href="soldierListPage.html" class="hebrewText">מאגר חיילים</a>
                 <div id="personIcon"  class="icon"></div>
             </div>
             <div>
@@ -49,7 +48,7 @@
                 <div id="reportsIcon" class="icon"></div>
             </div>
             <div>
-                <a href="simulationFeedbackForm.html" class="hebrewText">הוספת משוב </a>
+                <a href="simulationFeedbackForm.html" class="hebrewText">הוספת משוב</a>
                 <div id="requestIcon" class="icon"></div>
             </div>
             <div>
@@ -59,36 +58,35 @@
         </nav>
     </div>
     <main id="warpper" class="hebrewText">
-            <nav class="breadcrumbContainer">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active" aria-current="page"><a>דף בית</a></li>
-                </ol>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active" aria-current="page"><a href="soldierListPage.html">דף ביף > מאגר חיילים</a></li>
-                </ol>
-            </nav>
-            <div class="objectContainer">
-                <div id="profilePicture">
-                </div>
-                <div id="profileInfo">
-                    <div id="armyInfo">
-                        <div id="prsonalInfo"></div>
-                        <div id="armyData"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="buttonArea">
-                <div class="addingArea">
-                    <button>יצירת סימולציה חדשה</button>
-                    <button>עריכת פרופיל</button>
-                    <button>כתיבת משוב</button>
-                </div>
-                <div class="simulationContiner">             
-                    <h2>סימולציות שבהן השתתף:</h2>
-                    <div id="simulation">
-                    </div>
+        <nav class="breadcrumbContainer">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page"><a href="index.html">דף בית</a></li>
+            </ol>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page"><a href="index.html">דף בית</a></li>
+            </ol>
+        </nav>
+        <div class="mainPageContainer">
+            <div id="firstLine">
+                <div class="firstLineImg hebrewText">
+                    <a href="soldierListPage.html"><img src="images/profiles.png" alt="מאגר פרופילי חיילים" class="rectangleImg">
+                        <h2 class="mainText">מאגר פרופילי חיילים</h2></a>
+                    <a href="#"><img src="images/videos.png" alt="מאגר הקלטות" class="rectangleImg">
+                        <h2 class="mainText">מאגר הקלטות</h2></a>
+                    <a href="#"><img src="images/reports.png" alt="מאגר דוחות ומשובים" class="rectangleImg">
+                        <h2 class="mainText">מאגר דוחות ומשובים</h2></a>
                 </div>
             </div>
-        </main>
+            <div id="secondLine">
+                <div class="secondLineImg">
+                    <a href="addSoldierform.html"><img src="images/addSimulation.png" alt="יצירת בקשת" class="rectangleImg">
+                        <h2 class="mainText">הוספת חייל למערכת</h2></a>
+                    <a href="simulationFeedbackForm.html"><img src="images/Feedback.png" alt="שליחת משובים" class="rectangleImg">
+                        <h2 class="mainText">שליחת משוב</h2></a>
+                </div>
+            </div>
+            <div class="footer-margin"></div>
+        </div>
+    </main>
 </body>
 </html>

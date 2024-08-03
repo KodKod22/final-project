@@ -174,7 +174,7 @@ function getSimulations(){
 }
 function initializeProfile(user){
     const userName = document.getElementById("welcome");
-    userName.innerText = "ברוכה הבא "+ user.userName;
+    userName.innerText = "ברוך הבא "+ user.userName;
 
     const profilePlaceHolder = document.getElementById("profilePlaceHolder");
     const profileImg = document.createElement("img");

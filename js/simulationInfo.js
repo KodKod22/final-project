@@ -1,18 +1,18 @@
 function setPagePosition(simulationName) {
-    const pageHaed = document.getElementsByClassName("breadcrumb-item active")[0];
-    while (pageHaed.firstChild) {
-        pageHaed.removeChild(pageHaed.firstChild);
+    const pageHead = document.getElementsByClassName("breadcrumb-item active")[0];
+    while (pageHead.firstChild) {
+        pageHead.removeChild(pageHead.firstChild);
     };
 
     let newPageHead = document.createElement("a");
     newPageHead.innerText = simulationName.innerText;
-    pageHaed.appendChild(newPageHead);
+    pageHead.appendChild(newPageHead);
     const page = document.getElementsByClassName("breadcrumb-item active")[1];
     const remove = page.children[0];
-    const courentPage = "דף בית > סימולציות אחרונות ";
+    const courantPage = "דף בית > סימולציות אחרונות ";
     
     let newCurrentPage;
-    newCurrentPage = courentPage + " > " + simulationName.innerText;
+    newCurrentPage = courantPage + " > " + simulationName.innerText;
     let newA = document.createElement("a");
     newA.href = "simulationsList.html";
     newA.innerText = newCurrentPage;
@@ -26,7 +26,7 @@ function getSimulationId()
     return SimulationId;
 }
 
-function toJoinWords(fiild,name){
+function toJoinWords(field,name){
     const FieldContainer = document.createElement("div");
     FieldContainer.classList.add("FieldContainer");
     const editingIcon = document.createElement("div");
@@ -34,8 +34,8 @@ function toJoinWords(fiild,name){
     editingIcon.onclick = editSimulation;
     const name1 = document.createElement("span");
     name1.innerText = name;
-    fiild.classList.add("bold");
-    FieldContainer.appendChild(fiild);
+    field.classList.add("bold");
+    FieldContainer.appendChild(field);
     FieldContainer.appendChild(name1);
     FieldContainer.appendChild(editingIcon);
     return FieldContainer;
@@ -43,51 +43,51 @@ function toJoinWords(fiild,name){
 function putSimulationInfo(element){
     const simulationInfo = document.createElement("div");
     
-    let container1 = document.createElement("div");
-    let container2 = document.createElement("div");
-    let container3 = document.createElement("div");
-    let container4 = document.createElement("div");
-    let container5 = document.createElement("div");
-    let container6 = document.createElement("div");
-    let container7 = document.createElement("div");
+    let simulationContainer = document.createElement("div");
+    let locationContainer = document.createElement("div");
+    let afvToRescueContainer = document.createElement("div");
+    let RescueVehicleContainer = document.createElement("div");
+    let participantsContainer = document.createElement("div");
+    let difficultyContainer = document.createElement("div");
+    let dateContainer = document.createElement("div");
     
-    const simulationFild = document.createElement("span");
-    simulationFild.textContent = "הסימולציה:"
-    container1 = toJoinWords(simulationFild,element.simulationName);
+    const simulationField = document.createElement("span");
+    simulationField.textContent = "הסימולציה:"
+    simulationContainer = toJoinWords(simulationField,element.simulationName);
 
-    const locationFild = document.createElement("span");
-    locationFild.textContent = "מיקום:"
-    container2 = toJoinWords(locationFild,element.location);
+    const locationField = document.createElement("span");
+    locationField.textContent = "מיקום:"
+    locationContainer = toJoinWords(locationField,element.location);
 
-    const afvToRescueFild = document.createElement("span");
-    afvToRescueFild.textContent = "כלי תקוע:"
-    container3 = toJoinWords(afvToRescueFild,element.afvToRescue);
+    const afvToRescueField = document.createElement("span");
+    afvToRescueField.textContent = "כלי תקוע:"
+    afvToRescueContainer = toJoinWords(afvToRescueField,element.afvToRescue);
 
-    const RescueVehicleFild = document.createElement("span");
-    RescueVehicleFild.textContent = "כלים מחלצים:"
-    container4 = toJoinWords(RescueVehicleFild,element.RescueVehicle);
+    const RescueVehicleField = document.createElement("span");
+    RescueVehicleField.textContent = "כלים מחלצים:"
+    RescueVehicleContainer = toJoinWords(RescueVehicleField,element.RescueVehicle);
 
-    const participantsFild = document.createElement("span");
-    participantsFild.textContent = "משתתפים:"
-    container5 = toJoinWords(participantsFild, element.participants);
+    const participantsField = document.createElement("span");
+    participantsField.textContent = "משתתפים:"
+    participantsContainer = toJoinWords(participantsField, element.participants);
 
-    const difficultyFild = document.createElement("span");
-    difficultyFild.textContent = "רמת קושי סימולציה:"
-    container6 = toJoinWords(difficultyFild,element.difficulty);
-    container6.removeChild(container6.lastChild);
+    const difficultyField = document.createElement("span");
+    difficultyField.textContent = "רמת קושי סימולציה:"
+    difficultyContainer = toJoinWords(difficultyField,element.difficulty);
+    difficultyContainer.removeChild(difficultyContainer.lastChild);
     
-    const dateFild = document.createElement("span");
-    dateFild.textContent = "תאריך:"
-    container7 = toJoinWords(dateFild,element.date);
-    container7.removeChild(container7.lastChild);
+    const dateField = document.createElement("span");
+    dateField.textContent = "תאריך:"
+    dateContainer = toJoinWords(dateField,element.date);
+    dateContainer.removeChild(dateContainer.lastChild);
     
-    simulationInfo.appendChild(container1);
-    simulationInfo.appendChild(container2);
-    simulationInfo.appendChild(container3);
-    simulationInfo.appendChild(container4);
-    simulationInfo.appendChild(container5);
-    simulationInfo.appendChild(container6);
-    simulationInfo.appendChild(container7);
+    simulationInfo.appendChild(simulationContainer);
+    simulationInfo.appendChild(locationContainer);
+    simulationInfo.appendChild(afvToRescueContainer);
+    simulationInfo.appendChild(RescueVehicleContainer);
+    simulationInfo.appendChild(participantsContainer);
+    simulationInfo.appendChild(difficultyContainer);
+    simulationInfo.appendChild(dateContainer);
     return simulationInfo;
 }
 function loadSimulation(elements){
@@ -109,18 +109,18 @@ function loadSimulation(elements){
     simulationInfo.id = "simulationInfo";
     const simulationSection = document.createElement("div");
     simulationSection.classList.add("simulationSection");
-    const imgPlacholder = document.createElement("div");
-    imgPlacholder.classList.add("imgPlacholder");
+    const imgPlaceholder = document.createElement("div");
+    imgPlaceholder.classList.add("imgPlaceholder");
     const playIcon = document.createElement("div");
     playIcon.classList.add("playIcon");
     const simulationImg = document.createElement("img");
     simulationImg.src = element.simulationPic;
     simulationImg.title = element.simulationName;
     simulationImg.id = "simulationImg";
-    imgPlacholder.appendChild(simulationImg);
-    imgPlacholder.appendChild(playIcon);
+    imgPlaceholder.appendChild(simulationImg);
+    imgPlaceholder.appendChild(playIcon);
     simulationSection.appendChild(simulationInfo);
-    simulationSection.appendChild(imgPlacholder);
+    simulationSection.appendChild(imgPlaceholder);
     
     const buttonsArea = document.getElementById("buttonsArea");
     
@@ -144,7 +144,7 @@ async function getSimulation(){
 }
 function initializeProfile(user){
     const userName = document.getElementById("welcome");
-    userName.innerText = "ברוכה הבא "+ user.userName;
+    userName.innerText = "ברוך הבא "+ user.userName;
     const profilePlaceHolder = document.getElementById("profilePlaceHolder");
     const profileImg = document.createElement("img");
     profileImg.src = user.profile;
@@ -187,13 +187,13 @@ function deleteSimulation() {
     sendDeleteRequest(requestData);   
 }
 function editSimulation(){
-    if ((document.getElementsByClassName("simulationContainer")[0].style.display == "none")&&((document.getElementById("Simulationform").style.display == "block"))) {
+    if ((document.getElementsByClassName("simulationContainer")[0].style.display == "none")&&((document.getElementById("SimulationForm").style.display == "block"))) {
         document.getElementsByClassName("simulationContainer")[0].style.display = "flex"
-        document.getElementById("Simulationform").style.display = "none"
+        document.getElementById("SimulationForm").style.display = "none"
         
     }else{
         document.getElementsByClassName("simulationContainer")[0].style.display = "none"
-        document.getElementById("Simulationform").style.display = "block"
+        document.getElementById("SimulationForm").style.display = "block"
     }
 }
 async function sendUpdateRequest(updateRequest){
@@ -246,7 +246,7 @@ function getFormData(event){
 
 function matchSimulationToSoldier(){
     
-    const matchingSoldirSection = document.getElementById("textContiner");
+    const matchingSoldierSection = document.getElementById("textContainer");
     const soldierData = JSON.parse(sessionStorage.getItem('soldierData'));
 
     const soldierName = document.createElement("span");
@@ -256,17 +256,50 @@ function matchSimulationToSoldier(){
     soldierRole.innerText = soldierData.soldierRole;
     
 
-    matchingSoldirSection.appendChild(soldierName);
-    matchingSoldirSection.appendChild(soldierRole);
+    matchingSoldierSection.appendChild(soldierName);
+    matchingSoldierSection.appendChild(soldierRole);
+}
+function checkSimulationLevelAndLocation() {
+    
+    const soldierData = JSON.parse(sessionStorage.getItem('soldierData'));
+    const container = document.getElementById("simulationInfo");
+    const locationField = container.querySelectorAll(".FieldContainer")[1];
+    const difficultyField = container.querySelectorAll(".FieldContainer")[5];
+
+    let locationCheck = false;
+    let difficultyCheck = false;
+
+    
+    const locationElement = locationField.children[1];
+    
+        
+    if (soldierData.location.includes(locationElement.textContent)) {
+        locationCheck = true;
+        }
+
+    const difficultyElement = difficultyField.children[1];
+        if (soldierData.difficulty.includes(difficultyElement.textContent)) {
+            difficultyCheck = true;
+            
+        }
+
+
+    return locationCheck && difficultyCheck;
 }
 
+
+
 function changePage(){
-    if ((document.getElementsByClassName("simulationContainer")[0].style.display == "none") && (document.getElementById("matchingSoldirSection").style.display == "flex")) {
+
+    if (!checkSimulationLevelAndLocation()) {
+        return;        
+    }
+    if ((document.getElementsByClassName("simulationContainer")[0].style.display == "none") && (document.getElementById("matchingSoldierSection").style.display == "flex")) {
         document.getElementsByClassName("simulationContainer")[0].style.display = "flex";
-        document.getElementById("matchingSoldirSection").style.display = "none";
+        document.getElementById("matchingSoldierSection").style.display = "none";
     }else{
         document.getElementsByClassName("simulationContainer")[0].style.display = "none";
-        document.getElementById("matchingSoldirSection").style.display = "flex";
+        document.getElementById("matchingSoldierSection").style.display = "flex";
     }
     
 }
@@ -294,8 +327,8 @@ async function sendMatchSimulationRequest(requestData) {
 function getCheckBoxValue(){
     const checkBox = document.getElementById("checkboxSoldier");
     if (checkBox.checked) {
-        const perntNode = checkBox.parentNode;
-        let soldierNameHolder = perntNode.children[1];
+        const parentNode = checkBox.parentNode;
+        let soldierNameHolder = parentNode.children[1];
         const textSoldierName = soldierNameHolder.textContent.split(":")
         const soldierName = textSoldierName[1].trimStart()
         
@@ -313,7 +346,7 @@ window.onload = () => {
     
     initialization();
     document.getElementById("deleteSimulation").onclick = deleteSimulation;
-    document.getElementById('addSimulationform').addEventListener('submit', getFormData);
+    document.getElementById('addSimulationForm').addEventListener('submit', getFormData);
     document.getElementById("matchToSoldier").onclick = changePage;
     document.getElementById("saveButton").onclick = getCheckBoxValue;        
 }

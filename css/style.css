@@ -342,7 +342,7 @@ a {
     display:none;
     background-color: white;
     direction: rtl;
-    margin-top: 140px;
+    margin-top: 190px;
     position: absolute;
     width: 168px;
 }
@@ -355,7 +355,6 @@ a {
     justify-items: center;
     align-items: center;
     border-style: none;
-    position: relative;
 }
 #simulationCategoryMenu li span {
     text-align: center;
@@ -856,7 +855,7 @@ button.btn.btn-primary.custom-btn {
     width: 24px;
     height: 24px;
 }
-#requestsContainer article .rightsideholder {
+#requestsContainer article .rightSideHolder {
     display: flex;
     flex-direction: row;
     width: 880px;  
@@ -873,31 +872,11 @@ button.btn.btn-primary.custom-btn {
     height: 255px;
     width: 751px;
 }
-#simulationCategoryMenu{
-    display:none;
-    background-color: white;
-    direction: rtl;
-    position: absolute;
-    width: 168px;
-}
+
 #simulationCategoryMenu  li:hover {
     background-color: gray;
 }
-#simulationCategoryMenu li 
-{
-    width: 168px;
-    height: 44px;
-    display: flex;
-    justify-content: space-between;
-    justify-items: center;
-    align-items: center;
-    border-style: none;
-}
-#simulationCategoryMenu li span {
-    text-align: center;
-    margin-right: 35px;
-   
-}
+
 .simulationPlaceHolder {
     width: 350px;
     height: 257px;
@@ -1034,7 +1013,7 @@ li .submenu1 li:hover {
     background-color: #d9d9d9;
 }
 
-#Simulationform {
+#SimulationForm {
     width: 322px;
     display: none;
     margin-right: 40px;   
@@ -1051,11 +1030,11 @@ li .submenu1 li:hover {
     transform: translate(-50%, -50%);
     z-index: 1;   
 }
-.imgPlacholder {
+.imgPlaceholder {
     position: relative;
     display: inline-block; 
 }
-#matchingSoldirSection{
+#matchingSoldierSection{
     display: none;
     flex-direction: column;
     align-items: center;
@@ -1064,7 +1043,7 @@ li .submenu1 li:hover {
     margin-right: 40px;
     gap: 10px; 
 }
-#textContiner {
+#textContainer {
     width: 100%;
     display: flex;
     flex-direction: row;

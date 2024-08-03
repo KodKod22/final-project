@@ -3,25 +3,25 @@ function showSimulations(simulationsData) {
     let simulation;
     for (let index = 0; index < simulationsData.length; index++) {
         simulation = document.createElement("div");
-        simulation.innerHTML = `<a href="simulationPage.html?simulationIndex=${index}">${simulationsData[index]}</a>`;
+        simulation.innerHTML = `<a href="simulationPage.html?simulationIndex=${index}">${simulationsData[index].simulationName}</a>`;
         simulations.appendChild(simulation);
     }
 }
 
 function setPagePosition(soldierName) {
-    const pageHaed = document.getElementsByClassName("breadcrumb-item active")[0];
-    const pageHaedChild = pageHaed.children[0];
+    const pageHead = document.getElementsByClassName("breadcrumb-item active")[0];
+    const pageHeadChild = pageHead.children[0];
     
-    pageHaed.removeChild(pageHaedChild);
+    pageHead.removeChild(pageHeadChild);
 
     let newPageHead = document.createElement("a");
     newPageHead.innerText = soldierName;
-    pageHaed.appendChild(newPageHead);
+    pageHead.appendChild(newPageHead);
     const page = document.getElementsByClassName("breadcrumb-item active")[1];
     const remove = page.children[0];
-    const courentPage = remove.innerText;
+    const currentPage = remove.innerText;
     let newCurrentPage;
-    newCurrentPage = courentPage + " > "+soldierName;
+    newCurrentPage = currentPage + " > "+soldierName;
     let newA = document.createElement("a");
     newA.href = "SoldierListPage.html";
     newA.innerText = newCurrentPage;
@@ -103,7 +103,7 @@ function getArmyInfo(Data){
 
     return armyInfo;
 }
-const formatDOB = (dateStr) => {
+const formatDate = (dateStr) => {
     let date = new Date(dateStr);
 
     let day = String(date.getUTCDate()).padStart(2, '0');
@@ -114,7 +114,7 @@ const formatDOB = (dateStr) => {
     return formattedDate
 }
 
-function CreatePage(data) {
+function CreatePage(data, simulation) {
     let delete_pic = document.createElement("div");
     delete_pic.classList.add("delete");
     delete_pic.onclick = deleteItem;
@@ -135,7 +135,7 @@ function CreatePage(data) {
             rank: data["rank"],
             yearsInTheUnit: data["yearsInTheUnits"],
             riflery: data["riflery"],
-            DateOfBirth: formatDOB(data["dateOfBirth"])
+            DateOfBirth: formatDate(data["dateOfBirth"])
     };
     const armyInfo = getArmyInfo(armyData);
     const soldierName = document.createElement("h2");
@@ -147,20 +147,25 @@ function CreatePage(data) {
     objectContainer.appendChild(profile_picture);
     objectContainer.appendChild(profileInfo);
     objectContainer.appendChild(delete_pic);
-    showSimulations(data["simulations"]);
+    showSimulations(simulation);
 }
 function showSelectedSoldier(data) 
 {
     const soldier = data[0];
-    CreatePage(soldier);
-    // const selectionSoldierId = getSoldierId();
-    // for (const productKey in data.products) {
-    //     let soldierObj = data.products[productKey];
-    //     if (soldierObj.id == selectionSoldierId) {
-    //         CreatePage(soldierObj);
-    //         break;
-    //     }
-    // }
+    let simulations = [];
+    data.forEach(soldier => {
+        simulations.push({
+            simulationID: soldier.simulationID,
+            driverID: soldier.driverID,
+            teamMemberIDs: [soldier.teamMember1ID, soldier.teamMember2ID, soldier.teamMember3ID],
+            commanderID: soldier.commanderID,
+            safetyOfficerID: soldier.safetyOfficerID,
+            date: formatDate(soldier.date),
+            video: soldier.video,
+            simulationName: soldier.simulationName
+        })
+    });
+    CreatePage(soldier, simulations);
 }
 
 function getQueryParam(param) {

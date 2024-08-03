@@ -314,6 +314,11 @@ a {
     height: 24px;
     margin-left: 25px;   
 }
+
+.form-select{
+    max-width: 50% !important;
+}
+
 #categoryMenu {
     display:none;
     background-color: white;
@@ -444,11 +449,9 @@ a {
 }
 
 #role{
-    position: absolute;
     direction: rtl;
     list-style: none;
     background-color:white;
-    width: 168px;
 }
 
 #afv{
@@ -462,9 +465,11 @@ a {
 #categoryMenu  li:hover {
     background-color: gray;
 }
+
 li #submenu li:hover {
     background-color: gray;
 }
+
 li #role li:hover {
     background-color: gray;
 }
@@ -767,17 +772,17 @@ section #formSection {
 button.btn.btn-primary.custom-btn {
     background-color: #6c757d;
 }
+
 .footer-margin {
     height: 150px; 
 }
-.form-section {
-    max-width: 400px !important;
-}
+
 .mainContainer {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
 }
+
 .mainContainer article {
     max-width: max-content;
     max-height: max-content;

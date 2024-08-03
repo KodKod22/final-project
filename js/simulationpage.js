@@ -1,18 +1,18 @@
 function setPagePosition(simulationName) {
-    const pageHaed = document.getElementsByClassName("breadcrumb-item active")[0];
+    const pageHead = document.getElementsByClassName("breadcrumb-item active")[0];
     
-    const pageHaedChild = pageHaed.children[0];
+    const pageHeadChild = pageHead.children[0];
     
-    pageHaed.removeChild(pageHaedChild);
+    pageHead.removeChild(pageHeadChild);
 
     let newPageHead = document.createElement("a");
     newPageHead.innerText = simulationName;
-    pageHaed.appendChild(newPageHead);
+    pageHead.appendChild(newPageHead);
     const page = document.getElementsByClassName("breadcrumb-item active")[2];
     const remove = page.children[0];
-    const courentPage = remove.innerText;
+    const currentPage = remove.innerText;
     let newCurrentPage;
-    newCurrentPage = courentPage + " > "+ simulationName;
+    newCurrentPage = currentPage + " > "+ simulationName;
     
     let newA = document.createElement("a");
     newA.href = "soldierListPage.html"
@@ -29,31 +29,30 @@ function getSimulation() {
 }
 
 function showPage(data){
-    const simulationId = getSimulation();
-    for (const productKey in data.simulations){
-        let simulationObj = data.simulations[productKey];
-        if (simulationObj.id === simulationId){
-            setPagePosition(simulationObj["title"]);          
-            document.getElementById('simulationTitle').textContent = simulationObj["title"];
-            document.getElementById('simulationName').textContent = simulationObj["simulationName"];
-            document.getElementById('damageTool').textContent = simulationObj["damageTool"];
-            document.getElementById('rescueTools').textContent = simulationObj["rescueTools"];
-            document.getElementById('location').textContent = simulationObj["location"];
-            document.getElementById('participants').textContent = simulationObj["participants"];
-            document.getElementById('driver').textContent = simulationObj["driver"];
-            document.getElementById('teamMembers').textContent = simulationObj["teamMembers"];
-            document.getElementById('commander').textContent = simulationObj["commander"];
-            document.getElementById('safetyOfficer').textContent = simulationObj["safetyOfficer"];
-            document.getElementById('difficulty').textContent = simulationObj["difficulty"];
-            document.getElementById('date').textContent = simulationObj["date"];
-            document.getElementById('simulationVideo').src = simulationObj["video"];
-            break; 
-        }
-      
-    }
+    let simulationObj = data[0];
+   console
+            setPagePosition(simulationObj["simulationName"]);          
+            document.getElementById('simulationName').textContent = simulationObj.simulationName;
+            document.getElementById('damageTool').textContent = simulationObj.afvToRescue;
+            document.getElementById('rescueTools').textContent = simulationObj.RescueVehicle;
+            document.getElementById('location').textContent = simulationObj.location;
+            document.getElementById('driver').textContent = simulationObj.DriverID; 
+            document.getElementById('teamMembers').textContent = simulationObj.TeamMember1ID +`, `+ simulationObj.TeamMember2ID +`, `+ simulationObj.TeamMember3ID;
+            document.getElementById('commander').textContent = simulationObj.CommanderID;
+            document.getElementById('safetyOfficer').textContent = simulationObj.SafetyOfficerID;
+            document.getElementById('difficulty').textContent = simulationObj.difficulty;
+            document.getElementById('date').textContent = simulationObj.date;
+            document.getElementById('simulationVideo').src = simulationObj.video;
+}     
+
+function getQueryParam(param) {
+    let urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
 }
+
 window.onload = () => {
-    fetch('data/simulation.json')
+    let id = getQueryParam('soldierId');
+    fetch(`https://final-project-serverside.onrender.com/api/soldiers/getSimulationRecord/${id}`)
     .then(response => response.json())
     .then(data => showPage(data))
     .catch(error => console.error('Error fetching the simulation data:', error));

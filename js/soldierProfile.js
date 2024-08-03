@@ -103,6 +103,17 @@ function getArmyInfo(Data){
 
     return armyInfo;
 }
+const formatDOB = (dateStr) => {
+    let date = new Date(dateStr);
+
+    let day = String(date.getUTCDate()).padStart(2, '0');
+    let month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are zero-based
+    let year = date.getUTCFullYear();
+
+    let formattedDate = `${day}/${month}/${year}`;
+    return formattedDate
+}
+
 function CreatePage(data) {
     let delete_pic = document.createElement("div");
     delete_pic.classList.add("delete");
@@ -111,24 +122,24 @@ function CreatePage(data) {
     const objectContainer = document.getElementsByClassName("objectContainer")[0];
 
     const profile_picture = document.getElementById("profilePicture");
-    let locationStr = document.createElement("img");
-    locationStr.src = data["location"];
-    locationStr.alt = data["soldierName"];
-    profile_picture.appendChild(locationStr);
+    let imgStr = document.createElement("img");
+    imgStr.src = data["s_img"];
+    imgStr.alt = data["name"];
+    profile_picture.appendChild(imgStr);
 
 
     const profileInfo = document.getElementById("profileInfo");
     const armyData = {
-            personalNumber: data["personal number"],
+            personalNumber: data["soldierID"],
             role: data["role"],
             rank: data["rank"],
-            yearsInTheUnit: data["years in the unit"],
+            yearsInTheUnit: data["yearsInTheUnits"],
             riflery: data["riflery"],
-            DateOfBirth: data["Date of birth"]
+            DateOfBirth: formatDOB(data["dateOfBirth"])
     };
     const armyInfo = getArmyInfo(armyData);
     const soldierName = document.createElement("h2");
-    soldierName.innerText = data["soldier name"];
+    soldierName.innerText = data["name"];
     setPagePosition(soldierName.innerText);
 
     profileInfo.appendChild(soldierName);
@@ -140,17 +151,28 @@ function CreatePage(data) {
 }
 function showSelectedSoldier(data) 
 {
-    const selectionSoldierId = getSoldierId();
-    for (const productKey in data.products) {
-        let soldierObj = data.products[productKey];
-        if (soldierObj.id == selectionSoldierId) {
-            CreatePage(soldierObj);
-            break;
-        }
-    }
+    const soldier = data[0];
+    CreatePage(soldier);
+    // const selectionSoldierId = getSoldierId();
+    // for (const productKey in data.products) {
+    //     let soldierObj = data.products[productKey];
+    //     if (soldierObj.id == selectionSoldierId) {
+    //         CreatePage(soldierObj);
+    //         break;
+    //     }
+    // }
 }
+
+function getQueryParam(param) {
+    let urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
 window.onload = () => {
-    fetch("https://final-project-serverside.onrender.com/api/soldiers/getSoldiersProfile")
+
+    let soldierId = getQueryParam('soldierId');
+
+    fetch(`https://final-project-serverside.onrender.com/api/soldiers/getSoldiersProfile/${soldierId}`)
     .then(response => response.json())
     .then(data => showSelectedSoldier(data));
 }

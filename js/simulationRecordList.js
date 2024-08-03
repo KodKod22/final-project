@@ -1,3 +1,5 @@
+
+
 window.onload = () => {    
     fetch("https://final-project-serverside.onrender.com/api/soldiers/SimulationsRecords")
         .then(Response => Response.json())

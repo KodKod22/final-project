@@ -107,7 +107,7 @@ const formatDate = (dateStr) => {
     let date = new Date(dateStr);
 
     let day = String(date.getUTCDate()).padStart(2, '0');
-    let month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are zero-based
+    let month = String(date.getUTCMonth() + 1).padStart(2, '0'); 
     let year = date.getUTCFullYear();
 
     let formattedDate = `${day}/${month}/${year}`;

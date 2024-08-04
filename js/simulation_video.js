@@ -4,13 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const menuIcon = document.querySelector('.menu-icon');
 
     function toggleMenu() {
-        if (sidebar.style.right === '-250px' || sidebar.style.right === '') {
-            sidebar.style.right = '0';
-            overlay.style.display = 'block';
-        } else {
-            sidebar.style.right = '-250px';
-            overlay.style.display = 'none';
-        }
+        sidebar.style.right = sidebar.style.right === '-250px' || sidebar.style.right === '' ? '0' : '-250px';
+        overlay.style.display = sidebar.style.right === '0' ? 'block' : 'none';
     }
 
     function closeOverlay() {
@@ -20,4 +15,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     menuIcon.addEventListener('click', toggleMenu);
     overlay.addEventListener('click', closeOverlay);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const missionId = urlParams.get('missionId');
+
+ 
+    fetch(`/getTasks/${missionId}`)
+        .then(response => response.json())
+        .then(data => {
+            document.querySelector('iframe').src = data.video;
+        })
+        .catch(error => console.error('Error loading simulation video:', error));
 });

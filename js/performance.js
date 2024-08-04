@@ -6,13 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const simulations = document.querySelectorAll('.simulation');
 
     function toggleMenu() {
-        if (sidebar.style.right === '-250px' || sidebar.style.right === '') {
-            sidebar.style.right = '0';
-            overlay.style.display = 'block';
-        } else {
-            sidebar.style.right = '-250px';
-            overlay.style.display = 'none';
-        }
+        sidebar.style.right = sidebar.style.right === '-250px' || !sidebar.style.right ? '0' : '-250px';
+        overlay.style.display = sidebar.style.right === '0' ? 'block' : 'none';
     }
 
     function closeOverlay() {
@@ -48,6 +43,54 @@ document.addEventListener('DOMContentLoaded', function () {
         breadcrumb.textContent = text;
     }
 
+    function loadPerformanceData() {
+        const userData = JSON.parse(sessionStorage.getItem('userData'));
+        console.log('User data loaded from sessionStorage:', userData);
+
+        if (!userData || !userData.id) {
+            console.error('No user data found in sessionStorage.');
+            return;
+        }
+
+        console.log('Fetching performance data for soldier ID:', userData.id);
+
+        fetch('/getFeedback', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ soldierID: userData.id })
+        })
+        .then(response => {
+            console.log('HTTP response status:', response.status);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Performance data received:', data);
+
+            if (data.length > 0) {
+                data.forEach((simulation, index) => {
+                    const simulationElement = document.getElementById(`sim${index + 1}-details`);
+                    if (simulationElement) {
+                        const usingToolsElement = simulationElement.querySelector('.circle.green');
+                        const safetyElement = simulationElement.querySelectorAll('.circle.red')[0];
+                        const damageElement = simulationElement.querySelectorAll('.circle.red')[1];
+                        const feedbackElement = simulationElement.querySelector('.feedback');
+
+                        usingToolsElement.textContent = `${simulation.usingTools}%`;
+                        safetyElement.textContent = `${simulation.safety}%`;
+                        damageElement.textContent = `${simulation.damageToTheAFV}%`;
+                        feedbackElement.textContent = `הערכת מפקד: ${simulation.commanderFeedback}`;
+                    }
+                });
+            } else {
+                console.error('No performance data found for this soldier.');
+            }
+        })
+        .catch(error => console.error('Error fetching performance data:', error));
+    }
+
     menuIcon.addEventListener('click', toggleMenu);
     overlay.addEventListener('click', closeOverlay);
 
@@ -56,4 +99,6 @@ document.addEventListener('DOMContentLoaded', function () {
             showSimulationDetails(this.id);
         });
     });
+
+    loadPerformanceData();
 });

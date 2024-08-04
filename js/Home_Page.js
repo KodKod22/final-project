@@ -6,15 +6,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeBtn = document.querySelector('.close');
     const menuIcon = document.querySelector('.menu-icon');
     const connectButton = document.querySelector('.connect-btn');
+    const profilePic = document.querySelector('.profile-pic img');
+
+    function loadUserProfile() {
+        const userData = JSON.parse(sessionStorage.getItem('userData'));
+        console.log('Loaded user data:', userData); 
+        if (userData && userData.profile) {
+            const profilePic = document.querySelector('.profile-pic img');
+            profilePic.src = userData.profile; 
+            console.log('Profile picture updated to:', userData.profile);
+        } else {
+            console.error('No profile image found or userData is not set.'); 
+        }
+    }
+    
 
     function toggleMenu() {
-        if (sidebar.style.right === '-250px' || sidebar.style.right === '') {
-            sidebar.style.right = '0';
-            overlay.style.display = 'block';
-        } else {
-            sidebar.style.right = '-250px';
-            overlay.style.display = 'none';
-        }
+        sidebar.style.right = sidebar.style.right === '-250px' || !sidebar.style.right ? '0' : '-250px';
+        overlay.style.display = sidebar.style.right === '0' ? 'block' : 'none';
     }
 
     function connectVR() {
@@ -47,18 +56,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     menuIcon.addEventListener('click', toggleMenu);
-    if (vrText) {
-        vrText.addEventListener('click', connectVR);
-    }
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeModal);
-    }
-    if (overlay) {
-        overlay.addEventListener('click', closeOverlay);
-    }
-    if (connectButton) {
-        connectButton.addEventListener('click', connectToVR);
-    }
+    vrText.addEventListener('click', connectVR);
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', closeOverlay);
+    connectButton.addEventListener('click', connectToVR);
 
+    loadUserProfile(); 
     window.navigateTo = navigateTo;
 });
